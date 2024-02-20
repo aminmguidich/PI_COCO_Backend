@@ -25,7 +25,6 @@ public class Claims implements Serializable {
     @ToString.Exclude
     @ManyToMany(mappedBy = "claimsUser")
     List<User>usersClaims=new ArrayList<>();
-    //hh
 
 
 }
