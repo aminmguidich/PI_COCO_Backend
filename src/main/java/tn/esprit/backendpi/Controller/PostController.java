@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/")
+@CrossOrigin("*")
 public class PostController {
     PostService service;
     /*********     Post     **********/
@@ -49,4 +50,36 @@ public class PostController {
     public ReactPost retrieveReactPost(@PathVariable("id") long idReactPost) {return service.retrieveReactPost(idReactPost);}
     @DeleteMapping("/removeReactPost/{id}")
     public void removeReactPost(@PathVariable("id") long idReactPost) {service.removeReactPost(idReactPost);}
+
+
+
+
+    /*************** AVAMCEE ****************/
+    @GetMapping("/getCommentsForPost/{id}")
+    public List<CommentPost> getCommentsForPost(@PathVariable("id")Long postId) {
+        return service.getCommentsForPost(postId);
+    }
+    @PostMapping("/UserAddPost/{id}")
+    public String UserAddPost(@RequestBody Post post, @PathVariable("id")Long idUser) {
+        return service.UserAddPost(post, idUser);
+    }
+    @PostMapping("/UseraddComment/{IdPost}/{idUser}")
+    public CommentPost UseraddComment(@RequestBody CommentPost comment,@PathVariable("IdPost") Long IdPost,@PathVariable("idUser") Long idUser) {
+        return service.UseraddComment(comment, IdPost, idUser);
+    }
+    @PostMapping("/addCommentToComment/{idComm}/{idUser}")
+    public CommentPost addCommentToComment(@RequestBody CommentPost comment, @PathVariable("idComm")Long idComm, @PathVariable("idUser") Long idUser) {
+        return service.addCommentToComment(comment, idComm, idUser);
+    }
+
+    @PostMapping("/addReacttoPost/{IdPost}/{idUser}")
+    public ReactPost addReacttoPost(@RequestBody ReactPost react, @PathVariable("IdPost")Long IdPost, @PathVariable("idUser") Long idUser) {
+        return service.addReacttoPost(react, IdPost, idUser);
+    }
+
+    @PostMapping("/addReactToComment/{idcomment}/{idUser}")
+    public ReactPost addReactToComment(@RequestBody ReactPost react,@PathVariable("idcomment") Long idcomment,@PathVariable("idUser") Long idUser) {
+        return service.addReactToComment(react, idcomment, idUser);
+    }
+
 }

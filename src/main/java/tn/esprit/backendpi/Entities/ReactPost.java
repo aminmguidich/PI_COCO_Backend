@@ -1,5 +1,6 @@
 package tn.esprit.backendpi.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -16,11 +17,20 @@ import java.io.Serializable;
 public class ReactPost implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idReactForum;
+    Long idReactPost;
     @Enumerated(EnumType.STRING)
     TypeReact typeReact;
+
+    @JsonIgnore
     @ToString.Exclude
     @ManyToOne
     User userReactPost;
+
+    @JsonIgnore
+    @ToString.Exclude
+    @ManyToOne
+    Post post;
+
+
 
 }
