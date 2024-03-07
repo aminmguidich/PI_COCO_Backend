@@ -53,6 +53,12 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.9.7</version> <!-- Use the latest version available -->
         </dependency>
+
+        <!-- websocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
