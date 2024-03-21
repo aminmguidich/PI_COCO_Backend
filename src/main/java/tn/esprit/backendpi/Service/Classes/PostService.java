@@ -1,5 +1,6 @@
 package tn.esprit.backendpi.Service.Classes;
 
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -90,7 +91,7 @@ public class PostService implements IPost {
     public CommentPost addCommentToComment(CommentPost comment, Long idComm, Long idUser) {
         CommentPost p =    commentPostRepository.findById(idComm).get();
         User a =   userRepository.findById(idUser).get();
-        comment.setPostCo(p);
+        comment.setPostCoReflexive(p);
         comment.setUserCommentPost(a);
         return commentPostRepository.save(comment) ;
     }
@@ -105,16 +106,24 @@ public class PostService implements IPost {
     }
 
     @Override
+    @Transactional
     public ReactPost addReactToComment(ReactPost react, Long idcomment, Long idUser) {
         User user = userRepository.findById(idUser).orElse(null);
         CommentPost comment = commentPostRepository.findById(idcomment).orElse(null);
         react.setUserReactPost(user);
 
+        System.out.println(comment+ "comment");
+
+        assert comment != null;
+        System.out.println(comment.getPostComment()+ "post");
         //react.setComments(comment);
         //reactPostRepository.save(react);
 
         if (comment != null) {
             Post post = comment.getPostComment();
+comment.getReactPostsComment().add(react);
+//commentPostRepository.save(comment);
+
             react.setPost(post); // Associate react post with the same post as the comment
             reactPostRepository.save(react);
         }

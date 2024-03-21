@@ -24,9 +24,9 @@ public class Post implements Serializable {
     String postTitle;
     LocalDate createdAt;
     String body;
-    int nb_Signal;
-    int nb_etoil;
-    //String image;
+    int nb_Signal=0;
+    int nb_etoil=0;
+    String image;
 
     @JsonIgnore
     @ToString.Exclude
