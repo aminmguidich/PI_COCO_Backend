@@ -53,6 +53,6 @@ public interface IPost {
     CommentPost addCommentToComment(CommentPost comment, Long idComm, Long idUser);
      ReactPost addReacttoPost(ReactPost react , Long IdPost, Long idUser);
      ReactPost addReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
-
+     List<CommentPost> getReplies(Long commentId);
 
     }

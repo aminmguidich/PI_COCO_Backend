@@ -35,7 +35,7 @@ public class FlickrConfiguration {
     @Value("${flickr.appSecret}")
     private String appSecret;
 
-   /* @Bean
+    /*@Bean
     public Flickr flickr() throws InterruptedException, IOException, FlickrException, ExecutionException {
         Flickr flickr = new Flickr(apiKey, apiSecret, new REST());
         OAuth10aService service = new ServiceBuilder(apiKey)

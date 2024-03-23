@@ -112,10 +112,10 @@ public class PostService implements IPost {
         CommentPost comment = commentPostRepository.findById(idcomment).orElse(null);
         react.setUserReactPost(user);
 
-        System.out.println(comment+ "comment");
+      //  System.out.println(comment+ "comment");
 
         assert comment != null;
-        System.out.println(comment.getPostComment()+ "post");
+       // System.out.println(comment.getPostComment()+ "post");
         //react.setComments(comment);
         //reactPostRepository.save(react);
 
@@ -128,6 +128,11 @@ comment.getReactPostsComment().add(react);
             reactPostRepository.save(react);
         }
         return react;    }
+
+    @Override
+    public List<CommentPost> getReplies(Long commentId) {
+        return commentPostRepository.findByPostCoReflexiveIdCommentPost(commentId);
+    }
 
 
 }

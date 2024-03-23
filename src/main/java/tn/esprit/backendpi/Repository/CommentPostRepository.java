@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface CommentPostRepository extends JpaRepository<CommentPost,Long> {
     List<CommentPost> findByPostCommentIdPost(Long postId);
+    List<CommentPost> findByPostCoReflexiveIdCommentPost(Long commentId);
 
 }

@@ -81,5 +81,8 @@ public class PostController {
     public ReactPost addReactToComment(@RequestBody ReactPost react,@PathVariable("idcomment") Long idcomment,@PathVariable("idUser") Long idUser) {
         return service.addReactToComment(react, idcomment, idUser);
     }
-
+    @GetMapping("/getReplies/{id}")
+    public List<CommentPost> getReplies(@PathVariable("id") Long commentId) {
+        return service.getReplies(commentId);
+    }
 }
