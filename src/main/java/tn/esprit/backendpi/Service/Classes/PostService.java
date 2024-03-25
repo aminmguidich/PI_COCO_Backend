@@ -13,6 +13,7 @@ import tn.esprit.backendpi.Repository.ReactPostRepository;
 import tn.esprit.backendpi.Repository.UserRepository;
 import tn.esprit.backendpi.Service.Interfaces.IPost;
 
+import java.time.LocalDate;
 import java.util.List;
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -45,9 +46,7 @@ public class PostService implements IPost {
 
     @Override
     public CommentPost updateCommentPost(CommentPost c) {return commentPostRepository.save(c);}
-    @Override
-    public CommentPost addCommentPost(CommentPost c) {return commentPostRepository.save(c);}
-    @Override
+
     public CommentPost retrieveCommentPost(long idCommentPost) {return commentPostRepository.findById(idCommentPost).orElse(null);}
     @Override
     public void removeCommentPost(long idCommentPost) {commentPostRepository.deleteById(idCommentPost);}
@@ -74,6 +73,30 @@ public class PostService implements IPost {
         return commentPostRepository.findByPostCommentIdPost(postId);
     }
     @Override
+    public List<CommentPost> getReplies(Long commentId) {
+        return commentPostRepository.findByPostCoReflexiveIdCommentPost(commentId);
+    }
+
+
+    @Override
+    public CommentPost addCommenttoPost(CommentPost comment,Long IdPost) {
+        Post p =   postRepository.findById(IdPost).get();
+        comment.setPostComment(p);
+        return commentPostRepository.save(comment);
+    }
+    @Override
+    public CommentPost addCommentToComment(CommentPost comment, Long idComm) {
+        CommentPost p =    commentPostRepository.findById(idComm).get();
+        comment.setPostCoReflexive(p);
+        return commentPostRepository.save(comment) ;    }
+
+    public void updatePostRating(Long postId, int nb_etoil) {
+        Post post = postRepository.findById(postId).get();
+        post.setNb_etoil(nb_etoil);
+        postRepository.save(post);
+    }
+    //apre authentification
+    @Override
     public String UserAddPost(Post post, Long idUser) {
             post.setUserPost(userRepository.findById(idUser).get());
             postRepository.save(post);
@@ -88,7 +111,7 @@ public class PostService implements IPost {
         comment.setUserCommentPost(a);
         return commentPostRepository.save(comment) ;    }
     @Override
-    public CommentPost addCommentToComment(CommentPost comment, Long idComm, Long idUser) {
+    public CommentPost UseraddCommentToComment(CommentPost comment, Long idComm, Long idUser) {
         CommentPost p =    commentPostRepository.findById(idComm).get();
         User a =   userRepository.findById(idUser).get();
         comment.setPostCoReflexive(p);
@@ -129,10 +152,7 @@ comment.getReactPostsComment().add(react);
         }
         return react;    }
 
-    @Override
-    public List<CommentPost> getReplies(Long commentId) {
-        return commentPostRepository.findByPostCoReflexiveIdCommentPost(commentId);
-    }
+
 
 
 }

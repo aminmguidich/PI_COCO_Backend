@@ -32,8 +32,7 @@ public class PostController {
     public List<CommentPost> retrieveAllCommentPost() {return service.retrieveAllCommentPost();}
     @PutMapping("/updateCommentPost")
     public CommentPost updateCommentPost(@RequestBody CommentPost c) {return service.updateCommentPost(c);}
-    @PostMapping("/addCommentPost")
-    public CommentPost addCommentPost(@RequestBody CommentPost c) {return service.addCommentPost(c);}
+
     @GetMapping("/retrieveCommentPost/{id}")
     public CommentPost retrieveCommentPost(@PathVariable("id") long idCommentPost) {return service.retrieveCommentPost(idCommentPost);}
     @DeleteMapping("/removeCommentPost/{id}")
@@ -59,6 +58,25 @@ public class PostController {
     public List<CommentPost> getCommentsForPost(@PathVariable("id")Long postId) {
         return service.getCommentsForPost(postId);
     }
+
+    @GetMapping("/getReplies/{id}")
+    public List<CommentPost> getReplies(@PathVariable("id") Long commentId) {
+        return service.getReplies(commentId);
+    }
+
+    @PostMapping("/addCommenttoPost/{id}")
+    public CommentPost addCommenttoPost(@RequestBody CommentPost comment,@PathVariable("id") Long IdPost) {return service.addCommenttoPost(comment, IdPost);}
+    @PostMapping("/addCommentToComment/{idComm}")
+    public CommentPost addCommentToComment(@RequestBody CommentPost comment,@PathVariable("idComm") Long idComm) {
+        return service.addCommentToComment(comment, idComm);
+    }
+
+    @PutMapping("/updatePostRating/{postId}/{nb_etoil}")
+    public void updatePostRating(@PathVariable("postId") Long postId,@PathVariable("nb_etoil") int nb_etoil) {
+        service.updatePostRating(postId, nb_etoil);
+    }
+
+    //apre authentification
     @PostMapping("/UserAddPost/{id}")
     public String UserAddPost(@RequestBody Post post, @PathVariable("id")Long idUser) {
         return service.UserAddPost(post, idUser);
@@ -67,9 +85,9 @@ public class PostController {
     public CommentPost UseraddComment(@RequestBody CommentPost comment,@PathVariable("IdPost") Long IdPost,@PathVariable("idUser") Long idUser) {
         return service.UseraddComment(comment, IdPost, idUser);
     }
-    @PostMapping("/addCommentToComment/{idComm}/{idUser}")
-    public CommentPost addCommentToComment(@RequestBody CommentPost comment, @PathVariable("idComm")Long idComm, @PathVariable("idUser") Long idUser) {
-        return service.addCommentToComment(comment, idComm, idUser);
+    @PostMapping("/UseraddCommentToComment/{idComm}/{idUser}")
+    public CommentPost UseraddCommentToComment(@RequestBody CommentPost comment, @PathVariable("idComm")Long idComm, @PathVariable("idUser") Long idUser) {
+        return service.UseraddCommentToComment(comment, idComm, idUser);
     }
 
     @PostMapping("/addReacttoPost/{IdPost}/{idUser}")
@@ -81,8 +99,7 @@ public class PostController {
     public ReactPost addReactToComment(@RequestBody ReactPost react,@PathVariable("idcomment") Long idcomment,@PathVariable("idUser") Long idUser) {
         return service.addReactToComment(react, idcomment, idUser);
     }
-    @GetMapping("/getReplies/{id}")
-    public List<CommentPost> getReplies(@PathVariable("id") Long commentId) {
-        return service.getReplies(commentId);
-    }
+
+
+
 }

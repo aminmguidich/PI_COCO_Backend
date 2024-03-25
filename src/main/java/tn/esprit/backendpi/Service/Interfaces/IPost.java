@@ -25,7 +25,6 @@ public interface IPost {
 
     CommentPost updateCommentPost(CommentPost c);
 
-    CommentPost addCommentPost(CommentPost c);
 
     CommentPost retrieveCommentPost(long idCommentPost);
 
@@ -47,12 +46,17 @@ public interface IPost {
     /******* AVANCEE ******/
 
     List<CommentPost> getCommentsForPost(Long postId);
+    CommentPost addCommenttoPost(CommentPost comment,Long IdPost);
+    List<CommentPost> getReplies(Long commentId);
+    CommentPost addCommentToComment(CommentPost comment, Long idComm);
+    void updatePostRating(Long postId, int nb_etoil);
+
+    //apres authentification
 
     String UserAddPost(Post post, Long idUser) ;
     CommentPost UseraddComment(CommentPost comment ,Long IdPost, Long idUser) ;
-    CommentPost addCommentToComment(CommentPost comment, Long idComm, Long idUser);
+    CommentPost UseraddCommentToComment(CommentPost comment, Long idComm, Long idUser);
      ReactPost addReacttoPost(ReactPost react , Long IdPost, Long idUser);
      ReactPost addReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
-     List<CommentPost> getReplies(Long commentId);
 
     }
