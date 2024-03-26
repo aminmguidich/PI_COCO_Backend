@@ -95,6 +95,19 @@ public class PostService implements IPost {
         post.setNb_etoil(nb_etoil);
         postRepository.save(post);
     }
+
+    @Override
+    public ReactPost addReacttoPost(ReactPost react, Long IdPost) {
+        Post p =   postRepository.findById(IdPost).orElse(null);
+        react.setPost(p);
+        return reactPostRepository.save(react) ;
+    }
+
+    @Override
+    public List<ReactPost> getReactsForPost(Long postId) {
+        return reactPostRepository.findByPostIdPost(postId);
+    }
+
     //apre authentification
     @Override
     public String UserAddPost(Post post, Long idUser) {
@@ -120,7 +133,7 @@ public class PostService implements IPost {
     }
 
     @Override
-    public ReactPost addReacttoPost(ReactPost react, Long IdPost, Long idUser) {
+    public ReactPost UseraddReacttoPost(ReactPost react, Long IdPost, Long idUser) {
         Post p =   postRepository.findById(IdPost).orElse(null);
         User r =   userRepository.findById(idUser).orElse(null);
         react.setPost(p);

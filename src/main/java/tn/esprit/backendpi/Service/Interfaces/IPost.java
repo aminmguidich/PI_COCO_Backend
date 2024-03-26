@@ -50,13 +50,15 @@ public interface IPost {
     List<CommentPost> getReplies(Long commentId);
     CommentPost addCommentToComment(CommentPost comment, Long idComm);
     void updatePostRating(Long postId, int nb_etoil);
+    ReactPost addReacttoPost(ReactPost react , Long IdPost);
+    List<ReactPost> getReactsForPost(Long postId);
 
     //apres authentification
 
     String UserAddPost(Post post, Long idUser) ;
     CommentPost UseraddComment(CommentPost comment ,Long IdPost, Long idUser) ;
     CommentPost UseraddCommentToComment(CommentPost comment, Long idComm, Long idUser);
-     ReactPost addReacttoPost(ReactPost react , Long IdPost, Long idUser);
+     ReactPost UseraddReacttoPost(ReactPost react , Long IdPost, Long idUser);
      ReactPost addReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
 
     }

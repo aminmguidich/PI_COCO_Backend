@@ -52,7 +52,6 @@ public class PostController {
 
 
 
-
     /*************** AVAMCEE ****************/
     @GetMapping("/getCommentsForPost/{id}")
     public List<CommentPost> getCommentsForPost(@PathVariable("id")Long postId) {
@@ -75,6 +74,14 @@ public class PostController {
     public void updatePostRating(@PathVariable("postId") Long postId,@PathVariable("nb_etoil") int nb_etoil) {
         service.updatePostRating(postId, nb_etoil);
     }
+    @PostMapping("/addReacttoPost/{id}")
+    public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
+        return service.addReacttoPost(react, IdPost);
+    }
+    @GetMapping("/getReactsForPost/{postId}")
+    public List<ReactPost> getReactsForPost(@PathVariable("postId") Long postId) {
+        return service.getReactsForPost(postId);
+    }
 
     //apre authentification
     @PostMapping("/UserAddPost/{id}")
@@ -90,9 +97,9 @@ public class PostController {
         return service.UseraddCommentToComment(comment, idComm, idUser);
     }
 
-    @PostMapping("/addReacttoPost/{IdPost}/{idUser}")
-    public ReactPost addReacttoPost(@RequestBody ReactPost react, @PathVariable("IdPost")Long IdPost, @PathVariable("idUser") Long idUser) {
-        return service.addReacttoPost(react, IdPost, idUser);
+    @PostMapping("/UseraddReacttoPost/{IdPost}/{idUser}")
+    public ReactPost UseraddReacttoPost(@RequestBody ReactPost react, @PathVariable("IdPost")Long IdPost, @PathVariable("idUser") Long idUser) {
+        return service.UseraddReacttoPost(react, IdPost, idUser);
     }
 
     @PostMapping("/addReactToComment/{idcomment}/{idUser}")
