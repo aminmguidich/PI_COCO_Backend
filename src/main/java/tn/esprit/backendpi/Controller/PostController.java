@@ -3,6 +3,7 @@ package tn.esprit.backendpi.Controller;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.backendpi.Entities.CommentPost;
+import tn.esprit.backendpi.Entities.Enum.TypeReact;
 import tn.esprit.backendpi.Entities.Post;
 import tn.esprit.backendpi.Entities.ReactPost;
 import tn.esprit.backendpi.Service.Classes.PostService;
@@ -82,7 +83,28 @@ public class PostController {
     public List<ReactPost> getReactsForPost(@PathVariable("postId") Long postId) {
         return service.getReactsForPost(postId);
     }
+    @PostMapping("/addTypeReacttoPost/{IdPost}")
+    public ReactPost addTypeReacttoPost(@RequestBody TypeReact typereact,@PathVariable("IdPost") Long IdPost) {
+        return service.addTypeReacttoPost(typereact, IdPost);
+    }
 
+    @GetMapping("/getReactsForComment/{idComment}")
+    public List<ReactPost> getReactsForComment(@PathVariable("idComment") Long idComment) {
+        return service.getReactsForComment(idComment);
+    }
+    @PostMapping("/addReactToComment/{idcomment}")
+    public ReactPost addReactToComment(@RequestBody TypeReact typereact, Long idcomment) {
+        return service.addReactToComment(typereact, idcomment);
+    }
+
+    @GetMapping("/MeilleurPost")
+    public Post MeilleurPost() {
+        return service.MeilleurPost();
+    }
+    @PostMapping("/AddWithoutBadWord")
+    public String AddWithoutBadWord(@RequestBody Post post) {
+        return service.AddWithoutBadWord(post);
+    }
     //apre authentification
     @PostMapping("/UserAddPost/{id}")
     public String UserAddPost(@RequestBody Post post, @PathVariable("id")Long idUser) {
@@ -102,11 +124,22 @@ public class PostController {
         return service.UseraddReacttoPost(react, IdPost, idUser);
     }
 
-    @PostMapping("/addReactToComment/{idcomment}/{idUser}")
-    public ReactPost addReactToComment(@RequestBody ReactPost react,@PathVariable("idcomment") Long idcomment,@PathVariable("idUser") Long idUser) {
-        return service.addReactToComment(react, idcomment, idUser);
+    @PostMapping("/UseraddReactToComment/{idcomment}/{idUser}")
+    public ReactPost UseraddReactToComment(@RequestBody ReactPost react,@PathVariable("idcomment") Long idcomment,@PathVariable("idUser") Long idUser) {
+        return service.UseraddReactToComment(react, idcomment, idUser);
     }
 
 
 
+    public void reportPost(Long IdPost) {
+        service.reportPost(IdPost);
+    }
+
+    public String UserAddWithoutBadWord(Post post, Long idUser) {
+        return service.UserAddWithoutBadWord(post, idUser);
+    }
+
+    public void deletePostByTime() {
+        service.deletePostByTime();
+    }
 }

@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit.backendpi.Entities.*;
+import tn.esprit.backendpi.Entities.Enum.TypeReact;
 import tn.esprit.backendpi.Repository.CommentPostRepository;
 import tn.esprit.backendpi.Repository.PostRepository;
 import tn.esprit.backendpi.Repository.ReactPostRepository;
@@ -14,6 +15,8 @@ import tn.esprit.backendpi.Repository.UserRepository;
 import tn.esprit.backendpi.Service.Interfaces.IPost;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -108,6 +111,64 @@ public class PostService implements IPost {
         return reactPostRepository.findByPostIdPost(postId);
     }
 
+    @Override
+    public ReactPost addTypeReacttoPost(TypeReact typereact, Long IdPost) {
+        Post p =   postRepository.findById(IdPost).get();
+        ReactPost reactPost = new ReactPost();
+        reactPost.setTypeReact(typereact);
+        reactPost.setPost(p);
+        return reactPostRepository.save(reactPost);
+    }
+
+    @Override
+    public List<ReactPost> getReactsForComment(Long idComment) {
+        return commentPostRepository.findReactsForComment(idComment);
+    }
+
+    @Override
+    public ReactPost addReactToComment(TypeReact typereact, Long idcomment) {
+        CommentPost comment = commentPostRepository.findById(idcomment).orElse(null);
+        ReactPost reactPost = new ReactPost();
+        reactPost.setTypeReact(typereact);
+
+        assert comment != null;
+        if (comment != null) {
+            Post post = comment.getPostComment();
+        comment.getReactPostsComment().add(reactPost);
+        reactPost.setPost(post);
+            reactPostRepository.save(reactPost);
+        }
+        return reactPost;
+
+    }
+
+    @Override
+    public Post MeilleurPost() {
+        List<Post> posts = new ArrayList<>();
+        postRepository.findAll().forEach(posts::add);
+
+        int etoile = 0;
+        Post post = null;
+        for(Post p : posts){
+            if(p.getNb_etoil()>etoile){
+                etoile = p.getNb_etoil();
+                post=p;
+            }
+        }
+        return post;
+         }
+
+    @Override
+    public String AddWithoutBadWord(Post post) {
+        BadWordImpl b = new BadWordImpl();
+        if(b.filterText(post.getBody()).equals("This post contain bad word") || b.filterText(post.getPostTitle()).equals("This post contain bad word"))
+            return "This post contain bad word" ;
+        else {
+            postRepository.save(post);
+            return "add successfuly" ;
+        }
+    }
+
     //apre authentification
     @Override
     public String UserAddPost(Post post, Long idUser) {
@@ -143,7 +204,7 @@ public class PostService implements IPost {
 
     @Override
     @Transactional
-    public ReactPost addReactToComment(ReactPost react, Long idcomment, Long idUser) {
+    public ReactPost UseraddReactToComment(ReactPost react, Long idcomment, Long idUser) {
         User user = userRepository.findById(idUser).orElse(null);
         CommentPost comment = commentPostRepository.findById(idcomment).orElse(null);
         react.setUserReactPost(user);
@@ -165,7 +226,50 @@ comment.getReactPostsComment().add(react);
         }
         return react;    }
 
+    @Override
+    public void reportPost(Long IdPost){
+        Post p = postRepository.findById(IdPost).get();
+        p.setNb_Signal(p.getNb_Signal()+1);
+        if(p.getNb_Signal() == 5) {
+            postRepository.deleteById(IdPost);
+            //this.sendEmail(p.getUserPost().getEmail(), "your post is deleted");
 
+        }
+        else {
+            postRepository.save(p);
+          //  this.sendEmail(p.getUserPost().getEmail(), "post recive a new report");
 
+        }
+    }
+
+    @Override
+    public String UserAddWithoutBadWord(Post post, Long idUser) {
+        BadWordImpl b = new BadWordImpl();
+        if(b.filterText(post.getBody()).equals("This post contain bad word") || b.filterText(post.getPostTitle()).equals("This post contain bad word"))
+            return "This post contain bad word" ;
+        else {
+            post.setUserPost(userRepository.findById(idUser).get());
+            postRepository.save(post);
+            return "add successfuly" ;
+        }
+    }
+
+    // @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,
+    @Override
+    public void deletePostByTime(){
+        List<Post> posts = new ArrayList<>();
+        postRepository.findAll().forEach(posts::add);
+
+        for(Post p : posts){
+            if(p.getCreatedAt().isBefore(LocalDate.now().minusWeeks(1)) && p.getReactPosts().size()==0 && p.getCommentPosts().size()==0){
+                postRepository.delete(p);
+            }
+        }
+    }
+//Une boucle for est utilisée pour parcourir tous les posts dans la liste posts. Pour chaque post, la méthode getCreatedAt est appelée pour
+// récupérer la date et l'heure à laquelle le post a été créé. La méthode isBefore est ensuite utilisée pour vérifier si cette date et
+// heure est antérieure à une semaine avant la date et l'heure actuelles (obtenues en appelant LocalDateTime.now() et en soustrayant une
+// semaine avec minusWeeks(1)).
+// La méthode getReacts et getComments sont appelées pour vérifier si le post n'a pas de réactions ou de commentaires associés.
 
 }
