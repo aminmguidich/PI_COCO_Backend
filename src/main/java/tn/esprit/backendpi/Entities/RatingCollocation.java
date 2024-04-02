@@ -3,26 +3,23 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-@ToString
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RatingCollocation implements Serializable {
+public class RatingCollocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCollocationRating;
+    Long idCarpoolingRating;
     Long nbrStars;
-    String comment;
-    @ToString.Exclude
+
     @ManyToMany(mappedBy = "ratingCollocationsAnnCollocation")
-    List<AnnouncementCollocation>announcementCollocationsRating=new ArrayList<>();
-    @ToString.Exclude
+    List<AnnouncementCollocation>announcementCollocationsRating;
     @ManyToOne
     User userRatingCollocation;
 }

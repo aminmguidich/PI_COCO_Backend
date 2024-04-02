@@ -1,4 +1,5 @@
 package tn.esprit.backendpi.Entities;
+
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,18 +10,13 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BalanceSheet {
+public class ReactForum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idBalanceSheet;
-    String description;
+    Long idReactForum;
+    TypeReactForum typeReactForum;
 
     @ManyToOne
-    Car carBalanceSheet;
-    @ManyToOne
-    Route routeBalanceSheet;
-
-
-
+    User userReactForum;
 
 }

@@ -1,65 +1,105 @@
 package tn.esprit.backendpi.Entities;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.backendpi.Entities.Enum.GenderType;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-@ToString
+import java.util.*;
+
 @Entity
-@Getter
-@Setter
+@Table(name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "username"),
+                @UniqueConstraint(columnNames = "email")
+        })
+@Builder
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User implements Serializable {
+public class User{
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String name;
-    String lastname;
+    @Getter
+    @NotBlank
+    @Size(max = 20)
+    String username;
+    @Getter
+    @NotBlank
+    @Size(max = 120)
     String password;
+    @Getter
+    @NotBlank
+    @Size(max = 50)
+    @Email
     String email;
+
+    @Getter
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    String fullname;
     Long phone;
     String image;
     LocalDate birthDate;
-    Boolean availibilty;
     @Enumerated(EnumType.STRING)
     GenderType gender;
     Long score;
-    @ToString.Exclude
+
     @ManyToMany
-    List<RequirementCarpooling>requirementCarpoolingsUser=new ArrayList<>();
-    @ToString.Exclude
+    List<RequirementCarpooling> requirementCarpoolingsUser;
     @ManyToMany
-    List<Claims>claimsUser=new ArrayList<>();
-    @ToString.Exclude
+    List<Claims> claimsUser;
     @ManyToMany
-    List<Role>rolesUser=new ArrayList<>();
-    @ToString.Exclude
-    @ManyToMany
-    List<RequirementCollocation>requirementCollocationsUser=new ArrayList<>();
-    @ToString.Exclude
+    List<RequirementCollocation> requirementCollocationsUser;
     @OneToOne
     Car carUser;
-    @ToString.Exclude
     @OneToOne
     Calendar calendarUser;
-    @ToString.Exclude
     @OneToOne
     Adress adressUser;
-    @ToString.Exclude
     @OneToMany(mappedBy = "userReact")
-    List<ReactCollocation>reactsUser=new ArrayList<>();
-    @ToString.Exclude
+    List<React> reactsUser;
     @OneToMany(mappedBy = "userCommand")
-    List<Command>commandsUser=new ArrayList<>();
-    @ToString.Exclude
-    @OneToMany(mappedBy = "userReactPost")
-    List<ReactPost>reactPostuser=new ArrayList<>();
+    List<Command> commandsUser;
 
 
 

@@ -9,17 +9,16 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BalanceSheet {
+
+public class React {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idBalanceSheet;
-    String description;
+    Long idReact;
+    @Enumerated(EnumType.STRING)
+    TypeReact typeReact;
 
     @ManyToOne
-    Car carBalanceSheet;
-    @ManyToOne
-    Route routeBalanceSheet;
-
+    User userReact;
 
 
 

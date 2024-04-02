@@ -1,10 +1,9 @@
 package tn.esprit.backendpi.Entities;
+
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,19 +12,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RequirementCarpooling {
+public class Forum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCarRequirement;
+    Long idForum;
     String description;
-    LocalDate dateCarpoolingRequirement;
-    Float budgetPart;
 
-    @ManyToMany(mappedBy = "requirementCarpoolingsUser")
-    List<User>usersRequirementCarpooling;
+    @OneToMany(mappedBy = "forumComment")
+    List<CommentForum>commentForums;
     @ManyToOne
-    AnnouncementCarpooling announcementCarpoolingReq;
-
+    User userForum;
+    @OneToMany
+    List<ReactForum>reactForums;
 
 
 }
