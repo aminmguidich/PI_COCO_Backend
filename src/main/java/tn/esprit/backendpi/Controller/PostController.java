@@ -93,7 +93,7 @@ public class PostController {
         return service.getReactsForComment(idComment);
     }
     @PostMapping("/addReactToComment/{idcomment}")
-    public ReactPost addReactToComment(@RequestBody TypeReact typereact, Long idcomment) {
+    public ReactPost addReactToComment(@RequestBody TypeReact typereact,@PathVariable("idcomment") Long idcomment) {
         return service.addReactToComment(typereact, idcomment);
     }
 
@@ -129,9 +129,13 @@ public class PostController {
         return service.UseraddReactToComment(react, idcomment, idUser);
     }
 
+    @PutMapping("/UpdatereportPost/{postId}")
+    public void UpdatereportPost(@PathVariable("postId") Long postId) {
+        service.UpdatereportPost(postId);
+    }
 
-
-    public void reportPost(Long IdPost) {
+    @PutMapping("/reportPost/{IdPost}")
+    public void reportPost(@PathVariable("IdPost")Long IdPost) {
         service.reportPost(IdPost);
     }
 
@@ -139,6 +143,7 @@ public class PostController {
         return service.UserAddWithoutBadWord(post, idUser);
     }
 
+    @DeleteMapping("/deletePostByTime")
     public void deletePostByTime() {
         service.deletePostByTime();
     }

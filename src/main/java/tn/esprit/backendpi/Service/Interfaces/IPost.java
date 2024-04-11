@@ -67,5 +67,7 @@ public interface IPost {
      ReactPost UseraddReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
     void deletePostByTime();
     void reportPost(Long IdPost);
-    String UserAddWithoutBadWord(Post post, Long idUser);
+     void UpdatereportPost(Long postId) ;
+
+        String UserAddWithoutBadWord(Post post, Long idUser);
     }

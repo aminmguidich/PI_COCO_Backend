@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.backendpi.Entities.*;
 import tn.esprit.backendpi.Entities.Enum.TypeReact;
@@ -13,7 +14,8 @@ import tn.esprit.backendpi.Repository.PostRepository;
 import tn.esprit.backendpi.Repository.ReactPostRepository;
 import tn.esprit.backendpi.Repository.UserRepository;
 import tn.esprit.backendpi.Service.Interfaces.IPost;
-
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,6 +31,8 @@ public class PostService implements IPost {
     PostRepository postRepository;
     ReactPostRepository reactPostRepository;
     UserRepository userRepository;
+    JavaMailSender javaMailSender;
+
 
     /*********     Post     **********/
     @Override
@@ -226,20 +230,42 @@ comment.getReactPostsComment().add(react);
         }
         return react;    }
 
+
+    @Override
+    public void UpdatereportPost(Long postId) {
+        Post post = postRepository.findById(postId).get();
+        int nb = post.getNb_Signal() + 1;
+        post.setNb_Signal(nb);
+        postRepository.save(post);
+    }
+
+
+
     @Override
     public void reportPost(Long IdPost){
         Post p = postRepository.findById(IdPost).get();
         p.setNb_Signal(p.getNb_Signal()+1);
         if(p.getNb_Signal() == 5) {
             postRepository.deleteById(IdPost);
-            //this.sendEmail(p.getUserPost().getEmail(), "your post is deleted");
+            this.sendEmail("chaymaattafi3@gmail.com", "your post is deleted");
 
         }
         else {
             postRepository.save(p);
-          //  this.sendEmail(p.getUserPost().getEmail(), "post recive a new report");
+            this.sendEmail("chaymaattafi3@gmail.com", "post recive a new report");
 
         }
+    }
+
+
+    public void sendEmail(String Recipient,String EmailMessage) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(Recipient);
+        message.setSubject("Post");
+        message.setText(EmailMessage);
+
+        javaMailSender.send(message);
+
     }
 
     @Override
@@ -254,22 +280,18 @@ comment.getReactPostsComment().add(react);
         }
     }
 
-    // @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,
+   //  @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,
     @Override
     public void deletePostByTime(){
         List<Post> posts = new ArrayList<>();
         postRepository.findAll().forEach(posts::add);
 
         for(Post p : posts){
-            if(p.getCreatedAt().isBefore(LocalDate.now().minusWeeks(1)) && p.getReactPosts().size()==0 && p.getCommentPosts().size()==0){
+            if(p.getCreatedAt().isBefore(LocalDate.now().minusWeeks(1)) && p.getReactPosts().isEmpty() && p.getCommentPosts().isEmpty()){
                 postRepository.delete(p);
+                System.out.println("post deleted");
             }
         }
     }
-//Une boucle for est utilisée pour parcourir tous les posts dans la liste posts. Pour chaque post, la méthode getCreatedAt est appelée pour
-// récupérer la date et l'heure à laquelle le post a été créé. La méthode isBefore est ensuite utilisée pour vérifier si cette date et
-// heure est antérieure à une semaine avant la date et l'heure actuelles (obtenues en appelant LocalDateTime.now() et en soustrayant une
-// semaine avec minusWeeks(1)).
-// La méthode getReacts et getComments sont appelées pour vérifier si le post n'a pas de réactions ou de commentaires associés.
 
 }
