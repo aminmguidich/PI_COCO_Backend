@@ -1,29 +1,22 @@
 package tn.esprit.backendpi.Entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
-@ToString
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class BalanceSheet implements Serializable {
+public class BalanceSheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idBalanceSheet;
     String description;
 
-
-    @ToString.Exclude
     @ManyToOne
     Car carBalanceSheet;
-
-    @ToString.Exclude
     @ManyToOne
     Route routeBalanceSheet;
 
