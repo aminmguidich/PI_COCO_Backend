@@ -33,6 +33,7 @@ import tn.esprit.backendpi.Security.Jwt.JwtUtils;
 import tn.esprit.backendpi.Security.Services.UserDetailsImpl;
 import tn.esprit.backendpi.Service.Classes.ForgotPasswordService;
 import tn.esprit.backendpi.Service.Classes.ResetPasswordService;
+import tn.esprit.backendpi.Service.Interfaces.IUserService;
 
 
 //for Angular Client (withCredentials)
@@ -61,6 +62,8 @@ public class AuthController {
 
     @Autowired
     ResetPasswordService resetPasswordService;
+    @Autowired
+    IUserService iUserService;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -139,11 +142,7 @@ public class AuthController {
     @PostMapping("/signout")
     public ResponseEntity<?> logoutUser() {
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CACHE_CONTROL, "no-cache, no-store, must-revalidate");
-        headers.add(HttpHeaders.PRAGMA, "no-cache");
-        headers.add(HttpHeaders.EXPIRES, "0");
-        return ResponseEntity.ok().headers(headers).header(HttpHeaders.SET_COOKIE, cookie.toString())
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString())
                 .body(new MessageResponse("You've been signed out!"));
     }
     @PostMapping("/forgot-password")
