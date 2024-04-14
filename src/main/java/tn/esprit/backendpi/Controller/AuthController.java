@@ -37,7 +37,7 @@ import tn.esprit.backendpi.Service.Interfaces.IUserService;
 
 
 //for Angular Client (withCredentials)
-@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 
 @RestController
 @RequestMapping("/api/auth")

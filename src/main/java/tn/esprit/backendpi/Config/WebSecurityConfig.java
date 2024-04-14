@@ -92,6 +92,13 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/test/**").permitAll()
                                 .requestMatchers("/api/user/**").permitAll()
                                 .requestMatchers("/api/claim/**").permitAll()
+                                .requestMatchers("/api/CarpoolingAnnouncement/**").permitAll()
+                                .requestMatchers("/api/CarpoolingRequirement/**").permitAll()
+                                .requestMatchers("/api/CarpoolingReact/**").permitAll()
+                                .requestMatchers("/api/Route/**").permitAll()
+                                .requestMatchers("/api/CarpoolingRating/**").permitAll()
+                                .requestMatchers("/api/Adress/**").permitAll()
+
 
                                 .anyRequest().authenticated()
                 );

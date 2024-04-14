@@ -3,7 +3,6 @@ package tn.esprit.backendpi.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.backendpi.Entities.Enum.TypeReact;
 
 import java.io.Serializable;
 @ToString
@@ -20,6 +19,6 @@ public class ReactCarpooling implements Serializable {
 
 
     @ManyToOne
-    User userReactCar;
+    User userReact;
 
 }

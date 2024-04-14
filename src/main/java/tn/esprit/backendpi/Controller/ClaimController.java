@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esprit.backendpi.Entities.Claims;
 import tn.esprit.backendpi.Entities.User;
 import tn.esprit.backendpi.Service.Interfaces.IClaimService;
-@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 
 @RestController
 @RequestMapping("/api/claim")
