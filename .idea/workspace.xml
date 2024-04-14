@@ -5,81 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04ad89ca-b97f-4f18-a4cc-e51a91c4755b" name="Changes" comment="entety">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ClaimController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ERole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Payload/Request/ForgotPasswordRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Payload/Request/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Payload/Request/ResetPasswordRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Payload/Request/SignupRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Payload/Response/MessageResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Payload/Response/UserInfoResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/ClaimRespository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Security/Jwt/AuthEntryPointJwt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Security/Jwt/AuthTokenFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Security/Jwt/JwtUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Security/Services/UserDetailsImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Security/Services/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ClaimServiceImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/EmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ForgotPasswordService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ResetPasswordService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IClaimService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AdressController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/CalendarController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ClaimsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RoleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/TypeRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/AdressRepositorty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/CalendarRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/ClaimsRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/RoleRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/AdressServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/CalendarServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ClaimsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/RoleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IAdressService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/ICalendarService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IClaimsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IRoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/BackendPiApplication.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/AdressController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/CalendarController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/ClaimsController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/RoleController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Role.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/TypeRole.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/AdressRepositorty.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/CalendarRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/ClaimsRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/RoleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/RoleRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/AnnCarpoolingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/RatingCarpoolingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/ReactCarpoolingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/ReqCarpoolingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/RouteController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Adress.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/AnnouncementCarpooling.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/AnnouncementCollocation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/BalanceSheet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Calendar.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Claims.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/CommentPost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Contract.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Delivery.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Enum/GenderType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Enum/HouseType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Enum/TypeCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Enum/TypeReact.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Enum/TypeRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Enum/TypeStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/House.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Post.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/RatingCarpooling.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/RatingCollocation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/ReactCarpooling.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/ReactCollocation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/ReactPost.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/RequirementCarpooling.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/RequirementCollocation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Route.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/AdressRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/AnnCarpoolingRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/RatingCarpoolingRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/ReactCarpoolingRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/ReqCarpoolingRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/RouteRepository.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/AdressServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/CalendarServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/ClaimsServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/RoleServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/AnnCarpoolingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/EmailServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/RatingCarpoolingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/ReactCarpoolingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/ReqCarpoolingServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Classes/RouteServiceImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IAdressService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/ICalendarService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IClaimsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IRoleService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IAnnCarpoolingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IEmailService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IRatingCarpoolingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IReactCarpoolingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IReqCarpoolingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Service/Interfaces/IRouteService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +80,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="hssan" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
@@ -131,7 +120,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.BackendPiApplication.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;mguidich&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/OneDrive/Documents/spring-boot-3-jwt-security-main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -260,6 +249,8 @@
       <workItem from="1712998233771" duration="1408000" />
       <workItem from="1713000030112" duration="704000" />
       <workItem from="1713006679071" duration="155000" />
+      <workItem from="1713097874629" duration="745000" />
+      <workItem from="1713098677410" duration="36000" />
     </task>
     <servers />
   </component>
