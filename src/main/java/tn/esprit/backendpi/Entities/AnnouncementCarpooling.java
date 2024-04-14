@@ -1,22 +1,20 @@
 package tn.esprit.backendpi.Entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-@ToString
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AnnouncementCarpooling implements Serializable {
+public class AnnouncementCarpooling {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCarpoolingAnnouncement;
@@ -27,7 +25,6 @@ public class AnnouncementCarpooling implements Serializable {
     Long  places;
 
 
-    @ToString.Exclude
     @OneToMany(mappedBy = "announcementCarpoolingReq")
     @JsonIgnore
     List<RequirementCarpooling>requirementCarpoolingsAnn=new ArrayList<>();
@@ -35,8 +32,6 @@ public class AnnouncementCarpooling implements Serializable {
     @ToString.Exclude
     @ManyToOne
     Route routeAnnCarpooling;
-
-    @ToString.Exclude
     @ManyToMany
     List<RatingCarpooling>ratingCarpoolingsAnnCarpooling=new ArrayList<>();
 

@@ -3,18 +3,17 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-@ToString
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RequirementCollocation implements Serializable {
+public class RequirementCollocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCollocationRequirement;
@@ -23,15 +22,13 @@ public class RequirementCollocation implements Serializable {
     Float budgetPart;
     LocalDate universityYear;
     Boolean status;
-    @ToString.Exclude
+
     @ManyToMany(mappedBy = "requirementCollocationsUser")
-    List<User>usersRequirementCollocations=new ArrayList<>();
-    @ToString.Exclude
+    List<User>usersRequirementCollocations;
     @ManyToOne
     AnnouncementCollocation announcementCollocationReq;
-    @ToString.Exclude
     @ManyToMany
-    List<Contract>contractsReqColl=new ArrayList<>();
+    List<Contract>contractsReqColl;
 
 
 }
