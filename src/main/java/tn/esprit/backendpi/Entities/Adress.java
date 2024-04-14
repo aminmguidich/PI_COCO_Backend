@@ -15,12 +15,10 @@ public class Adress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idAdress;
     String streetName;
-    Long postCode;
+    Float latitude ;
+    Float longitude;
 
-    @OneToOne(mappedBy = "adressUser")
-    User userAdress;
-    @OneToOne(mappedBy = "adressAnnoCollocation")
-    AnnouncementCollocation announcementCollocationAdress;
+
 
 
 }

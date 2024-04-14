@@ -1,4 +1,5 @@
 package tn.esprit.backendpi.Entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -18,14 +19,13 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idRoute;
     Float distance;
-
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "routeAnnCarpooling")
     List<AnnouncementCarpooling>announcementCarpoolingsRoute;
     @OneToMany(mappedBy = "routeBalanceSheet")
     List<BalanceSheet>balanceSheetsRoute;
     @ManyToMany
-    List<Adress>adressesRoute;
-
-
+    List<Adress>adressesRoute=new ArrayList<>();
 
 }

@@ -19,10 +19,8 @@ public class RequirementCarpooling {
     Long idCarRequirement;
     String description;
     LocalDate dateCarpoolingRequirement;
-    Float budgetPart;
-
-    @ManyToMany(mappedBy = "requirementCarpoolingsUser")
-    List<User>usersRequirementCarpooling;
+    @ManyToOne
+    User usersRequirementCarpooling;
     @ManyToOne
     AnnouncementCarpooling announcementCarpoolingReq;
 

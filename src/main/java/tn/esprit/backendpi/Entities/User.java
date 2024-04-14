@@ -83,9 +83,7 @@ public class User{
     @Enumerated(EnumType.STRING)
     GenderType gender;
     Long score;
-
-    @ManyToMany
-    List<RequirementCarpooling> requirementCarpoolingsUser;
+    @ToString.Exclude
     @ManyToMany
     List<Claims> claimsUser;
     @ManyToMany
