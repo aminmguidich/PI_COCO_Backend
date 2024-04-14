@@ -18,15 +18,10 @@ public class Adress implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idAdress;
     String streetName;
-    Long postCode;
+    Float latitude ;
+    Float longitude;
 
-    @ToString.Exclude
-    @OneToOne(mappedBy = "adressUser")
-    User userAdress;
 
-    @ToString.Exclude
-    @OneToOne(mappedBy = "adressAnnoCollocation")
-    AnnouncementCollocation announcementCollocationAdress;
 
 
 }

@@ -20,11 +20,8 @@ public class RequirementCarpooling implements Serializable {
     Long idCarRequirement;
     String description;
     LocalDate dateCarpoolingRequirement;
-    Float budgetPart;
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "requirementCarpoolingsUser")
-    List<User>usersRequirementCarpooling=new ArrayList<>();
-    @ToString.Exclude
+    @ManyToOne
+    User usersRequirementCarpooling;
     @ManyToOne
     AnnouncementCarpooling announcementCarpoolingReq;
 

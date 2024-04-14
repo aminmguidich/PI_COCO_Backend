@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/CarpoolingAnnouncement")
+@CrossOrigin("*")
 public class AnnCarpoolingController {
     private final IAnnCarpoolingService iAnnCarpoolingService;
     @PostMapping("/addAnnCarpooling")
@@ -25,6 +26,10 @@ public class AnnCarpoolingController {
         iAnnCarpoolingService.deleteAnnCarpooling(id);
     }
 
+    @GetMapping("/getAllAnnouncementCarpoolingPlaces")
+    public List<AnnouncementCarpooling> getAllAnnouncementCarpoolingPlaces() {
+        return iAnnCarpoolingService.getAllAnnouncementCarpoolingPlaces();
+    }
     @GetMapping("/getAllAnnouncementCarpooling")
     public List<AnnouncementCarpooling> getAllAnnouncementCarpooling() {
         return iAnnCarpoolingService.getAllAnnouncementCarpooling();

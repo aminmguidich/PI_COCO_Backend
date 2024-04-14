@@ -32,9 +32,6 @@ public class User implements Serializable {
     Long score;
     @ToString.Exclude
     @ManyToMany
-    List<RequirementCarpooling>requirementCarpoolingsUser=new ArrayList<>();
-    @ToString.Exclude
-    @ManyToMany
     List<Claims>claimsUser=new ArrayList<>();
     @ToString.Exclude
     @ManyToMany

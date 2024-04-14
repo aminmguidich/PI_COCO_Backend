@@ -17,9 +17,9 @@ public class ReactCarpooling implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idReactCarpooling;
-    @Enumerated(EnumType.STRING)
-    TypeReact typeReact;
 
 
+    @ManyToOne
+    User userReactCar;
 
 }

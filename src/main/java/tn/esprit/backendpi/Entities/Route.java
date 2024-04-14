@@ -1,4 +1,5 @@
 package tn.esprit.backendpi.Entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -20,6 +21,7 @@ public class Route implements Serializable {
     Long idRoute;
     Float distance;
     @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "routeAnnCarpooling")
     List<AnnouncementCarpooling>announcementCarpoolingsRoute=new ArrayList<>();
     @ToString.Exclude
@@ -28,7 +30,5 @@ public class Route implements Serializable {
     @ToString.Exclude
     @ManyToMany
     List<Adress>adressesRoute=new ArrayList<>();
-
-
 
 }

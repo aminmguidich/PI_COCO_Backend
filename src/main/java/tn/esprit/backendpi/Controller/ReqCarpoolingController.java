@@ -11,6 +11,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/CarpoolingRequirement")
+@CrossOrigin("*")
+
 public class ReqCarpoolingController {
     private final IReqCarpoolingService iReqCarpoolingService;
 

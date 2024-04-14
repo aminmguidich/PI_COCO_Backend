@@ -9,22 +9,24 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/CarpoolingRating")
+@RequestMapping("/CarpoolingReact")
+@CrossOrigin("*")
+
 public class ReactCarpoolingController {
     private final IReactCarpoolingService iReactCarpoolingService;
 
-    @PostMapping("/addReactCarpooling")
-    public ReactCarpooling addReactCarpooling(@RequestBody ReactCarpooling reactCarpooling) {
-        return iReactCarpoolingService.addReactCarpooling(reactCarpooling);
+    @PostMapping("/addReactCarpooling/{announcementId}")
+    public ReactCarpooling addReactCarpooling(@RequestBody ReactCarpooling reactCarpooling,@PathVariable Long announcementId) {
+        return iReactCarpoolingService.addReactCarpooling(reactCarpooling,announcementId);
     }
     @PutMapping("/updateReactCarpooling")
     public ReactCarpooling updateReactCarpooling(@RequestBody ReactCarpooling reactCarpooling) {
         return iReactCarpoolingService.updateReactCarpooling(reactCarpooling);
     }
 
-    @DeleteMapping("/deleteReactCarpooling/{id}")
-    public void deleteReactCarpooling(@PathVariable Long id) {
-        iReactCarpoolingService.deleteReactCarpooling(id);
+    @DeleteMapping("/deleteReactCarpooling/{id}&{announcementId}")
+    public void deleteReactCarpooling(@PathVariable Long id,@PathVariable Long announcementId) {
+        iReactCarpoolingService.deleteReactCarpooling(id,announcementId);
     }
 
     @GetMapping("/getAllReactCarpooling")

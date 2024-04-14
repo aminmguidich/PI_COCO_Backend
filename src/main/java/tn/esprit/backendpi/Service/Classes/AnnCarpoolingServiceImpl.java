@@ -7,6 +7,7 @@ import tn.esprit.backendpi.Repository.AnnCarpoolingRepository;
 import tn.esprit.backendpi.Service.Interfaces.IAnnCarpoolingService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +29,16 @@ public class AnnCarpoolingServiceImpl implements IAnnCarpoolingService {
         annCarpoolingRepository.deleteById(id);
 
 
+    }
+
+    @Override
+    public List<AnnouncementCarpooling> getAllAnnouncementCarpoolingPlaces() {
+        List<AnnouncementCarpooling> allAnnouncements = (List<AnnouncementCarpooling>) annCarpoolingRepository.findAll();
+
+        // Filter announcements with places greater than 0
+        return allAnnouncements.stream()
+                .filter(announcement -> announcement.getPlaces() > 0)
+                .collect(Collectors.toList());
     }
 
     @Override

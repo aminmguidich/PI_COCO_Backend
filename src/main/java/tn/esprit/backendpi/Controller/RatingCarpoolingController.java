@@ -10,6 +10,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/CarpoolingRating")
+@CrossOrigin("*")
+
 public class RatingCarpoolingController {
     private final IRatingCarpoolingService iRatingCarpoolingService;
 
