@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import tn.esprit.backendpi.Entities.Enum.TypeReact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +14,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RatingCollocation {
+public class Question {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCollocationRating;
-    Long nbrStars;
-    String comment;
-    @ToString.Exclude
-    @JsonIgnore
-    @ManyToMany(mappedBy = "ratingCollocationsAnnCollocation")
-    List<AnnouncementCollocation>announcementCollocationsRating=new ArrayList<>();
-    @ToString.Exclude
-    @JsonIgnore
+    Long id;
+
+    private String text;
+    private int points;
+
     @ManyToOne
-    User userRatingCollocation;
+    @JoinColumn(name = "quiz_id")
+    @JsonIgnore // Vous pouvez ignorer cette propriété lors de la sérialisation JSON si nécessaire
+    private Quiz quiz; // Référence vers l'entité Quiz
 }
+
+

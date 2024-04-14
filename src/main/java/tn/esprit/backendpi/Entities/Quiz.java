@@ -14,22 +14,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Contract implements Serializable {
+public class Quiz {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idContract;
-    String description;
-
-    @ToString.Exclude
-    @JsonIgnore
-    @ManyToMany(mappedBy = "contractsReqColl")
-    List<RequirementCollocation>requirementCollocationsContact=new ArrayList<>();
-
-    @ToString.Exclude
-    @JsonIgnore
-    @OneToOne(mappedBy = "contractHouse")
-    House houseContract;
+    Long id;
+    boolean correct;
 
 
-
+    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+    private List<Question> questions = new ArrayList<>();
 }

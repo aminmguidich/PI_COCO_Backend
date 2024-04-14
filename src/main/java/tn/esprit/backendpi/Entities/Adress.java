@@ -5,15 +5,13 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
-@ToString
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Adress implements Serializable {
+public class Adress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idAdress;
@@ -21,12 +19,13 @@ public class Adress implements Serializable {
     Long postCode;
 
     @ToString.Exclude
+    @JsonIgnore
     @OneToOne(mappedBy = "adressUser")
     User userAdress;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "adressAnnoCollocation")
+    @JsonIgnore
+    @OneToOne(mappedBy = "adressAnnoCollocation", cascade = CascadeType.ALL)
     AnnouncementCollocation announcementCollocationAdress;
-
 
 }

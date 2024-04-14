@@ -14,22 +14,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Contract implements Serializable {
+public class FormData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idContract;
-    String description;
-
-    @ToString.Exclude
-    @JsonIgnore
-    @ManyToMany(mappedBy = "contractsReqColl")
-    List<RequirementCollocation>requirementCollocationsContact=new ArrayList<>();
-
-    @ToString.Exclude
-    @JsonIgnore
-    @OneToOne(mappedBy = "contractHouse")
-    House houseContract;
-
-
+    Long id;
+     String email;
 
 }

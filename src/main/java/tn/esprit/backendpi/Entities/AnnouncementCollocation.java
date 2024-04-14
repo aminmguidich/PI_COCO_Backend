@@ -4,18 +4,17 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-@ToString
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AnnouncementCollocation implements Serializable {
+public class AnnouncementCollocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCollocationAnnouncement;
@@ -30,22 +29,27 @@ public class AnnouncementCollocation implements Serializable {
     Adress adressAnnoCollocation;
 
     @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "announcementCollocationReq")
     List<RequirementCollocation>requirementCollocationsAnno;
 
     @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     User userAnnCollocation;
 
     @ToString.Exclude
+    @JsonIgnore
     @ManyToMany
     List<RatingCollocation>ratingCollocationsAnnCollocation=new ArrayList<>();
 
     @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     House houseAnnoCollocation;
 
     @ToString.Exclude
+    @JsonIgnore
     @OneToMany
     List<ReactCollocation>reactCollocationsAnnCollocation=new ArrayList<>();
 
