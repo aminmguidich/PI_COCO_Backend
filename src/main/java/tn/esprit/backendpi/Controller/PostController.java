@@ -139,7 +139,8 @@ public class PostController {
         service.reportPost(IdPost);
     }
 
-    public String UserAddWithoutBadWord(Post post, Long idUser) {
+    @PostMapping("/UserAddWithoutBadWord/{idUser}")
+    public String UserAddWithoutBadWord(@RequestBody Post post, @PathVariable("idUser") Long idUser) {
         return service.UserAddWithoutBadWord(post, idUser);
     }
 

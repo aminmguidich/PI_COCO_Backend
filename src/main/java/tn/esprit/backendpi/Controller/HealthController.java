@@ -8,7 +8,7 @@ import tn.esprit.backendpi.Entities.Route;
 import tn.esprit.backendpi.Service.Classes.HealthService;
 
 import java.util.List;
-
+@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/")

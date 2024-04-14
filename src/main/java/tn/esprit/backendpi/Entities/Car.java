@@ -25,11 +25,12 @@ public class Car implements Serializable {
     Long places;
     String model;
 
-
+    @JsonIgnore
     @ToString.Exclude
     @OneToOne(mappedBy = "carUser")
     User userCar;
 
+    @JsonIgnore
     @ToString.Exclude
     @OneToMany(mappedBy = "carBalanceSheet")
     List<BalanceSheet>balanceSheetsCar=new ArrayList<>();

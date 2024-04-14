@@ -18,11 +18,12 @@ public class BalanceSheet implements Serializable {
     Long idBalanceSheet;
     String description;
 
-
+    @JsonIgnore
     @ToString.Exclude
     @ManyToOne
     Car carBalanceSheet;
 
+    @JsonIgnore
     @ToString.Exclude
     @ManyToOne
     Route routeBalanceSheet;
