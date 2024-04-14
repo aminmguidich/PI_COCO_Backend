@@ -95,7 +95,7 @@ public class User{
     @OneToOne
     Adress adressUser;
     @OneToMany(mappedBy = "userReact")
-    List<React> reactsUser;
+    List<ReactCarpooling> reactsUser;
     @OneToMany(mappedBy = "userCommand")
     List<Command> commandsUser;
 
