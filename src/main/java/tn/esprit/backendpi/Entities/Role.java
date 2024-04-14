@@ -1,29 +1,39 @@
 package tn.esprit.backendpi.Entities;
-import jakarta.persistence.*;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
-import tn.esprit.backendpi.Entities.Enum.TypeRole;
-import tn.esprit.backendpi.Entities.User;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-@ToString
+import jakarta.persistence.*;
+
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Role implements Serializable {
+@Table(name = "roles")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idRole;
+    private Integer id;
+
     @Enumerated(EnumType.STRING)
-    TypeRole typeRole;
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "rolesUser")
-    List<User>usersRoles=new ArrayList<>();
+    @Column(length = 20)
+    private ERole name;
 
+    public Role() {
 
+    }
+
+    public Role(ERole name) {
+        this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public ERole getName() {
+        return name;
+    }
+
+    public void setName(ERole name) {
+        this.name = name;
+    }
 }

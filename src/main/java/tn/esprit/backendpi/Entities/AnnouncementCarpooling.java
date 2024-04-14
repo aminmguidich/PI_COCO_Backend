@@ -4,47 +4,59 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-@ToString
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class AnnouncementCarpooling implements Serializable {
+public class AnnouncementCarpooling {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCarpoolingAnnouncement;
     LocalDate dateCarpoolingAnnouncement;
     String description;
     Long score;
+    Float ridePrice;
+    Long  places;
 
-    @ToString.Exclude
+
     @OneToMany(mappedBy = "announcementCarpoolingReq")
+    @JsonIgnore
     List<RequirementCarpooling>requirementCarpoolingsAnn=new ArrayList<>();
 
     @ToString.Exclude
     @ManyToOne
     Route routeAnnCarpooling;
-
-    @ToString.Exclude
     @ManyToMany
     List<RatingCarpooling>ratingCarpoolingsAnnCarpooling=new ArrayList<>();
 
-    @ToString.Exclude
     @ManyToOne
     User userAnnCarpooling;
 
     @ToString.Exclude
     @OneToMany
     List<ReactCarpooling>reactCarpoolingsAnnCarpooling=new ArrayList<>();
+    public void removeReact(Long reactCarpoolingId){
+        int indexToRemove=-1;
+        for (int i = 0; i < reactCarpoolingsAnnCarpooling.size(); i++) {
+            if(reactCarpoolingsAnnCarpooling.get(i).getIdReactCarpooling()==reactCarpoolingId){
+                indexToRemove=i;
+            }
+        }
+        if(indexToRemove>=0){
+            reactCarpoolingsAnnCarpooling.remove(indexToRemove);
+        }else{
+            System.out.println("Cannot find React with id: "+reactCarpoolingId);
+        }
 
-
-
-
+    }
+    public void addReact(ReactCarpooling reactCarpooling){
+        reactCarpoolingsAnnCarpooling.add(reactCarpooling);
+    }
 }

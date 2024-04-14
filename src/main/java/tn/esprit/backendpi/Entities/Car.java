@@ -1,20 +1,18 @@
 package tn.esprit.backendpi.Entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-@ToString
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Car implements Serializable {
+public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCar;
@@ -33,7 +31,7 @@ public class Car implements Serializable {
     @JsonIgnore
     @ToString.Exclude
     @OneToMany(mappedBy = "carBalanceSheet")
-    List<BalanceSheet>balanceSheetsCar=new ArrayList<>();
+    List<BalanceSheet>balanceSheetsCar;
 
 
 

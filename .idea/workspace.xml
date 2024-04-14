@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="04ad89ca-b97f-4f18-a4cc-e51a91c4755b" name="Changes" comment="entety">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AdressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AdressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AnnCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AnnCarpoolingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ClaimController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ClaimController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RatingCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RatingCarpoolingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReactCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReactCarpoolingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReqCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReqCarpoolingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RouteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCarpooling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCarpooling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactCarpooling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactCarpooling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/AnnCarpoolingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/AnnCarpoolingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/EmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/EmailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReactCarpoolingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReactCarpoolingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReqCarpoolingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReqCarpoolingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/3.1.8/spring-boot-autoconfigure-3.1.8-sources.jar!/org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/6.1.6/spring-security-web-6.1.6.jar!/org/springframework/security/web/SecurityFilterChain.class" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2cTJQAwkDl3jU2mT6jc0S7f5qWw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BackendPiApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Hssan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/OneDrive/Documents/spring-boot-3-jwt-security-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;dd3c1505420ade1cb0da02c953dd2f69&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redshift&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="tn.esprit.backendpi.Entities" />
+      <recent name="tn.esprit.backendpi.Auth" />
+      <recent name="tn.esprit.backendpi.Config" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="tn.esprit.backendpi.Security.Services" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="PI_COCO_Backend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="PI_COCO_Backend" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BackendPiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="BackendPi" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="tn.esprit.backendpi.BackendPiApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="04ad89ca-b97f-4f18-a4cc-e51a91c4755b" name="Changes" comment="" />
+      <created>1708129616121</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708129616121</updated>
+      <workItem from="1708129617193" duration="1027000" />
+      <workItem from="1708131529722" duration="128000" />
+      <workItem from="1708157460184" duration="939000" />
+      <workItem from="1708245637141" duration="3088000" />
+      <workItem from="1708354014876" duration="386000" />
+      <workItem from="1708354419171" duration="487000" />
+      <workItem from="1708355052948" duration="38000" />
+      <workItem from="1708423883892" duration="752000" />
+      <workItem from="1708442903700" duration="3046000" />
+      <workItem from="1708533123831" duration="7217000" />
+      <workItem from="1708547305750" duration="4236000" />
+      <workItem from="1708669981640" duration="5515000" />
+      <workItem from="1708681230070" duration="17526000" />
+      <workItem from="1708705205714" duration="1685000" />
+      <workItem from="1708715631846" duration="3062000" />
+      <workItem from="1708758034061" duration="1878000" />
+      <workItem from="1708771029532" duration="7159000" />
+      <workItem from="1708846696002" duration="4037000" />
+      <workItem from="1709024339131" duration="5538000" />
+      <workItem from="1709050216926" duration="978000" />
+      <workItem from="1709281239443" duration="3097000" />
+      <workItem from="1709315413992" duration="884000" />
+      <workItem from="1709456909907" duration="1476000" />
+      <workItem from="1709462680864" duration="3412000" />
+      <workItem from="1709475583849" duration="4817000" />
+      <workItem from="1709482258144" duration="5062000" />
+      <workItem from="1709557515442" duration="1631000" />
+      <workItem from="1709585879880" duration="821000" />
+      <workItem from="1709627281946" duration="648000" />
+      <workItem from="1709739121887" duration="3077000" />
+      <workItem from="1709801003979" duration="632000" />
+      <workItem from="1709806378890" duration="685000" />
+      <workItem from="1709970610538" duration="3534000" />
+      <workItem from="1710005091241" duration="3770000" />
+      <workItem from="1710060924233" duration="6099000" />
+      <workItem from="1710145343115" duration="12520000" />
+      <workItem from="1710163008476" duration="2484000" />
+      <workItem from="1710177687665" duration="2287000" />
+      <workItem from="1710189235262" duration="1010000" />
+      <workItem from="1710190835930" duration="424000" />
+      <workItem from="1710229905456" duration="4832000" />
+      <workItem from="1710666178074" duration="6226000" />
+      <workItem from="1710841431517" duration="2089000" />
+      <workItem from="1710940778974" duration="5464000" />
+      <workItem from="1711012241258" duration="1000" />
+      <workItem from="1711013445381" duration="222000" />
+      <workItem from="1711032053562" duration="1107000" />
+      <workItem from="1711376384918" duration="9000" />
+      <workItem from="1711789224099" duration="7473000" />
+      <workItem from="1711881278033" duration="2479000" />
+      <workItem from="1711920168560" duration="614000" />
+      <workItem from="1712011697762" duration="1868000" />
+      <workItem from="1712044583555" duration="2003000" />
+      <workItem from="1712140224124" duration="5000" />
+      <workItem from="1712480411040" duration="9578000" />
+      <workItem from="1712568470844" duration="1080000" />
+      <workItem from="1712585552353" duration="599000" />
+      <workItem from="1712586817507" duration="494000" />
+      <workItem from="1712610342532" duration="1685000" />
+      <workItem from="1712698582644" duration="30000" />
+      <workItem from="1712825435537" duration="1054000" />
+      <workItem from="1712826503492" duration="9210000" />
+      <workItem from="1712837203565" duration="1334000" />
+      <workItem from="1712847887605" duration="10517000" />
+      <workItem from="1712924357804" duration="7371000" />
+      <workItem from="1712998233771" duration="1408000" />
+      <workItem from="1713000030112" duration="704000" />
+      <workItem from="1713006679071" duration="155000" />
+      <workItem from="1713097874629" duration="745000" />
+      <workItem from="1713098677410" duration="36000" />
+      <workItem from="1713101531804" duration="7217000" />
+      <workItem from="1713113340835" duration="6096000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/mguidich" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="entety" />
+    <option name="LAST_COMMIT_MESSAGE" value="entety" />
+  </component>
+</project>
