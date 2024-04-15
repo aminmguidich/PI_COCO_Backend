@@ -2,13 +2,16 @@ package tn.esprit.backendpi.Service.Classes;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 import tn.esprit.backendpi.Entities.Adress;
 import tn.esprit.backendpi.Entities.AnnouncementCollocation;
 import tn.esprit.backendpi.Entities.House;
+import tn.esprit.backendpi.Entities.User;
 import tn.esprit.backendpi.Repository.AnnCollocationRepository;
 import tn.esprit.backendpi.Repository.HouseRepository;
+import tn.esprit.backendpi.Repository.UserRepository;
 import tn.esprit.backendpi.Service.Interfaces.IAnnCollocationService;
 
 import java.util.ArrayList;
@@ -21,9 +24,13 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
     private HouseRepository houseRepository;
     @Autowired
     private AnnCollocationRepository annCollocationRepository;
+    private final UserRepository userRepository;
+
 
     @Override
     public AnnouncementCollocation addAnnouncementCollocation(AnnouncementCollocation announcement) {
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        announcement.setUserAnnCollocation(loggedInUser);
         return annCollocationRepository.save(announcement);
     }
 

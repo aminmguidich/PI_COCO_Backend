@@ -1,9 +1,9 @@
 package tn.esprit.backendpi.Entities;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.backendpi.Entities.Enum.TypeReact;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -16,8 +16,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Question {
-
+public class CommentPost implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCommentPost;
@@ -49,5 +48,3 @@ public class Question {
     @ManyToOne
     Post postComment;
 }
-
-

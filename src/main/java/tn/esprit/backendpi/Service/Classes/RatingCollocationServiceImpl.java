@@ -27,7 +27,6 @@ public class RatingCollocationServiceImpl implements IRatingCollocationService {
 
 
         existingRating.setNbrStars(newRating.getNbrStars());
-        existingRating.setComment(newRating.getComment());
 
 
         // Save the modifications in the database and return the updated rating

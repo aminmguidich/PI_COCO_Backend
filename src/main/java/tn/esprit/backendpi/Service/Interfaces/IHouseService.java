@@ -1,7 +1,6 @@
 package tn.esprit.backendpi.Service.Interfaces;
 
 import org.springframework.web.multipart.MultipartFile;
-import tn.esprit.backendpi.Entities.Enum.HouseType;
 import tn.esprit.backendpi.Entities.House;
 
 import java.util.List;

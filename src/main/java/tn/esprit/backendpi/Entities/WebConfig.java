@@ -7,7 +7,6 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import tn.esprit.backendpi.Service.Classes.QnAMakerAPI;
 
 @Configuration
 @EnableWebMvc
@@ -27,10 +26,6 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/img/**").addResourceLocations("file:htdocs/");
     }
 
-    @Bean
-    public QnAMakerAPI qnaMakerAPI() {
-        return new QnAMakerAPI(); // Ou vous pouvez initialiser la classe QnAMakerAPI avec ses dépendances nécessaires ici
-    }
 
     @Bean
     public RestTemplate restTemplate() {

@@ -151,8 +151,8 @@ public class PostService implements IPost {
         assert comment != null;
         if (comment != null) {
             Post post = comment.getPostComment();
-        comment.getReactPostsComment().add(reactPost);
-        reactPost.setPost(post);
+            comment.getReactPostsComment().add(reactPost);
+            reactPost.setPost(post);
             //currnt user
             User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
             reactPost.setUserReactPost(loggedInUser);
@@ -177,7 +177,7 @@ public class PostService implements IPost {
             }
         }
         return post;
-         }
+    }
 
     @Override
     public String AddWithoutBadWord(Post post) {
@@ -196,10 +196,10 @@ public class PostService implements IPost {
     //apre authentification
     @Override
     public String UserAddPost(Post post, Long idUser) {
-            post.setUserPost(userRepository.findById(idUser).get());
-            postRepository.save(post);
-            return "add successfuly" ;
-        }
+        post.setUserPost(userRepository.findById(idUser).get());
+        postRepository.save(post);
+        return "add successfuly" ;
+    }
 
     @Override
     public CommentPost UseraddComment(CommentPost comment, Long IdPost, Long idUser) {
@@ -233,16 +233,16 @@ public class PostService implements IPost {
         CommentPost comment = commentPostRepository.findById(idcomment).orElse(null);
         react.setUserReactPost(user);
 
-      //  System.out.println(comment+ "comment");
+        //  System.out.println(comment+ "comment");
 
         assert comment != null;
-       // System.out.println(comment.getPostComment()+ "post");
+        // System.out.println(comment.getPostComment()+ "post");
         //react.setComments(comment);
         //reactPostRepository.save(react);
 
         if (comment != null) {
             Post post = comment.getPostComment();
-comment.getReactPostsComment().add(react);
+            comment.getReactPostsComment().add(react);
 //commentPostRepository.save(comment);
 
             react.setPost(post); // Associate react post with the same post as the comment
@@ -300,7 +300,7 @@ comment.getReactPostsComment().add(react);
         }
     }
 
-   //  @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,
+    //  @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,
     @Override
     public void deletePostByTime(){
         List<Post> posts = new ArrayList<>();

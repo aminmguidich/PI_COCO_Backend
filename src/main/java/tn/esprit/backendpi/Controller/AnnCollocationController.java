@@ -2,6 +2,7 @@ package tn.esprit.backendpi.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.backendpi.Entities.Adress;
 import tn.esprit.backendpi.Entities.AnnouncementCollocation;
@@ -11,32 +12,42 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Collocation_Announcement")
-@CrossOrigin("*")
+@RequestMapping("/api/Collocation_Announcement")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class AnnCollocationController {
     private final IAnnCollocationService annCollocationService;
 
     @PostMapping("/addAnnouncementCollocation")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
     public AnnouncementCollocation addAnnouncementCollocation(@RequestBody AnnouncementCollocation announcement) {
         return annCollocationService.addAnnouncementCollocation(announcement);
     }
 
     @PutMapping("/updateAnnouncementCollocation/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
     public AnnouncementCollocation updateAnnouncementCollocation(@PathVariable Long id, @RequestBody AnnouncementCollocation newAnnouncement) {
         return annCollocationService.updateAnnouncementCollocation(id, newAnnouncement);
     }
 
     @GetMapping("/allAnnouncements")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
     public List<AnnouncementCollocation> retrieveAllAnnouncements() {
         return annCollocationService.retrieveAllAnnouncements();
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
     public AnnouncementCollocation getAnnouncementCollocationById(@PathVariable Long id) {
         return annCollocationService.getAnnouncementCollocationById(id);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
     public ResponseEntity<Void> deleteAnnouncement(@PathVariable Long id) {
         annCollocationService.removeAnnouncementCollocation(id);
         return ResponseEntity.noContent().build();
@@ -48,12 +59,16 @@ public class AnnCollocationController {
          annCollocationService.assignAdressToAnnouncementCollocation(announcementCollocationId, adress);
      }*/
     @PostMapping("/{announcementId}/assign-house/{houseId}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
 
     public void assignHouseToAnnouncementCollocation(Long announcementCollocationId, Long houseId) {
         annCollocationService.assignHouseToAnnouncementCollocation(announcementCollocationId, houseId);
     }
 
     @GetMapping("/filter")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
     public ResponseEntity<List<AnnouncementCollocation>> filterAnnouncements(
             @RequestParam(name = "description", required = false) String description,
             @RequestParam(name = "score", required = false) Integer score,

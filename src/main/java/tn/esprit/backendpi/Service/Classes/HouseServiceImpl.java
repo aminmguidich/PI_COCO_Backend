@@ -1,12 +1,15 @@
 package tn.esprit.backendpi.Service.Classes;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.webjars.NotFoundException;
-import tn.esprit.backendpi.Entities.Enum.HouseType;
 import tn.esprit.backendpi.Entities.House;
+import tn.esprit.backendpi.Entities.User;
 import tn.esprit.backendpi.Repository.HouseRepository;
+import tn.esprit.backendpi.Repository.UserRepository;
 import tn.esprit.backendpi.Service.Classes.FileNamingUtil;
 import tn.esprit.backendpi.Service.Interfaces.IHouseService;
 
@@ -69,6 +72,7 @@ public class HouseServiceImpl implements IHouseService {
 
     @Override
     public House ajouterHouse(House house) {
+
         return houseRepository.save(house);
     }
 }
