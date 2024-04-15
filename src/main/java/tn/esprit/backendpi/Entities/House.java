@@ -12,11 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class House {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idHouse;
+    @Lob
+
     String image;
     @Enumerated(EnumType.STRING)
     HouseType houseType;
@@ -26,6 +27,4 @@ public class House {
     List<AnnouncementCollocation>announcementCollocationsHouse;
     @OneToOne
     Contract contractHouse;
-
-
 }

@@ -11,7 +11,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users",
@@ -24,8 +26,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User{
-    @Getter
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -83,25 +84,23 @@ public class User{
     @Enumerated(EnumType.STRING)
     GenderType gender;
     Long score;
+
+
+
+    @ManyToMany
+    List<Role>rolesUser=new ArrayList<>();
     @ToString.Exclude
     @ManyToMany
-    List<Claims> claimsUser;
-    @ManyToMany
-    List<RequirementCollocation> requirementCollocationsUser;
-    @OneToOne
-    Car carUser;
-    @OneToOne
-    Calendar calendarUser;
+    List<RequirementCollocation>requirementCollocationsUser=new ArrayList<>();
+    @ToString.Exclude
+
+
     @OneToOne
     Adress adressUser;
     @OneToMany(mappedBy = "userReact")
-    List<ReactCarpooling> reactsUser;
-    @OneToMany(mappedBy = "userCommand")
-    List<Command> commandsUser;
+    List<ReactCollocation>reactsUser=new ArrayList<>();
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "userReactPost")
-    List<ReactPost>reactPostuser=new ArrayList<>();
+
 
 
 

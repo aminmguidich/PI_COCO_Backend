@@ -18,7 +18,14 @@ public class Adress {
     Float latitude ;
     Float longitude;
 
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToOne(mappedBy = "adressUser")
+    User userAdress;
 
-
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToOne(mappedBy = "adressAnnoCollocation", cascade = CascadeType.ALL)
+    AnnouncementCollocation announcementCollocationAdress;
 
 }

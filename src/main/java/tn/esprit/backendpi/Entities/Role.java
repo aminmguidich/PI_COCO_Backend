@@ -1,9 +1,18 @@
 package tn.esprit.backendpi.Entities;
-
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+import tn.esprit.backendpi.Entities.Enum.TypeRole;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "roles")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

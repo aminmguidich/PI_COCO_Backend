@@ -1,11 +1,9 @@
 package tn.esprit.backendpi.Entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import tn.esprit.backendpi.Entities.Enum.TypeReact;
 
 @Entity
 @Getter
@@ -13,15 +11,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Claims {
+
+public class ReactCollocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idClaim;
-    LocalDate dateClaim;
-    String description;
+    Long idReact;
+    @Enumerated(EnumType.STRING)
+    TypeReact typeReact;
 
-    @ManyToMany(mappedBy = "claimsUser")
-    List<User>usersClaims;
+    @ToString.Exclude
+    @JsonIgnore
+    @ManyToOne
+    User userReact;
+
 
 
 }
