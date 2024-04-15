@@ -1,9 +1,11 @@
 package tn.esprit.backendpi.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.backendpi.Entities.Enum.TypeCategory;
+import tn.esprit.backendpi.Entities.Enum.TypeStatus;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,16 +21,25 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idProduct;
-    String image;
+   private String img;
     String description;
+    float  price;
     String title;
+    // String path;
     @Enumerated(EnumType.STRING)
-    TypeCategory category;
-    Boolean status;
+    TypeStatus status;
+
+    @ManyToOne
+    @JsonIgnore
+    Command commandProduct;
+
+    @OneToMany(mappedBy = "product")
+     List<CommandItem> commandItems=new ArrayList<>();
+
+    @ManyToMany
+    @JsonIgnore
+    List<User>usersProducts=new ArrayList<>();
     @ToString.Exclude
     @ManyToOne
-    Command commandProduct;
-    @ToString.Exclude
-    @ManyToMany
-    List<User>usersProducts=new ArrayList<>();
+    private Categorie categorie;
 }
