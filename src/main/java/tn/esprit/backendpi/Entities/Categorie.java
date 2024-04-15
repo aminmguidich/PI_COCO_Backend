@@ -5,30 +5,24 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+@ToString
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Product {
+public class Categorie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idProduct;
-   private String img;
-    String description;
-    float  price;
-    String title;
-    // String path;
-    @Enumerated(EnumType.STRING)
-    TypeCategory category;
-    Boolean status;
-
-    @ManyToOne
-    Command commandProduct;
-    @ManyToMany
-    List<User>usersProducts;
+    private Long idCategorie;
+    private String CategorieName;
+    @ToString.Exclude
+    @JsonIgnore
+    @OneToMany(mappedBy = "categorie")
+    private List<Product> products=new ArrayList<>();
 }

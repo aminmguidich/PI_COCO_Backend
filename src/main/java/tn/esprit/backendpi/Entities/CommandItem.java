@@ -4,25 +4,27 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.io.Serializable;
 
+@ToString
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Command {
+public class CommandItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCommand;
-    String description;
-    Float price;
-    LocalDate dateCommand;
-
+    private long id;
+    private String imageUrl;
+    private Float unitPrice;
+    private int quantite;
+    @ToString.Exclude
     @ManyToOne
-    User userCommand;
-    @OneToMany(mappedBy = "commandProduct")
-    List<Product>productsCommand;
+    private Product product;
+    @ToString.Exclude
+    @ManyToOne
+    private Command command;
+
 }

@@ -46,4 +46,27 @@ public class EmailService {
             System.out.println("Erreur lors de l'envoi de l'e-mail : " + e.getMessage());
         }
     }
+
+
+
+    // Add constructor for JavaMailSender injection
+    public EmailService(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
+    public void sendSimpleMessage(String to, String subject, String text) {
+        try {
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true); // true indicates multipart message
+            helper.setFrom("saidbrahmi202@outlook.com");
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(text);
+            javaMailSender.send(message);
+        } catch (MailException | MessagingException e) {
+            e.printStackTrace();
+            // Handle exceptions appropriately
+        }
+    }
+
+
 }

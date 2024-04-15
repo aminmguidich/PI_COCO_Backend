@@ -1,5 +1,7 @@
 package tn.esprit.backendpi.Entities;
-
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -24,8 +26,10 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User{
-    @Getter
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
@@ -95,10 +99,11 @@ public class User{
     @OneToOne
     Adress adressUser;
     @OneToMany(mappedBy = "userReact")
-    List<ReactCarpooling> reactsUser;
+    List<ReactCollocation>reactsUser=new ArrayList<>();
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany(mappedBy = "userCommand")
-    List<Command> commandsUser;
-
+    List<Command> commandsUser = new ArrayList<>();
     @ToString.Exclude
     @OneToMany(mappedBy = "userReactPost")
     List<ReactPost>reactPostuser=new ArrayList<>();
