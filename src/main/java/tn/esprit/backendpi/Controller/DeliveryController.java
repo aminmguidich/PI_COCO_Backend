@@ -8,10 +8,11 @@ import tn.esprit.backendpi.Entities.Delivery;
 import tn.esprit.backendpi.Service.Interfaces.IDeliveryService;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Delivery")
+@RequestMapping("/api/Delivery")
 
 public class DeliveryController {
     @Autowired

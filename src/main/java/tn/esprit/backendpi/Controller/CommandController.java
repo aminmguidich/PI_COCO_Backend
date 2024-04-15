@@ -15,8 +15,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Command")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/Command")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 
 public class CommandController {
     @Autowired

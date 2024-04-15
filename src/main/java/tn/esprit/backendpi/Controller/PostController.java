@@ -50,7 +50,7 @@ public class PostController {
 
 
     @PostMapping("/addReacttoPost/{id}")
-    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
         return service.addReacttoPost(react, IdPost);
     }

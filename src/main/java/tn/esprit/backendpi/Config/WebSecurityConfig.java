@@ -102,6 +102,24 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/Health/**").permitAll()
                                 .requestMatchers("/api/Flickr/**").permitAll()
                                 .requestMatchers("/api/Collocation_Announcement/**").permitAll()
+                                .requestMatchers("/api/Contract/**").permitAll()
+                                .requestMatchers("/api/House/**").permitAll()
+                                .requestMatchers("/api/api/**").permitAll()
+                                .requestMatchers("/api/sendQuizByEmail/**").permitAll()
+                                .requestMatchers("/api/Rating-Collocation/**").permitAll()
+                                .requestMatchers("/api/Collocation_Requirement/**").permitAll()
+                                .requestMatchers("/api/Categorie/**").permitAll()
+                                .requestMatchers("/api/Product/**").permitAll()
+                                .requestMatchers("/api/Command/**").permitAll()
+                                .requestMatchers("/api/CommandItem/**").permitAll()
+                                .requestMatchers("/api/Delivery/**").permitAll()
+                                .requestMatchers("/api/api/**").permitAll()
+
+
+
+
+
+
 
 
 

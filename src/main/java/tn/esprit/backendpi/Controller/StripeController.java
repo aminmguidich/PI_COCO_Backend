@@ -17,8 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/api")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class
 StripeController {
 

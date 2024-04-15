@@ -6,8 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.backendpi.Entities.Email;
-import tn.esprit.backendpi.Entities.Enum.TypeStatus;
 import tn.esprit.backendpi.Entities.Product;
+import tn.esprit.backendpi.Entities.TypeStatus;
 import tn.esprit.backendpi.Service.Classes.CategorieServiceImpl;
 import tn.esprit.backendpi.Service.Classes.EmailService;
 import tn.esprit.backendpi.Service.Interfaces.IProductService;
@@ -22,8 +22,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/Product")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api/Product")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 
 public class ProductController {
     @Autowired

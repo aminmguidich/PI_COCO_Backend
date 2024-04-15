@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
+import tn.esprit.backendpi.Entities.TypeStatus;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @ToString
@@ -16,29 +17,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Product implements Serializable {
+public class Delivery implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idProduct;
-    private String img;
-    String description;
-    float  price;
-    String title;
-    // String path;
-    @Enumerated(EnumType.STRING)
+    Long idDelivery;
+    LocalDate deliveryDate;
     TypeStatus status;
+    String destinationAdress;
 
-    @ManyToOne
-    @JsonIgnore
-    Command commandProduct;
-
-    @OneToMany(mappedBy = "product")
-    List<CommandItem> commandItems=new ArrayList<>();
-
+    @ToString.Exclude
     @ManyToMany
-    @JsonIgnore
-    List<User>usersProducts=new ArrayList<>();
+    List<Command>commandsDelivery=new ArrayList<>();
+
     @ToString.Exclude
     @ManyToOne
-    private Categorie categorie;
+    User userDelivey;
+
 }

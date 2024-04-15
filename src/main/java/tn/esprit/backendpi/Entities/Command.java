@@ -22,6 +22,7 @@ public class Command {
     LocalDate dateCommand;
 
     @ManyToOne
+
     User userCommand;
     @OneToMany(mappedBy = "commandProduct")
     List<Product>productsCommand;

@@ -7,10 +7,11 @@ import tn.esprit.backendpi.Entities.CommandItem;
 import tn.esprit.backendpi.Service.Classes.CommandItemServiceImpl;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/CommandItem")
+@RequestMapping("/api/CommandItem")
 public class CommandItemController {
     @Autowired
     private CommandItemServiceImpl commandItemService;

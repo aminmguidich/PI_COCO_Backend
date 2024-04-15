@@ -113,6 +113,8 @@ public class PostService implements IPost {
     @Override
     public ReactPost addReacttoPost(ReactPost react, Long IdPost) {
         Post p =   postRepository.findById(IdPost).orElse(null);
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        react.setUserReactPost(loggedInUser);
         react.setPost(p);
         return reactPostRepository.save(react) ;
     }
