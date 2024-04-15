@@ -54,12 +54,17 @@ public class AnnCollocationController {
     }
 
     @GetMapping("/filter")
-    public ResponseEntity<List<AnnouncementCollocation>> filterByBudgetPart(
-            @RequestParam(name = "minBudget") Float minBudget,
-            @RequestParam(name = "maxBudget") Float maxBudget) {
-        List<AnnouncementCollocation> filteredAnnouncements = annCollocationService.filterByBudgetPart(minBudget, maxBudget);
+    public ResponseEntity<List<AnnouncementCollocation>> filterAnnouncements(
+            @RequestParam(name = "description", required = false) String description,
+            @RequestParam(name = "score", required = false) Integer score,
+            @RequestParam(name = "maxBudget", required = false) Float BudgetPart) {
+        // Implémentez votre logique de filtrage en utilisant les paramètres fournis
+
+        List<AnnouncementCollocation> filteredAnnouncements = annCollocationService.filterAnnouncements(description, score, BudgetPart);
+
         return ResponseEntity.ok(filteredAnnouncements);
     }
+
 
 }
 

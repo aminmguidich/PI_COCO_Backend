@@ -73,7 +73,38 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
 
     @Override
     public List<AnnouncementCollocation> filterByBudgetPart(Float minBudget, Float maxBudget) {
-        return annCollocationRepository.findByBudgetPartBetween(minBudget, maxBudget);
+        return null;
+    }
+
+    @Override
+    public List<AnnouncementCollocation> filterAnnouncements(String description, Integer score, Float budgetPart) {
+        List<AnnouncementCollocation> allAnnouncements = annCollocationRepository.findAll();
+
+        // Liste pour stocker les annonces filtrées
+        List<AnnouncementCollocation> filteredAnnouncements = new ArrayList<>();
+
+        // Parcourez toutes les annonces et appliquez les filtres
+        for (AnnouncementCollocation announcement : allAnnouncements) {
+            // Vérifiez si l'annonce correspond au critère de description
+            if (description != null && !announcement.getDescription().contains(description)) {
+                continue; // Passez à l'annonce suivante si la description ne correspond pas
+            }
+
+            // Vérifiez si l'annonce correspond au critère de score
+            if (score != null && !announcement.getScore().equals(score)) {
+                continue; // Passez à l'annonce suivante si le score ne correspond pas
+            }
+
+            // Vérifiez si l'annonce correspond au critère de budgetPart
+            if (budgetPart != null && !Float.valueOf(announcement.getBudgetPart()).equals(budgetPart)) {
+                continue; // Passez à l'annonce suivante si le budgetPart ne correspond pas
+            }
+
+            // Si l'annonce passe tous les filtres, ajoutez-la à la liste des annonces filtrées
+            filteredAnnouncements.add(announcement);
+        }
+
+        return filteredAnnouncements;
     }
 
 
