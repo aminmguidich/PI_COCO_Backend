@@ -1,9 +1,6 @@
 package tn.esprit.backendpi.Service.Interfaces;
 
-import tn.esprit.backendpi.Entities.CommentPost;
-import tn.esprit.backendpi.Entities.Enum.TypeReact;
-import tn.esprit.backendpi.Entities.Post;
-import tn.esprit.backendpi.Entities.ReactPost;
+import tn.esprit.backendpi.Entities.*;
 
 import java.util.List;
 
@@ -53,9 +50,9 @@ public interface IPost {
     void updatePostRating(Long postId, int nb_etoil);
     ReactPost addReacttoPost(ReactPost react , Long IdPost);
     List<ReactPost> getReactsForPost(Long postId);
-    ReactPost addTypeReacttoPost(TypeReact typereact , Long IdPost);
+    ReactPost addTypeReacttoPost(TypeReactPost typereact , Long IdPost);
     List<ReactPost> getReactsForComment(Long idComment);
-    ReactPost addReactToComment(TypeReact typereact ,Long idcomment ) ;
+    ReactPost addReactToComment(TypeReactPost typereact ,Long idcomment ) ;
     public Post MeilleurPost() ;
     String AddWithoutBadWord(Post post);
         //apres authentification

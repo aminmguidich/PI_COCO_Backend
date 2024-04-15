@@ -99,6 +99,10 @@ public class User{
     @OneToMany(mappedBy = "userCommand")
     List<Command> commandsUser;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "userReactPost")
+    List<ReactPost>reactPostuser=new ArrayList<>();
+
 
 
 }

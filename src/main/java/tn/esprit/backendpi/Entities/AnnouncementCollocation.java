@@ -26,8 +26,6 @@ public class AnnouncementCollocation {
     Adress adressAnnoCollocation;
     @OneToMany(mappedBy = "announcementCollocationReq")
     List<RequirementCollocation>requirementCollocationsAnno;
-    @OneToMany(mappedBy = "announcementCollocationComment")
-    List<Comment>commentsAnnCollocation;
     @ManyToOne
     User userAnnCollocation;
     @ManyToMany

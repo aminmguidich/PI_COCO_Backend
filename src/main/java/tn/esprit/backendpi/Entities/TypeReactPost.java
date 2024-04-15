@@ -1,6 +1,8 @@
 package tn.esprit.backendpi.Entities;
 
-public enum TypeReactForum {
+public enum TypeReactPost {
     LIKE,
     DISLIKE,
+    LOVE,
+    ANGRY,
 }

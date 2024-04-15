@@ -1,4 +1,6 @@
 package tn.esprit.backendpi.Entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -14,7 +16,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Comment {
+public class CommentPost implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCommentPost;
@@ -44,7 +46,5 @@ public class Comment {
     @JsonIgnore
     @ToString.Exclude
     @ManyToOne
-    AnnouncementCollocation announcementCollocationComment;
-
-
+    Post postComment;
 }

@@ -21,7 +21,6 @@ public class Route {
     Float distance;
     @JsonIgnore
     @ToString.Exclude
-    @JsonIgnore
     @OneToMany(mappedBy = "routeAnnCarpooling")
     List<AnnouncementCarpooling>announcementCarpoolingsRoute=new ArrayList<>();
 

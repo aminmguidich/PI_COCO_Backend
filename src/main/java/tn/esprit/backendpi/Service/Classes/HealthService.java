@@ -51,8 +51,8 @@ public class HealthService implements IHealth {
     public void removeBalanceSheet(long idBalanceSheet) {balanceSheetRepository.deleteById(idBalanceSheet);}
 
     /*********     Route     **********/
-    @Override
-    public List<Route> retrieveAllRoute() {return routeRepository.findAll();}
+   /* @Override
+    public List<Route> retrieveAllRoute() {return routeRepository.findAll();}*/
     @Override
     public Route updateRoute(Route r) {return routeRepository.save(r);}
     @Override

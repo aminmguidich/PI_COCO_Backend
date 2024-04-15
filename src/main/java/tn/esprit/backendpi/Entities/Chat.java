@@ -1,7 +1,7 @@
 package tn.esprit.backendpi.Entities;
 
 import lombok.*;
-import tn.esprit.backendpi.Entities.Enum.MessageType;
+import tn.esprit.backendpi.Entities.MessageType;
 
 @Data
 @AllArgsConstructor

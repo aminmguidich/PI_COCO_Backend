@@ -6,9 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import tn.esprit.backendpi.Entities.*;
-import tn.esprit.backendpi.Entities.Enum.TypeReact;
 import tn.esprit.backendpi.Repository.CommentPostRepository;
 import tn.esprit.backendpi.Repository.PostRepository;
 import tn.esprit.backendpi.Repository.ReactPostRepository;
@@ -88,6 +88,10 @@ public class PostService implements IPost {
     @Override
     public CommentPost addCommenttoPost(CommentPost comment,Long IdPost) {
         Post p =   postRepository.findById(IdPost).get();
+        //currnt user
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        comment.setUserCommentPost(loggedInUser);
+
         comment.setPostComment(p);
         return commentPostRepository.save(comment);
     }
@@ -95,6 +99,9 @@ public class PostService implements IPost {
     public CommentPost addCommentToComment(CommentPost comment, Long idComm) {
         CommentPost p =    commentPostRepository.findById(idComm).get();
         comment.setPostCoReflexive(p);
+        //currnt user
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        comment.setUserCommentPost(loggedInUser);
         return commentPostRepository.save(comment) ;    }
 
     public void updatePostRating(Long postId, int nb_etoil) {
@@ -116,11 +123,17 @@ public class PostService implements IPost {
     }
 
     @Override
-    public ReactPost addTypeReacttoPost(TypeReact typereact, Long IdPost) {
+    public ReactPost addTypeReacttoPost(TypeReactPost typereact, Long IdPost) {
         Post p =   postRepository.findById(IdPost).get();
         ReactPost reactPost = new ReactPost();
+        //currnt user
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        reactPost.setUserReactPost(loggedInUser);
+
         reactPost.setTypeReact(typereact);
         reactPost.setPost(p);
+        System.out.println(loggedInUser);
+
         return reactPostRepository.save(reactPost);
     }
 
@@ -130,7 +143,7 @@ public class PostService implements IPost {
     }
 
     @Override
-    public ReactPost addReactToComment(TypeReact typereact, Long idcomment) {
+    public ReactPost addReactToComment(TypeReactPost typereact, Long idcomment) {
         CommentPost comment = commentPostRepository.findById(idcomment).orElse(null);
         ReactPost reactPost = new ReactPost();
         reactPost.setTypeReact(typereact);
@@ -140,6 +153,10 @@ public class PostService implements IPost {
             Post post = comment.getPostComment();
         comment.getReactPostsComment().add(reactPost);
         reactPost.setPost(post);
+            //currnt user
+            User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+            reactPost.setUserReactPost(loggedInUser);
+
             reactPostRepository.save(reactPost);
         }
         return reactPost;
@@ -168,6 +185,9 @@ public class PostService implements IPost {
         if(b.filterText(post.getBody()).equals("This post contain bad word") || b.filterText(post.getPostTitle()).equals("This post contain bad word"))
             return "This post contain bad word" ;
         else {
+            //currnt user
+            User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+            post.setUserPost(loggedInUser);
             postRepository.save(post);
             return "add successfuly" ;
         }

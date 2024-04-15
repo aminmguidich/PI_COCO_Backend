@@ -16,7 +16,7 @@ public interface IHealth {
     void removeCar (long idCar);
 
     /*********     Route     **********/
-    List<Route> retrieveAllRoute();
+   // List<Route> retrieveAllRoute();
     Route updateRoute (Route r);
     Route addRoute (Route r);
     Route retrieveRoute (long idRoute);

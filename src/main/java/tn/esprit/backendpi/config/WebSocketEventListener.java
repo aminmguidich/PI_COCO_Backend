@@ -8,7 +8,7 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 import tn.esprit.backendpi.Entities.ChatMessage;
-import tn.esprit.backendpi.Entities.Enum.MessageType;
+import tn.esprit.backendpi.Entities.MessageType;
 
 @Component
 @Slf4j

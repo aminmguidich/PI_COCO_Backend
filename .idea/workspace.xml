@@ -5,26 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04ad89ca-b97f-4f18-a4cc-e51a91c4755b" name="Changes" comment="entety">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/TypeReactPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AdressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AdressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AnnCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AnnCarpoolingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ClaimController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ClaimController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RatingCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RatingCarpoolingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReactCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReactCarpoolingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReqCarpoolingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReqCarpoolingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RouteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCarpooling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCarpooling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactCarpooling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactCarpooling.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/AnnCarpoolingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/AnnCarpoolingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/EmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/EmailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReactCarpoolingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReactCarpoolingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReqCarpoolingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/ReqCarpoolingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/HealthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCollocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCollocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/BalanceSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/BalanceSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ChatMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/CommentPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/CommentForum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Forum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactForum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Route.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/TypeReactForum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/HealthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/HealthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IHealth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IHealth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/WebSocketEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/WebSocketEventListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/ClaimController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/ClaimController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/TestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/CommentForum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Forum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/React.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/ReactForum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/TypeReactForum.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/tn/esprit/backendpi/BackendPiApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +52,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -81,9 +99,9 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.BackendPiApplication.executor&quot;: &quot;Run&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Hssan&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/OneDrive/Documents/spring-boot-3-jwt-security-main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/chayma2/Desktop/Projet_Semestre2/BackEnd/PI_COCO_Backend/src/main/java/tn/esprit/backendpi/Controller&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -92,7 +110,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;dd3c1505420ade1cb0da02c953dd2f69&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -107,6 +125,10 @@
       <recent name="tn.esprit.backendpi.Entities" />
       <recent name="tn.esprit.backendpi.Auth" />
       <recent name="tn.esprit.backendpi.Config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller" />
+      <recent name="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="tn.esprit.backendpi.Security.Services" />
@@ -214,6 +236,10 @@
       <workItem from="1713098677410" duration="36000" />
       <workItem from="1713101531804" duration="7217000" />
       <workItem from="1713113340835" duration="6096000" />
+      <workItem from="1713134248383" duration="1768000" />
+      <workItem from="1713136150451" duration="1802000" />
+      <workItem from="1713172322029" duration="7922000" />
+      <workItem from="1713180683156" duration="294000" />
     </task>
     <servers />
   </component>
@@ -247,5 +273,15 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="entety" />
     <option name="LAST_COMMIT_MESSAGE" value="entety" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

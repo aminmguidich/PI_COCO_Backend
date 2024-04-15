@@ -8,10 +8,11 @@ import tn.esprit.backendpi.Entities.Route;
 import tn.esprit.backendpi.Service.Classes.HealthService;
 
 import java.util.List;
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/Health")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class HealthController {
 
     HealthService service;
@@ -43,8 +44,8 @@ public class HealthController {
     public void removeBalanceSheet(@PathVariable("id") long idBalanceSheet) {service.removeBalanceSheet(idBalanceSheet);}
 
     /*********     Route     **********/
-    @GetMapping("/retrieveAllRoute")
-    public List<Route> retrieveAllRoute() {return service.retrieveAllRoute();}
+    /*@GetMapping("/retrieveAllRoute")
+    public List<Route> retrieveAllRoute() {return service.retrieveAllRoute();}*/
     @PutMapping("/updateRoute")
     public Route updateRoute(@RequestBody Route r) {return service.updateRoute(r);}
     @PostMapping("/addRoute")

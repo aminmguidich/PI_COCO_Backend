@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.backendpi.Entities.Chat;
 import tn.esprit.backendpi.Entities.ChatMessage;
-import tn.esprit.backendpi.Entities.Enum.MessageType;
+import tn.esprit.backendpi.Entities.MessageType;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @Controller
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class ChatController {
 
     @MessageMapping("/chat/{roomId}")

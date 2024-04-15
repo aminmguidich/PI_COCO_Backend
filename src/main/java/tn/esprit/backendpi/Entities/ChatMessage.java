@@ -4,7 +4,7 @@ package tn.esprit.backendpi.Entities;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.*;
-import tn.esprit.backendpi.Entities.Enum.MessageType;
+import tn.esprit.backendpi.Entities.MessageType;
 
 @Getter
 @Setter

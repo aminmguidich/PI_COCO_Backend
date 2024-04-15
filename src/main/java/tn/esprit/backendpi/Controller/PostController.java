@@ -1,30 +1,27 @@
 package tn.esprit.backendpi.Controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.backendpi.Entities.CommentPost;
-import tn.esprit.backendpi.Entities.Enum.TypeReact;
-import tn.esprit.backendpi.Entities.Post;
-import tn.esprit.backendpi.Entities.ReactPost;
+import tn.esprit.backendpi.Entities.*;
 import tn.esprit.backendpi.Service.Classes.PostService;
 
 import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/")
-@CrossOrigin("*")
+@RequestMapping("/api/Post")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
+//@CrossOrigin("*")
 public class PostController {
     PostService service;
     /*********     Post     **********/
-    @GetMapping("/retrieveAllPost")
-    public List<Post> retrieveAllPost() {return service.retrieveAllPost();}
+
     @PutMapping("/updatePost")
     public Post updatePost(@RequestBody Post p) {return service.updatePost(p);}
     @PostMapping("/addPost")
     public Post addPost(@RequestBody Post p) {return service.addPost(p);}
-    @GetMapping("/retrievePost/{id}")
-    public Post retrievePost(@PathVariable("id") long idPost) {return service.retrievePost(idPost);}
+
     @DeleteMapping("/removePost/{id}")
     public void removePost(@PathVariable("id") long idPost) {service.removePost(idPost);}
 
@@ -52,59 +49,80 @@ public class PostController {
     public void removeReactPost(@PathVariable("id") long idReactPost) {service.removeReactPost(idReactPost);}
 
 
-
+    @PostMapping("/addReacttoPost/{id}")
+    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
+        return service.addReacttoPost(react, IdPost);
+    }
     /*************** AVAMCEE ****************/
+
+    @GetMapping("/retrieveAllPost")
+    public List<Post> retrieveAllPost() {return service.retrieveAllPost();}
+    @GetMapping("/retrievePost/{id}")
+    public Post retrievePost(@PathVariable("id") long idPost) {return service.retrievePost(idPost);}
+    @GetMapping("/MeilleurPost")
+    public Post MeilleurPost() {
+        return service.MeilleurPost();
+    }
     @GetMapping("/getCommentsForPost/{id}")
     public List<CommentPost> getCommentsForPost(@PathVariable("id")Long postId) {
         return service.getCommentsForPost(postId);
     }
-
     @GetMapping("/getReplies/{id}")
     public List<CommentPost> getReplies(@PathVariable("id") Long commentId) {
         return service.getReplies(commentId);
     }
-
-    @PostMapping("/addCommenttoPost/{id}")
-    public CommentPost addCommenttoPost(@RequestBody CommentPost comment,@PathVariable("id") Long IdPost) {return service.addCommenttoPost(comment, IdPost);}
-    @PostMapping("/addCommentToComment/{idComm}")
-    public CommentPost addCommentToComment(@RequestBody CommentPost comment,@PathVariable("idComm") Long idComm) {
-        return service.addCommentToComment(comment, idComm);
-    }
-
-    @PutMapping("/updatePostRating/{postId}/{nb_etoil}")
-    public void updatePostRating(@PathVariable("postId") Long postId,@PathVariable("nb_etoil") int nb_etoil) {
-        service.updatePostRating(postId, nb_etoil);
-    }
-    @PostMapping("/addReacttoPost/{id}")
-    public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
-        return service.addReacttoPost(react, IdPost);
-    }
     @GetMapping("/getReactsForPost/{postId}")
     public List<ReactPost> getReactsForPost(@PathVariable("postId") Long postId) {
         return service.getReactsForPost(postId);
-    }
-    @PostMapping("/addTypeReacttoPost/{IdPost}")
-    public ReactPost addTypeReacttoPost(@RequestBody TypeReact typereact,@PathVariable("IdPost") Long IdPost) {
-        return service.addTypeReacttoPost(typereact, IdPost);
     }
 
     @GetMapping("/getReactsForComment/{idComment}")
     public List<ReactPost> getReactsForComment(@PathVariable("idComment") Long idComment) {
         return service.getReactsForComment(idComment);
     }
-    @PostMapping("/addReactToComment/{idcomment}")
-    public ReactPost addReactToComment(@RequestBody TypeReact typereact,@PathVariable("idcomment") Long idcomment) {
-        return service.addReactToComment(typereact, idcomment);
-    }
 
-    @GetMapping("/MeilleurPost")
-    public Post MeilleurPost() {
-        return service.MeilleurPost();
-    }
+    //prend current user
     @PostMapping("/AddWithoutBadWord")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public String AddWithoutBadWord(@RequestBody Post post) {
         return service.AddWithoutBadWord(post);
     }
+
+    @PostMapping("/addCommenttoPost/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public CommentPost addCommenttoPost(@RequestBody CommentPost comment,@PathVariable("id") Long IdPost) {return service.addCommenttoPost(comment, IdPost);}
+
+    @PostMapping("/addCommentToComment/{idComm}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public CommentPost addCommentToComment(@RequestBody CommentPost comment,@PathVariable("idComm") Long idComm) {
+        return service.addCommentToComment(comment, idComm);
+    }
+    @PutMapping("/updatePostRating/{postId}/{nb_etoil}")
+   // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public void updatePostRating(@PathVariable("postId") Long postId,@PathVariable("nb_etoil") int nb_etoil) {
+        service.updatePostRating(postId, nb_etoil);
+    }
+
+
+    @PostMapping("/addTypeReacttoPost/{IdPost}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ReactPost addTypeReacttoPost(@RequestBody TypeReactPost typereact, @PathVariable("IdPost") Long IdPost) {
+        return service.addTypeReacttoPost(typereact, IdPost);
+    }
+
+    @PostMapping("/addReactToComment/{idcomment}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ReactPost addReactToComment(@RequestBody TypeReactPost typereact,@PathVariable("idcomment") Long idcomment) {
+        return service.addReactToComment(typereact, idcomment);
+    }
+
+
+
+
+
+
+
     //apre authentification
     @PostMapping("/UserAddPost/{id}")
     public String UserAddPost(@RequestBody Post post, @PathVariable("id")Long idUser) {

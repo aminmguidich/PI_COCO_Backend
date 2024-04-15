@@ -1,4 +1,4 @@
-package tn.esprit.backendpi.Config;
+package tn.esprit.backendpi.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -98,6 +98,10 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/Route/**").permitAll()
                                 .requestMatchers("/api/CarpoolingRating/**").permitAll()
                                 .requestMatchers("/api/Adress/**").permitAll()
+                                .requestMatchers("/api/Post/**").permitAll()
+                                .requestMatchers("/api/Health/**").permitAll()
+
+
 
 
                                 .anyRequest().authenticated()
