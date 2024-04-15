@@ -11,8 +11,8 @@ import java.io.InputStream;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/")
-@CrossOrigin("*")
+@RequestMapping("/api/Flickr")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class FlickrController {
     FlickrService service;
 

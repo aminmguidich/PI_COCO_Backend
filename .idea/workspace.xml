@@ -5,44 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04ad89ca-b97f-4f18-a4cc-e51a91c4755b" name="Changes" comment="entety">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/TypeReactPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/HealthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/HealthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/FlickrController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/FlickrController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCollocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCollocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/BalanceSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/BalanceSheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ChatMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/CommentPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/CommentForum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Forum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactForum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Route.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Route.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/TypeReactForum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/HealthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/HealthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IHealth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IHealth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/WebSocketEventListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/WebSocketEventListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/ClaimController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/ClaimController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/TestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Comment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/CommentForum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/Forum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/React.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/ReactForum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/TypeReactForum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/tn/esprit/backendpi/BackendPiApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +204,7 @@
       <workItem from="1713134248383" duration="1768000" />
       <workItem from="1713136150451" duration="1802000" />
       <workItem from="1713172322029" duration="7922000" />
-      <workItem from="1713180683156" duration="294000" />
+      <workItem from="1713180683156" duration="1363000" />
     </task>
     <servers />
   </component>

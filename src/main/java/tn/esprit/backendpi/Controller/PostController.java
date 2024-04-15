@@ -117,7 +117,17 @@ public class PostController {
         return service.addReactToComment(typereact, idcomment);
     }
 
+    @PutMapping("/UpdatereportPost/{postId}")
+    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public void UpdatereportPost(@PathVariable("postId") Long postId) {
+        service.UpdatereportPost(postId);
+    }
 
+    @PutMapping("/reportPost/{IdPost}")
+    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public void reportPost(@PathVariable("IdPost")Long IdPost) {
+        service.reportPost(IdPost);
+    }
 
 
 
@@ -147,15 +157,7 @@ public class PostController {
         return service.UseraddReactToComment(react, idcomment, idUser);
     }
 
-    @PutMapping("/UpdatereportPost/{postId}")
-    public void UpdatereportPost(@PathVariable("postId") Long postId) {
-        service.UpdatereportPost(postId);
-    }
 
-    @PutMapping("/reportPost/{IdPost}")
-    public void reportPost(@PathVariable("IdPost")Long IdPost) {
-        service.reportPost(IdPost);
-    }
 
     @PostMapping("/UserAddWithoutBadWord/{idUser}")
     public String UserAddWithoutBadWord(@RequestBody Post post, @PathVariable("idUser") Long idUser) {

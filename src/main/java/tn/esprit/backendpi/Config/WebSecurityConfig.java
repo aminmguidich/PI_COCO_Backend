@@ -100,6 +100,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/Adress/**").permitAll()
                                 .requestMatchers("/api/Post/**").permitAll()
                                 .requestMatchers("/api/Health/**").permitAll()
+                                .requestMatchers("/api/Flickr/**").permitAll()
 
 
 
