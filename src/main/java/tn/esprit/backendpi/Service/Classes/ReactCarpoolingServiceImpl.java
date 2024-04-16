@@ -23,9 +23,9 @@ public class ReactCarpoolingServiceImpl implements IReactCarpoolingService {
     @Override
     public ReactCarpooling addReactCarpooling(ReactCarpooling reactCarpooling, Long announcementId) {
         AnnouncementCarpooling announcement= iAnnCarpoolingService.getByIdAnnouncementCarpooling(announcementId);
-        //User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
 
-        //reactCarpooling.setUserReact(loggedInUser);
+        reactCarpooling.setUserReact(loggedInUser);
         ReactCarpooling reaction= reactCarpoolingRepository.save(reactCarpooling);
         announcement.addReact(reaction);
         iAnnCarpoolingService.updateAnnCarpooling(announcement);
