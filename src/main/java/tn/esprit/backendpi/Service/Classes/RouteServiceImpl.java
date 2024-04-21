@@ -14,4 +14,9 @@ public class RouteServiceImpl implements IRouteService {
     public Route addRouteCarpooling(Route route) {
         return routeRepository.save(route);
     }
+
+    @Override
+    public Route updateRouteCarpooling(Route route) {
+        return routeRepository.save(route);
+    }
 }

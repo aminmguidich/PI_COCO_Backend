@@ -12,6 +12,8 @@ import tn.esprit.backendpi.Service.Interfaces.IRouteService;
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 
 public class RouteController {
+
+
     private final IRouteService iRouteService;
 
     @PostMapping("/addRoute")
@@ -20,4 +22,11 @@ public class RouteController {
     public Route addRouteCarpooling(@RequestBody Route route) {
         return iRouteService.addRouteCarpooling(route);
     }
+
+    @PutMapping("/updateRoute")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public Route updateRouteCarpooling(@RequestBody Route route) {
+        return iRouteService.updateRouteCarpooling(route);
+    }
 }
+

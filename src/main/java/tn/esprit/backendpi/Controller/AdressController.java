@@ -11,6 +11,13 @@ import tn.esprit.backendpi.Service.Interfaces.IAdressService;
 @RequestMapping("/api/Adress")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class AdressController {
+
+    @DeleteMapping("/deleteAdress/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public void deleteAdress(@PathVariable Long id) {
+        iAdressService.deleteAdress(id);
+    }
+
     private final IAdressService iAdressService;
 
     @PostMapping("/AddAdress")

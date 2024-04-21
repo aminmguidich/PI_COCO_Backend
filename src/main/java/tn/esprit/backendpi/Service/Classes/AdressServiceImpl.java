@@ -14,4 +14,9 @@ public class AdressServiceImpl implements IAdressService {
     public Adress AddAdress(Adress adress) {
         return adressRepository.save(adress);
     }
+
+    @Override
+    public void deleteAdress(Long id) {
+        adressRepository.deleteById(id);
+    }
 }
