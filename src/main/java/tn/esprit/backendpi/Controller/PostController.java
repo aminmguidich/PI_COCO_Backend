@@ -1,6 +1,7 @@
 package tn.esprit.backendpi.Controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.backendpi.Entities.*;
@@ -46,13 +47,26 @@ public class PostController {
     @GetMapping("/retrieveReactPost/{id}")
     public ReactPost retrieveReactPost(@PathVariable("id") long idReactPost) {return service.retrieveReactPost(idReactPost);}
     @DeleteMapping("/removeReactPost/{id}")
+    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public void removeReactPost(@PathVariable("id") long idReactPost) {service.removeReactPost(idReactPost);}
-
-
-    @PostMapping("/addReacttoPost/{id}")
+    @GetMapping("/checkExistingReaction/{postId}/{reactionType}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
-        return service.addReacttoPost(react, IdPost);
+    public ResponseEntity<ReactPost> checkExistingReaction(@PathVariable("postId") Long postId, @PathVariable("reactionType") String reactionTypeString) {
+        TypeReactPost reactionType = TypeReactPost.valueOf(reactionTypeString.toUpperCase());
+        ReactPost existingReaction = service.checkExistingReaction(postId, reactionType);
+        if (existingReaction != null) {
+            return ResponseEntity.ok(existingReaction);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+
+    @GetMapping("/countByUserReactPost/{idPost}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public boolean countByUserReactPost(@PathVariable("idPost") Long idPost) {
+        return service.countByUserReactPost(idPost);
     }
     /*************** AVAMCEE ****************/
 
@@ -99,17 +113,26 @@ public class PostController {
         return service.addCommentToComment(comment, idComm);
     }
     @PutMapping("/updatePostRating/{postId}/{nb_etoil}")
-   // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public void updatePostRating(@PathVariable("postId") Long postId,@PathVariable("nb_etoil") int nb_etoil) {
         service.updatePostRating(postId, nb_etoil);
     }
 
 
     @PostMapping("/addTypeReacttoPost/{IdPost}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ReactPost addTypeReacttoPost(@RequestBody TypeReactPost typereact, @PathVariable("IdPost") Long IdPost) {
+    // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ReactPost addTypeReacttoPost(@RequestBody TypeReactPost typereact,
+                                        @PathVariable("IdPost") Long IdPost) {
+        System.out.println(typereact);
         return service.addTypeReacttoPost(typereact, IdPost);
     }
+    //////tekhdeeeeemm
+    @PostMapping("/addReacttoPost/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
+        return service.addReacttoPost(react, IdPost);
+    }
+
 
     @PostMapping("/addReactToComment/{idcomment}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")

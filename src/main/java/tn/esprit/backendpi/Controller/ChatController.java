@@ -15,6 +15,7 @@ import tn.esprit.backendpi.Entities.ChatMessage;
 import tn.esprit.backendpi.Entities.MessageType;
 
 //@CrossOrigin(origins = "http://localhost:4200")
+//@RequestMapping("/api/WebSocket")
 @Controller
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class ChatController {

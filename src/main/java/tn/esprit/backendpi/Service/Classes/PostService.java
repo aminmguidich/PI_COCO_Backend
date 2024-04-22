@@ -68,7 +68,35 @@ public class PostService implements IPost {
     @Override
     public ReactPost retrieveReactPost(long idReactPost) {return reactPostRepository.findById(idReactPost).orElse(null);}
     @Override
-    public void removeReactPost(long idReactPost) {reactPostRepository.deleteById(idReactPost);}
+    public void removeReactPost(long idReactPost) {
+
+        //reactPostRepository.deleteById(idReactPost);
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+
+        ReactPost reactPost = reactPostRepository.findById(idReactPost).orElse(null);
+
+        if (reactPost != null) {
+            if (reactPost.getUserReactPost().getId().equals(loggedInUser.getId())) {
+                reactPostRepository.deleteById(idReactPost);
+            }
+            else
+            {
+                System.out.println("you are not able to delete this react");
+            }
+
+        }
+    }
+
+    @Override
+    public ReactPost checkExistingReaction(Long postId, TypeReactPost reactionType) {
+
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        Post post = postRepository.findById(postId).orElse(null);
+        return reactPostRepository.findByPostAndUserReactPostAndTypeReact(post, loggedInUser, reactionType);
+    }
+
+
+
 
 
 
@@ -126,15 +154,16 @@ public class PostService implements IPost {
 
     @Override
     public ReactPost addTypeReacttoPost(TypeReactPost typereact, Long IdPost) {
+        System.out.println(typereact);
         Post p =   postRepository.findById(IdPost).get();
         ReactPost reactPost = new ReactPost();
         //currnt user
-        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
-        reactPost.setUserReactPost(loggedInUser);
+        //User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        //reactPost.setUserReactPost(loggedInUser);
 
         reactPost.setTypeReact(typereact);
         reactPost.setPost(p);
-        System.out.println(loggedInUser);
+        //System.out.println(loggedInUser);
 
         return reactPostRepository.save(reactPost);
     }
@@ -300,6 +329,13 @@ public class PostService implements IPost {
             postRepository.save(post);
             return "add successfuly" ;
         }
+    }
+
+    @Override
+    public boolean countByUserReactPost(Long idPost) {
+        Post post = postRepository.findById(idPost).orElse(null);
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        return (reactPostRepository.countByPostAndUserReactPost(post,loggedInUser)==0);
     }
 
     //  @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,

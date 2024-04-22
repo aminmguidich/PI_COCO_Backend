@@ -1,4 +1,4 @@
-package tn.esprit.backendpi.config;
+package tn.esprit.backendpi.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -12,7 +12,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // /wss work with http and https
-        registry.addEndpoint("/ws")
+        registry.addEndpoint("/api/ws")
                 .setAllowedOrigins("http://localhost:4200")
                 .withSockJS();
 

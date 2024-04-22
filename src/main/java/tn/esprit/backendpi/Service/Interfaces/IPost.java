@@ -39,6 +39,7 @@ public interface IPost {
     ReactPost retrieveReactPost(long idReactPost);
 
     void removeReactPost(long idReactPost);
+    ReactPost checkExistingReaction(Long postId, TypeReactPost reactionType);
 
 
     /******* AVANCEE ******/
@@ -55,16 +56,18 @@ public interface IPost {
     ReactPost addReactToComment(TypeReactPost typereact ,Long idcomment ) ;
     public Post MeilleurPost() ;
     String AddWithoutBadWord(Post post);
-        //apres authentification
+    //apres authentification
 
     String UserAddPost(Post post, Long idUser) ;
     CommentPost UseraddComment(CommentPost comment ,Long IdPost, Long idUser) ;
     CommentPost UseraddCommentToComment(CommentPost comment, Long idComm, Long idUser);
-     ReactPost UseraddReacttoPost(ReactPost react , Long IdPost, Long idUser);
-     ReactPost UseraddReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
+    ReactPost UseraddReacttoPost(ReactPost react , Long IdPost, Long idUser);
+    ReactPost UseraddReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
     void deletePostByTime();
     void reportPost(Long IdPost);
-     void UpdatereportPost(Long postId) ;
+    void UpdatereportPost(Long postId) ;
 
-        String UserAddWithoutBadWord(Post post, Long idUser);
-    }
+    String UserAddWithoutBadWord(Post post, Long idUser);
+
+    boolean countByUserReactPost(Long idPost);
+}
