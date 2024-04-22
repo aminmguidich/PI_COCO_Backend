@@ -1,4 +1,4 @@
-package tn.esprit.backendpi.Config;
+package tn.esprit.backendpi.Configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
