@@ -4,10 +4,8 @@ target/
 **/src/main/**/target/
 **/src/test/**/target/
 public/
-
-mvnw 
+mvnw
 mvnw.cmd
-
 ### IntelliJ IDEA ###
 .idea
 *.iws
@@ -17,5 +15,3 @@ mvnw.cmd
 
 ### VS Code ###
 .vscode/
-.idea/workspace.xml
-.idea/workspace.xml
