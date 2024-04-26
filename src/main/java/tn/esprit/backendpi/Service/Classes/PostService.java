@@ -20,6 +20,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
@@ -336,6 +338,16 @@ public class PostService implements IPost {
         Post post = postRepository.findById(idPost).orElse(null);
         User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
         return (reactPostRepository.countByPostAndUserReactPost(post,loggedInUser)==0);
+    }
+
+    @Override
+    public Optional<String> findUserNameAndLastNameByPostId(Long postId) {
+        return postRepository.findUserPostUsernameByPostId(postId);
+    }
+
+    @Override
+    public Optional<String> findUserCommentPostByIdCommentPost(Long idCommentPost) {
+        return commentPostRepository.findUserCommentPostByIdCommentPost(idCommentPost);
     }
 
     //  @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,

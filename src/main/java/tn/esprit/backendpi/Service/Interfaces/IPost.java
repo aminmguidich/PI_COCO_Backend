@@ -3,6 +3,7 @@ package tn.esprit.backendpi.Service.Interfaces;
 import tn.esprit.backendpi.Entities.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IPost {
 
@@ -70,4 +71,8 @@ public interface IPost {
     String UserAddWithoutBadWord(Post post, Long idUser);
 
     boolean countByUserReactPost(Long idPost);
+
+    Optional<String> findUserNameAndLastNameByPostId(Long postId);
+    Optional<String> findUserCommentPostByIdCommentPost(Long idCommentPost);
+
 }

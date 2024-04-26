@@ -8,6 +8,7 @@ import tn.esprit.backendpi.Entities.*;
 import tn.esprit.backendpi.Service.Classes.PostService;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -68,6 +69,17 @@ public class PostController {
     public boolean countByUserReactPost(@PathVariable("idPost") Long idPost) {
         return service.countByUserReactPost(idPost);
     }
+
+    @GetMapping("/findUserNameAndLastNameByPostId/{postId}")
+    public Optional<String> findUserNameAndLastNameByPostId(@PathVariable("postId") Long postId) {
+        return service.findUserNameAndLastNameByPostId(postId);
+    }
+
+    @GetMapping("/findUserCommentPostByIdCommentPost/{idCommentPost}")
+    public Optional<String> findUserCommentPostByIdCommentPost(@PathVariable("idCommentPost") Long idCommentPost) {
+        return service.findUserCommentPostByIdCommentPost(idCommentPost);
+    }
+
     /*************** AVAMCEE ****************/
 
     @GetMapping("/retrieveAllPost")
