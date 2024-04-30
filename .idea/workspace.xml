@@ -5,48 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="208e22ba-8683-45f0-b116-f0602a6f6647" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Enum/HouseType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Enum/TypeReact.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/FileDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/FileDBRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/FileStorageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AnnCollocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/AnnCollocationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ContractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ContractController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/HouseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/HouseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/QuizController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/QuizController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RatingCollocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/RatingCollocationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReactController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReqCollocationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Controller/ReqCollocationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCollocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/AnnouncementCollocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/Contract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/House.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/RatingCollocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/RatingCollocation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactCollocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/ReactCollocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/RequirementCollocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Entities/RequirementCollocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/AnnCollocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/AnnCollocationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/ContractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/ContractRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/RatingCollocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/RatingCollocationRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/ReactRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/ReactRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/AnnCollocationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/AnnCollocationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/HouseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/HouseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/PDFGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/RatingCollocationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/RatingCollocationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/React_CollServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Classes/React_CollServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IAnnCollocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IAnnCollocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IContractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IContractService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IHouseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IHouseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IRatingCollocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IRatingCollocationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IReact_CollService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IReact_CollService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IpdfHouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/Service/Interfaces/IpdfHouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/FlickrConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/FlickrConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/backendpi/config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Entities/User$UserBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/tn/esprit/backendpi/Repository/UserRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +46,19 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="ayari" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="ayari" />
@@ -105,7 +89,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "ayari",
     "last_opened_file_path": "C:/Users/hama/Desktop/springF",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -135,7 +119,7 @@
       <workItem from="1714261160535" duration="6404000" />
       <workItem from="1714305293047" duration="10342000" />
       <workItem from="1714347748569" duration="401000" />
-      <workItem from="1714395460246" duration="17027000" />
+      <workItem from="1714395460246" duration="33231000" />
     </task>
     <servers />
   </component>

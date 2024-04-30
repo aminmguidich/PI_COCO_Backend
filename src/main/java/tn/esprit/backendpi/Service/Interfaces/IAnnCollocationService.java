@@ -15,6 +15,8 @@ public interface IAnnCollocationService {
     /* void assignAdressToAnnouncementCollocation(Long announcementCollocationId, Adress adress);*/
     public void assignHouseToAnnouncementCollocation(Long announcementCollocationId, Long houseId);
     List<AnnouncementCollocation> filterByBudgetPart(Float minBudget, Float maxBudget);
-    public List<AnnouncementCollocation> filterAnnouncements(String description, Integer score, Float budgetPart);
+    public List<AnnouncementCollocation> filterAnnouncements(String description, int score, Float budgetPart);
+
+
     void updateAnnoucementColRating(Long idCollocationAnnouncement, int nb_etoil);
 }

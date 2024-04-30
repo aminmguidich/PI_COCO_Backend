@@ -15,10 +15,10 @@ public class ReactCollocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idReact;
-    //@Enumerated(EnumType.STRING)
-    //TypeReact typeReact;
-    int likes;
-    int dislikes;
+    Long idUser;
+    Long idAnn;
+    Boolean likes;
+    Boolean dislikes;
     @ToString.Exclude
     @JsonIgnore
     @ManyToOne

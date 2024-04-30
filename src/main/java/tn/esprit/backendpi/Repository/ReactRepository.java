@@ -10,10 +10,7 @@ import java.util.Optional;
 
 public interface ReactRepository extends CrudRepository<ReactCollocation,Long> {
     ReactCollocation findByAnnouncementCollocationIdCollocationAnnouncement(@Param("id") Long id);
-    @Query("SELECT SUM(r.likes) FROM ReactCollocation r WHERE r.announcementCollocation.idCollocationAnnouncement = :idCollocationAnnouncement")
-    int countLikesByAnnoucementId(@Param("idCollocationAnnouncement") Long idCollocationAnnouncement);
 
-    @Query("SELECT SUM(r.dislikes) FROM ReactCollocation r WHERE r.announcementCollocation.idCollocationAnnouncement = :idCollocationAnnouncement")
-    int countDislikesByAnnoucementId(@Param("idCollocationAnnouncement") Long idCollocationAnnouncement);
-
+    @Query("SELECT r FROM ReactCollocation r WHERE r.idUser = :idUser and r.idAnn = :idAnn ")
+    Optional<ReactCollocation> findByUserId(Long idUser,Long idAnn);
 }

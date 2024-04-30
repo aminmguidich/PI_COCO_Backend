@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
-import tn.esprit.backendpi.Entities.Adress;
 import tn.esprit.backendpi.Entities.AnnouncementCollocation;
 import tn.esprit.backendpi.Entities.House;
 import tn.esprit.backendpi.Entities.User;
@@ -44,6 +43,9 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
         oldAnnouncement.setDescription(newAnnouncement.getDescription());
         oldAnnouncement.setBudgetPart(newAnnouncement.getBudgetPart());
         oldAnnouncement.setScore(newAnnouncement.getScore());
+        oldAnnouncement.setLikes(newAnnouncement.getLikes());
+        oldAnnouncement.setDislikes(newAnnouncement.getDislikes());
+
 
         // Save the changes to the database and return the updated announcement
         return annCollocationRepository.save(oldAnnouncement);
@@ -84,7 +86,14 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
     }
 
     @Override
-    public List<AnnouncementCollocation> filterAnnouncements(String description, Integer score, Float budgetPart) {
+    public List<AnnouncementCollocation> filterAnnouncements(String description, int score, Float budgetPart) {
+        return null;
+    }
+
+
+    /*
+    @Override
+    public List<AnnouncementCollocation> filterAnnouncements(String description, int score, Float budgetPart) {
         List<AnnouncementCollocation> allAnnouncements = annCollocationRepository.findAll();
 
         // Liste pour stocker les annonces filtrées
@@ -113,7 +122,7 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
 
         return filteredAnnouncements;
     }
-
+*/
     @Override
     public void updateAnnoucementColRating(Long idCollocationAnnouncement, int nb_etoil) {
         AnnouncementCollocation announcementCollocation =annCollocationRepository.findById(idCollocationAnnouncement).get();

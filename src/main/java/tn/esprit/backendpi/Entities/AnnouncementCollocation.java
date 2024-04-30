@@ -20,11 +20,17 @@ public class AnnouncementCollocation {
     Long idCollocationAnnouncement;
     LocalDate dateCollocationAnnouncement;
     String description;
-    Float budgetPart;
-    Long score;
+    int budgetPart=33;
+    int score;
     int nb_etoil=0;
     int Likes=0;
     int Dislikes=0;
+    String username;
+    Long userId;
+    String title;
+    @OneToOne( optional = true, cascade = CascadeType.ALL)
+    private FileDB image;
+
     @ToString.Exclude
     @JsonIgnore
     @OneToOne

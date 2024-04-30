@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/Collocation_Announcement")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials="true")
 public class AnnCollocationController {
     private final IAnnCollocationService annCollocationService;
 
@@ -26,6 +26,7 @@ public class AnnCollocationController {
     @PutMapping("/updateAnnouncementCollocation/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public AnnouncementCollocation updateAnnouncementCollocation(@PathVariable Long id, @RequestBody AnnouncementCollocation newAnnouncement) {
+        System.out.println(newAnnouncement.getLikes()+"-"+newAnnouncement.getDislikes());
         return annCollocationService.updateAnnouncementCollocation(id, newAnnouncement);
     }
 

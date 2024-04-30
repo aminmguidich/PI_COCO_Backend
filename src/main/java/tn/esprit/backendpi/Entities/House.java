@@ -28,11 +28,13 @@ public class House {
     Long nbrofBedrooms; @ToString.Exclude
     String username;
     Long userId;
+    String title;
     Long price;
     @ManyToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     @JoinColumn(name = "user")
     private User user;
+      Boolean contracted=false;
 
     @ToString.Exclude
     @JsonIgnore

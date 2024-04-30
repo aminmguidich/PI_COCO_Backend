@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.backendpi.Entities.*;
 import tn.esprit.backendpi.Repository.UserRepository;
+import tn.esprit.backendpi.Service.Classes.AnnCollocationServiceImpl;
 import tn.esprit.backendpi.Service.Classes.FileStorageService;
 import tn.esprit.backendpi.Service.Interfaces.IContractService;
 import tn.esprit.backendpi.Service.Interfaces.IHouseService;
@@ -29,7 +30,7 @@ public class HouseController {
     private IHouseService houseService;
 
     @Autowired
-    private IContractService contractService;
+    private AnnCollocationServiceImpl annService;
 
     @Autowired
     private IpdfHouse ipdfHouse; // Autowire IpdfHouse interface
@@ -37,6 +38,8 @@ public class HouseController {
     FileStorageService fileStorageService;
     @Autowired
     UserRepository userRepository;
+
+
 
 
     private HouseType convertToHouseType(String houseTypeString) {
@@ -51,7 +54,7 @@ public class HouseController {
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     @ResponseBody
-    public House ajouterHouse(@RequestPart(value = "house") String publicite,
+    public Boolean ajouterHouse(@RequestPart(value = "house") String publicite,
                               @RequestPart(value = "image", required = false) MultipartFile file,
                               @RequestParam("userId") Long userId,@RequestParam("username") String username) throws IOException {
         House house = new ObjectMapper().readValue(publicite, House.class);
@@ -59,6 +62,19 @@ public class HouseController {
         house.setImage(image);
         house.setUserId(userId);
         house.setUsername(username);
+
+        AnnouncementCollocation annColl = new AnnouncementCollocation();
+
+        annColl.setImage(image);
+        annColl.setTitle(house.getTitle());
+        annColl.setUserId(userId);
+        annColl.setUsername(username);
+        annColl.setDescription(house.getDescription());
+        annColl.setBudgetPart(5);
+        annColl.setScore(5);
+        annColl.setDateCollocationAnnouncement(LocalDate.now());
+
+
 
         Optional<User> user = userRepository.findById(userId);
         if (!user.isPresent()) {
@@ -71,12 +87,21 @@ public class HouseController {
         // Associate the fetched user with the house
         house.setUser(user.get());
 
+        houseService.ajouterHouse(house);
+        addAnnoncementAuto(annColl);
+
+
         // Fetch the user from the database using the provided userId
 
-        return houseService.ajouterHouse(house);
+        return true;
     }
 
 
+    public AnnouncementCollocation addAnnoncementAuto(AnnouncementCollocation ann){
+
+        return annService.addAnnouncementCollocation(ann);
+
+    }
 
 
 
@@ -90,8 +115,14 @@ public class HouseController {
     @PutMapping("/house/update/{id}")
 
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public House updateHouse(@PathVariable Long id, @RequestBody House newHouse) {
-        return houseService.updateHouse(id, newHouse);
+    public House updateHouse(@PathVariable Long id, @RequestPart(value = "house") String houseD,
+                             @RequestPart(value = "image", required = false) MultipartFile file) throws IOException  {
+        System.out.println(houseD);
+        House house = new ObjectMapper().readValue(houseD, House.class);
+        FileDB image = fileStorageService.store(file);
+        house.setImage(image);
+
+        return houseService.updateHouse(id, house);
     }
 
 
@@ -102,12 +133,11 @@ public class HouseController {
         return houseService.findHouseById(id);
     }
 
-    @DeleteMapping("/house/delete/{id}")
-
+    @GetMapping("/house/delete/{id}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ResponseEntity<Void> deleteHouse(@PathVariable Long id) {
+    public Boolean deleteHouse(@PathVariable Long id) {
         houseService.deleteHouse(id);
-        return ResponseEntity.noContent().build();
+        return true;
     }
 
     @PutMapping("/house/{houseId}/assign-contract/{contractId}")
@@ -117,21 +147,7 @@ public class HouseController {
         return new ResponseEntity<>("Contract assigned to house successfully", HttpStatus.OK);
     }
 
-    @GetMapping("/testPdf")
-    public  String generatePDF(@RequestBody Contract contractD){
-        Contract contract = new Contract();
-        contract.setDescription(contractD.getDescription());
-        contract.setHouseContract(contractD.getHouseContract());
-        contract.setHouseType(contractD.getHouseType());
-        contract.setOwner(contractD.getOwner());
-        contract.setLocation(contractD.getLocation());
-        contract.setNombre_de_places(contractD.getNombre_de_places());
-        contract.setUname(contractD.getUname());
-        contract.setHouseId(contractD.getHouseId());
-        contract.setUserId(contractD.getUserId());
 
-        return "contract";
-    }
 
 
     @PostMapping("/pdf")
