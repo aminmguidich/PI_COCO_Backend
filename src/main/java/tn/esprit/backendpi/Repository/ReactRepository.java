@@ -1,8 +1,19 @@
 package tn.esprit.backendpi.Repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import tn.esprit.backendpi.Entities.ReactCollocation;
 import tn.esprit.backendpi.Entities.ReactCollocation;
 
+import java.util.Optional;
+
 public interface ReactRepository extends CrudRepository<ReactCollocation,Long> {
+    ReactCollocation findByAnnouncementCollocationIdCollocationAnnouncement(@Param("id") Long id);
+    @Query("SELECT SUM(r.likes) FROM ReactCollocation r WHERE r.announcementCollocation.idCollocationAnnouncement = :idCollocationAnnouncement")
+    int countLikesByAnnoucementId(@Param("idCollocationAnnouncement") Long idCollocationAnnouncement);
+
+    @Query("SELECT SUM(r.dislikes) FROM ReactCollocation r WHERE r.announcementCollocation.idCollocationAnnouncement = :idCollocationAnnouncement")
+    int countDislikesByAnnoucementId(@Param("idCollocationAnnouncement") Long idCollocationAnnouncement);
+
 }

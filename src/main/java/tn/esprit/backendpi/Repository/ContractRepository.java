@@ -5,3 +5,4 @@ import tn.esprit.backendpi.Entities.Contract;
 
 public interface ContractRepository extends CrudRepository<Contract,Long> {
 }
+

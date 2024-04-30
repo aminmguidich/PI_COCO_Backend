@@ -26,13 +26,13 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
     private AnnCollocationRepository annCollocationRepository;
     private final UserRepository userRepository;
 
-
     @Override
     public AnnouncementCollocation addAnnouncementCollocation(AnnouncementCollocation announcement) {
-        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
-        announcement.setUserAnnCollocation(loggedInUser);
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        announcement.setUserAnnCollocation(loggedInUser); // Assuming this method sets the user for the announcement collocation
         return annCollocationRepository.save(announcement);
     }
+
 
     @Override
     public AnnouncementCollocation updateAnnouncementCollocation(Long id, AnnouncementCollocation newAnnouncement) {
@@ -112,6 +112,13 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
         }
 
         return filteredAnnouncements;
+    }
+
+    @Override
+    public void updateAnnoucementColRating(Long idCollocationAnnouncement, int nb_etoil) {
+        AnnouncementCollocation announcementCollocation =annCollocationRepository.findById(idCollocationAnnouncement).get();
+        announcementCollocation.setNb_etoil(nb_etoil);
+        annCollocationRepository.save(announcementCollocation);
     }
 
 

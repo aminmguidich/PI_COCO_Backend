@@ -4,6 +4,7 @@ import tn.esprit.backendpi.Entities.RatingCollocation;
 
 import java.util.List;
 
+
 public interface IRatingCollocationService {
     RatingCollocation addRatingCollocation(RatingCollocation rating);
 
@@ -14,4 +15,7 @@ public interface IRatingCollocationService {
     RatingCollocation findRatingById(Long id);
 
     void deleteRating(Long id);
+
+
+
 }

@@ -3,7 +3,6 @@ package tn.esprit.backendpi.Service.Classes;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.PDPageContentStream.AppendMode;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
@@ -12,12 +11,17 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import tn.esprit.backendpi.Entities.Contract;
 import tn.esprit.backendpi.Entities.House;
+import tn.esprit.backendpi.Entities.User;
+import tn.esprit.backendpi.Repository.UserRepository;
 import tn.esprit.backendpi.Service.Interfaces.IContractService;
 import tn.esprit.backendpi.Service.Interfaces.IHouseService;
 import tn.esprit.backendpi.Service.Interfaces.IpdfHouse;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
 
 @Service
 public class PDFGenerator implements IpdfHouse {
@@ -27,18 +31,17 @@ public class PDFGenerator implements IpdfHouse {
 
     @Autowired
     private IHouseService houseService;
-
-    public byte[] generatePdf(Long contractId, Long houseId) throws IOException {
-        Contract contract = contractService.findContractById(contractId);
-        House house = houseService.findHouseById(houseId);
-
+    @Autowired
+    UserRepository userRepository;
+    public byte[] generatePdf(Contract contract) throws IOException {
+        House house = houseService.findHouseById(contract.getHouseId());
         try (PDDocument document = new PDDocument()) {
             PDPage page = new PDPage(PDRectangle.A4);
             document.addPage(page);
-            try (PDPageContentStream contentStream = new PDPageContentStream(document, page, AppendMode.APPEND, true)) {
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
                 // Positionner le logo en haut à droite de la page
                 // Charger le logo
-           //     PDImageXObject logoImageRight = PDImageXObject.createFromFile("C:/xampp/htdocs/img/Capture d'écran 2024-03-24 194426.png", document);
+                //     PDImageXObject logoImageRight = PDImageXObject.createFromFile("C:/xampp/htdocs/img/Capture d'écran 2024-03-24 194426.png", document);
 
 
 // Obtenir la largeur de la page
@@ -52,7 +55,7 @@ public class PDFGenerator implements IpdfHouse {
                 float logoY = pageHeight - 50; // Décalage de 50 unités vers le bas par rapport à l'extrémité supérieure de la page
 
 // Dessiner le logo sur la page
-               // contentStream.drawImage(logoImageRight, logoX, logoY, 100, 50); // 100 est la largeur du logo, 50 est la hauteur du logo
+                // contentStream.drawImage(logoImageRight, logoX, logoY, 100, 50); // 100 est la largeur du logo, 50 est la hauteur du logo
 
                 contentStream.beginText();
                 contentStream.setFont(PDType1Font.HELVETICA_BOLD, 16);
@@ -131,32 +134,45 @@ public class PDFGenerator implements IpdfHouse {
                 contentStream.showText("raisonnable, sauf en cas d'urgence");
                 contentStream.endText();
                 ClassPathResource resource = new ClassPathResource("images/" + house.getImage());
-                String imagePath = resource.getFile().getPath();
-                // Image de la maison
-           PDImageXObject houseImage = PDImageXObject.createFromFile(imagePath, document);
-                float imageWidth = 200;
-                float imageHeight = 75;
-                float imageX = (page.getMediaBox().getWidth() - imageWidth) / 2f;
-                float imageY = 500;
-                contentStream.drawImage(houseImage, imageX, imageY, imageWidth, imageHeight);
+                byte[] imageData =  house.getImage().getData();
 
+
+
+// Create PDImageXObject from byte array
+                try (InputStream imageInputStream = new ByteArrayInputStream(imageData)) {
+                    PDImageXObject imageObject = PDImageXObject.createFromByteArray(document, imageData, "image");
+
+                    // Image dimensions and position
+                    float imageWidth = 200;
+                    float imageHeight = 75;
+                    float imageX = (page.getMediaBox().getWidth() - imageWidth) / 2f;
+                    float imageY = 500;
+
+                    // Draw the image on the PDF
+                    contentStream.drawImage(imageObject, imageX, imageY, imageWidth, imageHeight);
+                } catch (IOException e) {
+                    // Handle exception
+                    e.printStackTrace();
+                }
                 // Tableau
-                String[] headers = {"Contrat ID", "House ID", "Description du contrat", "Nombre de places", "Type de maison"};
+                Optional<User> user = userRepository.findById(contract.getUserId());
+                String[] headers = {"Owner","Name", "Description contract", "Nombre de places", "Type de maison","Location"};
                 String[] values = {
-                        contract.getIdContract().toString(),
-                        house.getIdHouse().toString(),
+                        contract.getOwner(),
+                        contract.getUname(),
                         contract.getDescription(),
                         house.getPlaces().toString(),
-                        house.getHouseType().toString()
+                        house.getHouseType().toString(),
+                        house.getLocation(),
                 };
 
-                drawTable(contentStream, 400, 500, headers, values, page.getMediaBox().getWidth());
+                drawTable(contentStream, 350, 450, headers, values, page.getMediaBox().getWidth());
 
                 // Images de signature
-               PDImageXObject signatureImageLeft = PDImageXObject.createFromFile("C:\\xampp\\htdocs\\img\\téléchargement.png", document);
-                PDImageXObject signatureImageRight = PDImageXObject.createFromFile("C:\\xampp\\htdocs\\img\\télécharg.png", document);
-               contentStream.drawImage(signatureImageLeft, 50, 50, 100, 50);
-               contentStream.drawImage(signatureImageRight, page.getMediaBox().getWidth() - 150, 50, 100, 50);
+                //PDImageXObject signatureImageLeft = PDImageXObject.createFromFile("C:\\xampp\\htdocs\\img\\téléchargement.png", document);
+                //PDImageXObject signatureImageRight = PDImageXObject.createFromFile("C:\\xampp\\htdocs\\img\\télécharg.png", document);
+                //contentStream.drawImage(signatureImageLeft, 50, 50, 100, 50);
+                //contentStream.drawImage(signatureImageRight, page.getMediaBox().getWidth() - 150, 50, 100, 50);
             }
 
             try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
@@ -168,58 +184,61 @@ public class PDFGenerator implements IpdfHouse {
     }
 
     private static void drawTable(PDPageContentStream contentStream, float yStart, float tableWidth, String[] headers, String[] values, float pageWidth) throws IOException {
+        if (headers.length != values.length) {
+            throw new IllegalArgumentException("Headers and values arrays must have the same length.");
+        }
+
         float margin = 50;
         float yPosition = yStart;
 
-        float rowHeight = 25f; // Réduire légèrement la hauteur des lignes
-        float tableHeight = rowHeight * 2; // Deux lignes : une pour les titres et une pour les valeurs
+        float rowHeight = 20f; // Reduce the row height
+        float tableHeight = rowHeight * 2; // Two rows: one for titles and one for values
 
-        float[] columnWidths = {tableWidth * 0.2f, tableWidth * 0.2f, tableWidth * 0.2f, tableWidth * 0.2f, tableWidth * 0.2f}; // Taille des colonnes ajustée
+        // Adjusted column sizes for a smaller table
+        float[] columnWidths = {tableWidth * 0.2f, tableWidth * 0.2f, tableWidth * 0.2f, tableWidth * 0.2f, tableWidth * 0.2f};
 
-        contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10); // Réduire la taille de la police des titres
+        contentStream.setFont(PDType1Font.HELVETICA_BOLD, 8); // Reduce font size for titles
 
-        // Dessiner les titres dans la première ligne
-        float textY = yPosition - 10; // Réduire l'écart entre les titres et les cellules
+        // Draw headers in the first row
+        float textY = yPosition - 5; // Reduce the gap between titles and cells
         float textX = margin;
         for (int i = 0; i < headers.length; i++) {
-            drawCell(contentStream, textX, textY, columnWidths[i], rowHeight, headers[i], 10f); // Utiliser une taille de police plus petite pour les titres
-            textX += columnWidths[i];
+            int columnIndex = Math.min(i, columnWidths.length - 1); // Ensure columnIndex doesn't exceed the length of columnWidths
+            drawCell(contentStream, textX, textY, columnWidths[columnIndex], rowHeight, headers[i], 8f); // Use a smaller font size for headers
+            textX += columnWidths[columnIndex];
         }
 
-        // Dessiner les valeurs dans la deuxième ligne
-        textY -= rowHeight; // Déplacer vers le bas pour la deuxième ligne
+        // Draw values in the second row
+        textY -= rowHeight; // Move down for the second row
         textX = margin;
         for (int i = 0; i < values.length; i++) {
-            if (i < 2) { // Si c'est une case ID, utiliser une taille de police plus petite
-                drawCell(contentStream, textX, textY, columnWidths[i], rowHeight, values[i], 8f); // Utiliser une taille de police encore plus petite pour les ID
-            } else {
-                drawCell(contentStream, textX, textY, columnWidths[i], rowHeight, values[i], 10f); // Utiliser la même taille de police pour les autres cellules
-            }
-            textX += columnWidths[i];
+            int columnIndex = Math.min(i, columnWidths.length - 1); // Ensure columnIndex doesn't exceed the length of columnWidths
+            drawCell(contentStream, textX, textY, columnWidths[columnIndex], rowHeight, values[i], 8f); // Use a smaller font size for values
+            textX += columnWidths[columnIndex];
         }
     }
 
-
     private static void drawCell(PDPageContentStream contentStream, float x, float y, float width, float height, String text, float fontSize) throws IOException {
         contentStream.setLineWidth(1f);
-        contentStream.setNonStrokingColor(0, 0, 0); // Couleur du texte
+        contentStream.setNonStrokingColor(0, 0, 0); // Text color
         contentStream.addRect(x, y, width, height);
         contentStream.stroke();
         contentStream.beginText();
 
         float lineHeight = height - 2 * 2f;
 
+        // Calculate text width based on font size
         float textWidth = PDType1Font.HELVETICA.getStringWidth(text) / 1000f * fontSize;
-        float textHeight = lineHeight; // Margin haut et bas
 
-        // Centrer le texte horizontalement et verticalement dans la cellule
+        // Center the text horizontally and vertically in the cell
         float offsetX = (width - textWidth) / 2;
-        float offsetY = (textHeight - fontSize) / 2;
-        contentStream.newLineAtOffset(x + offsetX, y + offsetY);
+        float offsetY = (lineHeight - fontSize) / 2;
+
+        // Move text origin to the starting point of the cell content
+        contentStream.newLineAtOffset(x + offsetX, y + 2 + offsetY); // Adding 2 to y to consider the top margin
         contentStream.setFont(PDType1Font.HELVETICA, fontSize);
         contentStream.showText(text);
         contentStream.endText();
     }
 
 }
-
