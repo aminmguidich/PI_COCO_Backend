@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -45,7 +46,7 @@ public class AnnouncementCarpooling {
     public void removeReact(Long reactCarpoolingId){
         int indexToRemove=-1;
         for (int i = 0; i < reactCarpoolingsAnnCarpooling.size(); i++) {
-            if(reactCarpoolingsAnnCarpooling.get(i).getIdReactCarpooling()==reactCarpoolingId){
+            if(Objects.equals(reactCarpoolingsAnnCarpooling.get(i).getIdReactCarpooling(), reactCarpoolingId)){
                 indexToRemove=i;
             }
         }
