@@ -49,7 +49,7 @@ public interface IPost {
     CommentPost addCommenttoPost(CommentPost comment,Long IdPost);
     List<CommentPost> getReplies(Long commentId);
     CommentPost addCommentToComment(CommentPost comment, Long idComm);
-    void updatePostRating(Long postId, int nb_etoil);
+
     ReactPost addReacttoPost(ReactPost react , Long IdPost);
     List<ReactPost> getReactsForPost(Long postId);
     ReactPost addTypeReacttoPost(TypeReactPost typereact , Long IdPost);
@@ -75,4 +75,16 @@ public interface IPost {
     Optional<String> findUserNameAndLastNameByPostId(Long postId);
     Optional<String> findUserCommentPostByIdCommentPost(Long idCommentPost);
 
-}
+    void updatePostRating(Long postId, int nb_etoil);
+    RaitingPost addRaitingPost(long postId, long nbStart);
+    boolean hasUserRatedPost(long postId) ;
+
+    int getNBuserRaited (Long postId);
+
+    double AvrageRaitePost(Long postId);
+
+    void updatePostRate(Long postId);
+
+
+
+    }

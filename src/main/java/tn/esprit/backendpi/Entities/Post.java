@@ -25,7 +25,7 @@ public class Post implements Serializable {
     LocalDate createdAt;
     String body;
     int nb_Signal=0;
-    int nb_etoil=0;
+    double nb_etoil=0;
     String image;
 
     @JsonIgnore

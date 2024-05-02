@@ -203,4 +203,31 @@ public class PostController {
     public void deletePostByTime() {
         service.deletePostByTime();
     }
+
+
+
+    @PostMapping("/addRaitingPost/{postId}/{nbStart}")
+    public RaitingPost addRaitingPost(@PathVariable("postId") long postId,@PathVariable("nbStart") long nbStart) {
+        return service.addRaitingPost(postId, nbStart);
+    }
+
+    @GetMapping("/hasUserRatedPost/{postId}")
+    public boolean hasUserRatedPost(@PathVariable("postId") long postId) {
+        return service.hasUserRatedPost(postId);
+    }
+
+    @GetMapping("/getNBuserRaited/{postId}")
+    public int getNBuserRaited(@PathVariable("postId") Long postId) {
+        return service.getNBuserRaited(postId);
+    }
+
+    @GetMapping("/AvrageRaitePost/{postId}")
+    public double AvrageRaitePost(@PathVariable("postId") Long postId) {
+        return service.AvrageRaitePost(postId);
+    }
+
+   @PutMapping("/updatePostRate/{postId}")
+    public void updatePostRate(@PathVariable("postId")Long postId) {
+        service.updatePostRate(postId);
+    }
 }
