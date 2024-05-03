@@ -9,25 +9,147 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
+
 @Service
 public class EmailService {
 
     @Autowired
     private JavaMailSender javaMailSender;
-
-    public void sendPasswordResetEmail(String email, String resetLink) {
-        SimpleMailMessage mail = new SimpleMailMessage();
-        mail.setTo(email);
-        mail.setSubject("Password Reset");
-        mail.setText("Please click the link below to reset your password:\n" + resetLink);
-
-        try {
-            javaMailSender.send(mail);
-        } catch (MailException e) {
-            // Log error or handle accordingly
-            e.printStackTrace();
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private static final int CODE_LENGTH = 6;
+    public static String generateVerificationCode() {
+        SecureRandom random = new SecureRandom();
+        StringBuilder code = new StringBuilder();
+        for (int i = 0; i < CODE_LENGTH; i++) {
+            int randomIndex = random.nextInt(CHARACTERS.length());
+            code.append(CHARACTERS.charAt(randomIndex));
         }
+        return code.toString();
     }
+    public void sendVerificationCodeByEmail(String email, String verificationCode,String username, JavaMailSender javaMailSender) throws MessagingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(email);
+        helper.setSubject("Verification Code for Your New Account");
+        String htmlContent = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>Account Activation</title>\n" +
+                "    <style>\n" +
+                "        body {\n" +
+                "            font-family: Arial, sans-serif;\n" +
+                "            margin: 0;\n" +
+                "            padding: 0;\n" +
+                "            background-color: #f4f4f4;\n" +
+                "        }\n" +
+                "        .container {\n" +
+                "            max-width: 600px;\n" +
+                "            margin: 10px auto;\n" +
+                "            padding: 20px;\n" +
+                "            background-color: #fff;\n" +
+                "            border-radius: 5px;\n" +
+                "            box-shadow: 0 0 10px rgba(0,0,0,0.1);\n" +
+                "        }\n" +
+                "        .activation-code {\n" +
+                "            font-size: 36px;\n" +
+                "            text-align: center;\n" +
+                "            margin-bottom: 20px;\n" +
+                "        }\n" +
+                "        .activation-link {\n" +
+                "            display: block;\n" +
+                "            text-align: center;\n" +
+                "            margin-top: 20px;\n" +
+                "        }\n" +
+                "        .activation-link a {\n" +
+                "            display: inline-block;\n" +
+                "            padding: 10px 20px;\n" +
+                "            background-color: #007bff;\n" +
+                "            color: #fff;\n" +
+                "            text-decoration: none;\n" +
+                "            border-radius: 5px;\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<div class=\"container\">\n" +
+                "    <h1>Account Activation</h1>\n" +
+                "    <p class=\"greeting\">Hello, "+username+"</p>\n" +
+                "    <p>Thank you for signing up! Please use the following verification code to activate your account:</p>\n" +
+                "    <div class=\"activation-code\">" + verificationCode + "</div>\n" +
+                "    <div class=\"activation-link\">\n" +
+                "        <a href=\"http://localhost:4200/verify\" target=\"_blank\">Activate your account</a>\n" +
+                "    </div>\n" +
+                "</div>\n" +
+                "</body>\n" +
+                "</html>";
+        helper.setText(htmlContent, true);
+
+        javaMailSender.send(message);
+    }
+
+    public void sendPasswordResetEmail(String email, String resetLink, JavaMailSender javaMailSender) throws MessagingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(email);
+        helper.setSubject("Password Reset");
+
+        String htmlContent = "<!DOCTYPE html>\n" +
+                "<html lang=\"en\">\n" +
+                "<head>\n" +
+                "    <meta charset=\"UTF-8\">\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "    <title>Password Reset</title>\n" +
+                "    <style>\n" +
+                "        body {\n" +
+                "            font-family: Arial, sans-serif;\n" +
+                "            margin: 0;\n" +
+                "            padding: 0;\n" +
+                "            background-color: #f4f4f4;\n" +
+                "        }\n" +
+                "        .container {\n" +
+                "            max-width: 600px;\n" +
+                "            margin: 10px auto;\n" +
+                "            padding: 20px;\n" +
+                "            background-color: #fff;\n" +
+                "            border-radius: 5px;\n" +
+                "            box-shadow: 0 0 10px rgba(0,0,0,0.1);\n" +
+                "        }\n" +
+                "        .reset-link {\n" +
+                "            display: block;\n" +
+                "            text-align: center;\n" +
+                "            margin-top: 20px;\n" +
+                "        }\n" +
+                "        .reset-link a {\n" +
+                "            display: inline-block;\n" +
+                "            padding: 10px 20px;\n" +
+                "            background-color: #007bff;\n" +
+                "            color: #fff;\n" +
+                "            text-decoration: none;\n" +
+                "            border-radius: 5px;\n" +
+                "        }\n" +
+                "    </style>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<div class=\"container\">\n" +
+                "    <h1>Password Reset</h1>\n" +
+                "    <p>You requested to reset your password. Please click the button below to proceed:</p>\n" +
+                "    <div class=\"reset-link\">\n" +
+                "        <a href=\"" + resetLink + "\" target=\"_blank\">Reset Password</a>\n" +
+                "    </div>\n" +
+                "</div>\n" +
+                "</body>\n" +
+                "</html>";
+
+        helper.setText(htmlContent, true);
+
+        javaMailSender.send(message);
+    }
+
 
     public void sendQuizEmail(String recipientEmail, String quizContent, String contentt) {
         try {

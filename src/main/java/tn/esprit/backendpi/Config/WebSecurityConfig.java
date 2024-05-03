@@ -1,6 +1,7 @@
 package tn.esprit.backendpi.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,11 +15,18 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.oidc.IdTokenClaimNames;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import tn.esprit.backendpi.Security.Jwt.AuthEntryPointJwt;
 import tn.esprit.backendpi.Security.Jwt.AuthTokenFilter;
 import tn.esprit.backendpi.Security.Services.UserDetailsServiceImpl;
+import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
+
 
 
 @Configuration
@@ -33,6 +41,12 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
+    // Inject OAuth 2.0 properties
+    @Value("${spring.security.oauth2.client.registration.google.client-id}")
+    private String clientId;
+
+    @Value("${spring.security.oauth2.client.registration.google.client-secret}")
+    private String clientSecret;
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
@@ -134,4 +148,24 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
         return http.build();
     }
+    @Bean
+    public ClientRegistrationRepository clientRegistrationRepository() {
+        ClientRegistration registration = ClientRegistration.withRegistrationId("google")
+                .clientId(clientId)
+                .clientSecret(clientSecret)
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .redirectUri("http://localhost:8080/login/oauth2/code/google") // Replace with your actual redirect URI
+                .scope("openid", "profile", "email")
+                .authorizationUri("https://accounts.google.com/o/oauth2/auth")
+                .tokenUri("https://www.googleapis.com/oauth2/v3/token")
+                .userInfoUri("https://openidconnect.googleapis.com/v1/userinfo")
+                .userNameAttributeName(IdTokenClaimNames.SUB)
+                .jwkSetUri("https://www.googleapis.com/oauth2/v3/certs")
+                .clientName("Google")
+                .build();
+        return new InMemoryClientRegistrationRepository(registration);
+    }
+
+
 }

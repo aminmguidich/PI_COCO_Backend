@@ -82,8 +82,10 @@ public class User implements Serializable {
     }
 
     String fullname;
+    String espritId;
+    String niv;
     Long phone;
-    String image;
+    String imageUrl="//ssl.gstatic.com/accounts/ui/avatar_2x.png";
     LocalDate birthDate;
     @Enumerated(EnumType.STRING)
     GenderType gender;
@@ -108,6 +110,14 @@ public class User implements Serializable {
     @ToString.Exclude
     @OneToMany(mappedBy = "userReactPost")
     List<ReactPost>reactPostuser=new ArrayList<>();
+    @Getter
+    @Setter
+    @Column(name = "verification_code")
+    private String verificationCode;
+    @Setter
+    @Getter
+    @Column(name = "is_verified")
+    private boolean verified =false;
 
 
 
