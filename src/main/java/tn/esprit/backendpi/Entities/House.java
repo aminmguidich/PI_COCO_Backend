@@ -18,8 +18,8 @@ public class House {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idHouse;
-    @OneToOne( optional = true, cascade = CascadeType.ALL)
-    private FileDB image;
+
+    String imageUrl;
     @Enumerated(EnumType.STRING)
     HouseType houseType;
     Long places;
@@ -30,10 +30,8 @@ public class House {
     Long userId;
     String title;
     Long price;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JsonIgnore
-    @JoinColumn(name = "user")
-    private User user;
+    int budgetPart;
+
       Boolean contracted=false;
 
     @ToString.Exclude

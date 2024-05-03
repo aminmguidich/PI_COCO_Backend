@@ -21,6 +21,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Optional;
 
 @Service
@@ -133,8 +134,8 @@ public class PDFGenerator implements IpdfHouse {
                 contentStream.newLineAtOffset(50, 600);
                 contentStream.showText("raisonnable, sauf en cas d'urgence");
                 contentStream.endText();
-                ClassPathResource resource = new ClassPathResource("images/" + house.getImage());
-                byte[] imageData =  house.getImage().getData();
+                ClassPathResource resource = new ClassPathResource("images/" + convertUrlImageToByteArray(house.getImageUrl()));
+                byte[] imageData =  convertUrlImageToByteArray(house.getImageUrl());
 
 
 
@@ -181,6 +182,21 @@ public class PDFGenerator implements IpdfHouse {
                         ();
             }
         }
+    }
+
+    public byte[] convertUrlImageToByteArray(String imageUrl) throws IOException {
+        URL url = new URL(imageUrl);
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        try (InputStream inputStream = url.openStream()) {
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        }
+
+        return outputStream.toByteArray();
     }
 
     private static void drawTable(PDPageContentStream contentStream, float yStart, float tableWidth, String[] headers, String[] values, float pageWidth) throws IOException {

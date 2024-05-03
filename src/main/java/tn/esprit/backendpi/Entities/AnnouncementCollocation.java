@@ -28,6 +28,7 @@ public class AnnouncementCollocation {
     String username;
     Long userId;
     String title;
+    String imageUrl;
     @OneToOne( optional = true, cascade = CascadeType.ALL)
     private FileDB image;
 

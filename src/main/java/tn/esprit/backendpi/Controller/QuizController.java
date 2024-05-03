@@ -9,7 +9,7 @@ import tn.esprit.backendpi.Service.Classes.EmailService;
 
 import java.io.IOException;
 import java.util.List;
-@RequestMapping("/House/api")
+@RequestMapping("api/Quiz/")
     @RestController
     @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
     public class QuizController {
@@ -20,7 +20,7 @@ import java.util.List;
 
 
 
-        @GetMapping("/sendQuizByEmail/{id}/{recipientEmail}")
+        @GetMapping("sendQuizByEmail/{id}/{recipientEmail}")
         @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
         public ResponseEntity<String> sendQuizByEmail(@PathVariable Long id, @PathVariable String recipientEmail){
             System.out.println(recipientEmail+"  "+id);

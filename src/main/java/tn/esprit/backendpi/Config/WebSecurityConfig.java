@@ -114,8 +114,9 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/CommandItem/**").permitAll()
                                 .requestMatchers("/api/Delivery/**").permitAll()
                                 .requestMatchers("/api/api/**").permitAll()
-                                .requestMatchers( "/api/Quiz/**").permitAll()
+                                .requestMatchers("api/Quiz/**").permitAll()
                                 .requestMatchers("/api/React/**").permitAll()
+                                .requestMatchers("/api/CommentColl/**").permitAll()
 
 
 

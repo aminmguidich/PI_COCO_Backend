@@ -11,6 +11,9 @@ public interface IHouseService {
     public List<House> getAllHouses();
     public House findHouseById(Long id);
     public House updateHouse(Long id, House newHouse);
+    public House updateHouseDetails(Long id, House newHouse);
+
+
     void deleteHouse(Long id);
     void assignContractToHouse(Long contractId, Long houseId);
     public House ajouterHouse(House house);

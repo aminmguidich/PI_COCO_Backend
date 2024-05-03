@@ -45,6 +45,7 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
         oldAnnouncement.setScore(newAnnouncement.getScore());
         oldAnnouncement.setLikes(newAnnouncement.getLikes());
         oldAnnouncement.setDislikes(newAnnouncement.getDislikes());
+        oldAnnouncement.setNb_etoil(newAnnouncement.getNb_etoil());
 
 
         // Save the changes to the database and return the updated announcement

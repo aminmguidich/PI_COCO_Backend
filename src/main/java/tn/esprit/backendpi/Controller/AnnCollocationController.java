@@ -72,9 +72,9 @@ public class AnnCollocationController {
 
         return ResponseEntity.ok(filteredAnnouncements);
     }
-    @PutMapping("/updateAnnoucementColRating/{idCollocationAnnouncement}/{nb_etoil}")
+    @PutMapping("/updateAnnoucementColRating/{idCollocationAnnouncement}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public void updateAnnoucementColRating(@PathVariable("idCollocationAnnouncement") Long idCollocationAnnouncement, @PathVariable("nb_etoil")int nb_etoil) {
-        annCollocationService.updateAnnoucementColRating(idCollocationAnnouncement, nb_etoil);
+    public void updateAnnoucementColRating(@PathVariable("idCollocationAnnouncement") Long idCollocationAnnouncement,@RequestBody AnnouncementCollocation newann) {
+        annCollocationService.updateAnnouncementCollocation(idCollocationAnnouncement, newann);
     }
 }
