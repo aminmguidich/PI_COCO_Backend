@@ -35,12 +35,8 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
-    // Inject OAuth 2.0 properties
-    @Value("${spring.security.oauth2.client.registration.google.client-id}")
-    private String clientId;
 
-    @Value("${spring.security.oauth2.client.registration.google.client-secret}")
-    private String clientSecret;
+
 
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
