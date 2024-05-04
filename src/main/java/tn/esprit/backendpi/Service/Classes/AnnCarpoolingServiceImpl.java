@@ -21,12 +21,15 @@ public class AnnCarpoolingServiceImpl implements IAnnCarpoolingService {
     @Override
     public AnnouncementCarpooling addAnnCarpooling(AnnouncementCarpooling announcementCarpooling) {
         User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        assert loggedInUser != null;
         announcementCarpooling.setUserAnnCarpooling(loggedInUser);
+
         return annCarpoolingRepository.save(announcementCarpooling);
     }
 
     @Override
     public AnnouncementCarpooling updateAnnCarpooling(AnnouncementCarpooling announcementCarpooling) {
+
         return annCarpoolingRepository.save(announcementCarpooling);
     }
 
@@ -55,5 +58,16 @@ public class AnnCarpoolingServiceImpl implements IAnnCarpoolingService {
     @Override
     public AnnouncementCarpooling getByIdAnnouncementCarpooling(Long id) {
         return annCarpoolingRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return (List<User>) userRepository.findAll();
+    }
+
+    @Override
+    public AnnouncementCarpooling addAnnCarpoolingAdmin(AnnouncementCarpooling announcementCarpooling) {
+
+        return annCarpoolingRepository.save(announcementCarpooling);
     }
 }

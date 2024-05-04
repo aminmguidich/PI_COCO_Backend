@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.backendpi.Entities.AnnouncementCarpooling;
+import tn.esprit.backendpi.Entities.User;
 import tn.esprit.backendpi.Service.Interfaces.IAnnCarpoolingService;
 
 import java.util.List;
@@ -55,4 +56,19 @@ public class AnnCarpoolingController {
     public AnnouncementCarpooling getByIdAnnouncementCarpooling(@PathVariable Long id) {
         return iAnnCarpoolingService.getByIdAnnouncementCarpooling(id);
     }
+
+
+    @GetMapping("/getAllUsers")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+
+    public List<User> getAllUsers() {
+        return iAnnCarpoolingService.getAllUsers();
+    }
+
+    @PostMapping("/addAnnCarpoolingAdmin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public AnnouncementCarpooling addAnnCarpoolingAdmin(@RequestBody AnnouncementCarpooling announcementCarpooling) {
+        return iAnnCarpoolingService.addAnnCarpoolingAdmin(announcementCarpooling);
+    }
+
 }
