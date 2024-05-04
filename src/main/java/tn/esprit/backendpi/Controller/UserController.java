@@ -115,7 +115,7 @@ public class UserController {
 
             // Resolve the upload path
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-            Path uploadPath = Paths.get("C:/xampp/htdocs/images/");
+            Path uploadPath = Paths.get("/Applications/XAMPP/xamppfiles/htdocs/images");
 
             // Ensure the directory exists, create it if not
             if (!Files.exists(uploadPath)) {
@@ -156,7 +156,7 @@ public class UserController {
 
             // Resolve the upload path
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-            Path uploadPath = Paths.get("C:/xampp/htdocs/images/");
+            Path uploadPath = Paths.get("/Applications/XAMPP/xamppfiles/htdocs/images");
 
             // Ensure the directory exists, create it if not
             if (!Files.exists(uploadPath)) {
