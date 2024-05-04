@@ -40,6 +40,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

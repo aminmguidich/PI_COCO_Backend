@@ -117,6 +117,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/Command/**").permitAll()
                                 .requestMatchers("/api/CommandItem/**").permitAll()
                                 .requestMatchers("/api/Delivery/**").permitAll()
+                                .requestMatchers("/api/ws").permitAll() // Allow access to WebSocket endpoint
                                 .requestMatchers("/api/api/**").permitAll()
                                 .requestMatchers("api/Quiz/**").permitAll()
                                 .requestMatchers("/api/React/**").permitAll()

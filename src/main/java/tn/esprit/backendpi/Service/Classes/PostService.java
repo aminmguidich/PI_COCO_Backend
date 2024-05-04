@@ -9,10 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import tn.esprit.backendpi.Entities.*;
-import tn.esprit.backendpi.Repository.CommentPostRepository;
-import tn.esprit.backendpi.Repository.PostRepository;
-import tn.esprit.backendpi.Repository.ReactPostRepository;
-import tn.esprit.backendpi.Repository.UserRepository;
+import tn.esprit.backendpi.Repository.*;
 import tn.esprit.backendpi.Service.Interfaces.IPost;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -20,6 +17,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
@@ -32,6 +31,7 @@ public class PostService implements IPost {
     ReactPostRepository reactPostRepository;
     UserRepository userRepository;
     JavaMailSender javaMailSender;
+    RaitingPostRepository raitingPostRepository;
 
 
     /*********     Post     **********/
@@ -68,7 +68,29 @@ public class PostService implements IPost {
     @Override
     public ReactPost retrieveReactPost(long idReactPost) {return reactPostRepository.findById(idReactPost).orElse(null);}
     @Override
-    public void removeReactPost(long idReactPost) {reactPostRepository.deleteById(idReactPost);}
+    public void removeReactPost(long idReactPost) {
+
+        //reactPostRepository.deleteById(idReactPost);
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+
+        ReactPost reactPost = reactPostRepository.findById(idReactPost).orElse(null);
+
+        if (reactPost != null) {
+            if (reactPost.getUserReactPost().getId().equals(loggedInUser.getId())) {
+                reactPostRepository.deleteById(idReactPost);
+            }
+            else
+            {
+                System.out.println("you are not able to delete this react");
+            }
+
+        }
+    }
+
+
+
+
+
 
 
 
@@ -104,11 +126,86 @@ public class PostService implements IPost {
         comment.setUserCommentPost(loggedInUser);
         return commentPostRepository.save(comment) ;    }
 
+
+
+    @Override
+    public RaitingPost addRaitingPost(long postId, long nbStart) {
+        RaitingPost rate = new RaitingPost();
+        //currnt user
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        rate.setUserRaitingPost(loggedInUser);
+        rate.setNbrStars(nbStart);
+
+        Post post = postRepository.findById(postId).orElse(null);
+        rate.getPostRaiting().add(post);
+        raitingPostRepository.save(rate);
+        updatePostRate(postId);
+        return  rate;
+    }
+
+    @Override
+    public boolean hasUserRatedPost(long postId) {
+        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+
+        RaitingPost rating = raitingPostRepository.findByUserRaitingPostAndPostRaitingIdPost(loggedInUser, postId);
+        return rating != null;
+    }
+
+    @Override
+    public int getNBuserRaited(Long postId) {
+        return raitingPostRepository.countUsersReactedToPost(postId);
+    }
+
+    @Override
+    public double AvrageRaitePost(Long postId) {
+        int totalRating = raitingPostRepository.countRatingsForPost(postId);
+        int numberOfRatings = raitingPostRepository.calculateSumOfRatingsForPost(postId); // Total number of users rated
+
+        // Check if totalRate is not zero to avoid division by zero
+        if (totalRating != 0) {
+            double percentage = (totalRating / (double) numberOfRatings) * 100;
+            // Round the percentage to two decimal places
+            return Math.round(percentage * 100.0) / 100.0;
+        } else {
+            return 0.0;
+        }
+    }
+
+    //l9dima
     public void updatePostRating(Long postId, int nb_etoil) {
         Post post = postRepository.findById(postId).get();
         post.setNb_etoil(nb_etoil);
         postRepository.save(post);
     }
+    @Override
+    public void updatePostRate(Long postId) {
+        Post post = postRepository.findById(postId).get();
+        double moy= AvrageRaitePost(postId);
+        post.setNb_etoil(moy);
+        postRepository.save(post);
+    }
+
+    @Override
+    public ReactPost checkExistingReaction(Long postId, TypeReactPost reactionType) {
+
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        Post post = postRepository.findById(postId).orElse(null);
+        return reactPostRepository.findByPostAndUserReactPostAndTypeReact(post, loggedInUser, reactionType);
+    }
+    @Override
+    public void updateReact(Long idPost, ReactPost r) {
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        ReactPost existingReact = reactPostRepository.findByPostIdAndUserReactPostId(idPost,loggedInUser.getId());
+        if (existingReact != null) {
+            // Mettre à jour la réaction existante
+            existingReact.setTypeReact(r.getTypeReact());
+            reactPostRepository.save(existingReact);
+        }
+        else{
+            System.out.println("user n'a pas des react ");
+        }
+    }
+
 
     @Override
     public ReactPost addReacttoPost(ReactPost react, Long IdPost) {
@@ -126,15 +223,16 @@ public class PostService implements IPost {
 
     @Override
     public ReactPost addTypeReacttoPost(TypeReactPost typereact, Long IdPost) {
+        System.out.println(typereact);
         Post p =   postRepository.findById(IdPost).get();
         ReactPost reactPost = new ReactPost();
         //currnt user
-        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
-        reactPost.setUserReactPost(loggedInUser);
+        //User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        //reactPost.setUserReactPost(loggedInUser);
 
         reactPost.setTypeReact(typereact);
         reactPost.setPost(p);
-        System.out.println(loggedInUser);
+        //System.out.println(loggedInUser);
 
         return reactPostRepository.save(reactPost);
     }
@@ -170,7 +268,7 @@ public class PostService implements IPost {
         List<Post> posts = new ArrayList<>();
         postRepository.findAll().forEach(posts::add);
 
-        int etoile = 0;
+        double etoile = 0;
         Post post = null;
         for(Post p : posts){
             if(p.getNb_etoil()>etoile){
@@ -300,6 +398,23 @@ public class PostService implements IPost {
             postRepository.save(post);
             return "add successfuly" ;
         }
+    }
+
+    @Override
+    public boolean countByUserReactPost(Long idPost) {
+        Post post = postRepository.findById(idPost).orElse(null);
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        return (reactPostRepository.countByPostAndUserReactPost(post,loggedInUser)==0);
+    }
+
+    @Override
+    public Optional<String> findUserNameAndLastNameByPostId(Long postId) {
+        return postRepository.findUserPostUsernameByPostId(postId);
+    }
+
+    @Override
+    public Optional<String> findUserCommentPostByIdCommentPost(Long idCommentPost) {
+        return commentPostRepository.findUserCommentPostByIdCommentPost(idCommentPost);
     }
 
     //  @Scheduled(fixedRate = 86400000 ) //la méthode sera exécutée toutes les 24 heures, car fixedRate est défini à 86400000 millisecondes,

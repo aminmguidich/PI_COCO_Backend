@@ -1,12 +1,14 @@
 package tn.esprit.backendpi.Controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.backendpi.Entities.*;
 import tn.esprit.backendpi.Service.Classes.PostService;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -46,14 +48,38 @@ public class PostController {
     @GetMapping("/retrieveReactPost/{id}")
     public ReactPost retrieveReactPost(@PathVariable("id") long idReactPost) {return service.retrieveReactPost(idReactPost);}
     @DeleteMapping("/removeReactPost/{id}")
+    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public void removeReactPost(@PathVariable("id") long idReactPost) {service.removeReactPost(idReactPost);}
-
-
-    @PostMapping("/addReacttoPost/{id}")
+    @GetMapping("/checkExistingReaction/{postId}/{reactionType}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
-        return service.addReacttoPost(react, IdPost);
+    public ResponseEntity<ReactPost> checkExistingReaction(@PathVariable("postId") Long postId, @PathVariable("reactionType") String reactionTypeString) {
+        TypeReactPost reactionType = TypeReactPost.valueOf(reactionTypeString.toUpperCase());
+        ReactPost existingReaction = service.checkExistingReaction(postId, reactionType);
+        if (existingReaction != null) {
+            return ResponseEntity.ok(existingReaction);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
+
+
+    @GetMapping("/countByUserReactPost/{idPost}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public boolean countByUserReactPost(@PathVariable("idPost") Long idPost) {
+        return service.countByUserReactPost(idPost);
+    }
+
+    @GetMapping("/findUserNameAndLastNameByPostId/{postId}")
+    public Optional<String> findUserNameAndLastNameByPostId(@PathVariable("postId") Long postId) {
+        return service.findUserNameAndLastNameByPostId(postId);
+    }
+
+    @GetMapping("/findUserCommentPostByIdCommentPost/{idCommentPost}")
+    public Optional<String> findUserCommentPostByIdCommentPost(@PathVariable("idCommentPost") Long idCommentPost) {
+        return service.findUserCommentPostByIdCommentPost(idCommentPost);
+    }
+
     /*************** AVAMCEE ****************/
 
     @GetMapping("/retrieveAllPost")
@@ -99,17 +125,26 @@ public class PostController {
         return service.addCommentToComment(comment, idComm);
     }
     @PutMapping("/updatePostRating/{postId}/{nb_etoil}")
-   // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public void updatePostRating(@PathVariable("postId") Long postId,@PathVariable("nb_etoil") int nb_etoil) {
         service.updatePostRating(postId, nb_etoil);
     }
 
 
     @PostMapping("/addTypeReacttoPost/{IdPost}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-    public ReactPost addTypeReacttoPost(@RequestBody TypeReactPost typereact, @PathVariable("IdPost") Long IdPost) {
+    // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ReactPost addTypeReacttoPost(@RequestBody TypeReactPost typereact,
+                                        @PathVariable("IdPost") Long IdPost) {
+        System.out.println(typereact);
         return service.addTypeReacttoPost(typereact, IdPost);
     }
+    //////tekhdeeeeemm
+    @PostMapping("/addReacttoPost/{id}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public ReactPost addReacttoPost(@RequestBody ReactPost react,@PathVariable("id") Long IdPost) {
+        return service.addReacttoPost(react, IdPost);
+    }
+
 
     @PostMapping("/addReactToComment/{idcomment}")
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
@@ -167,5 +202,38 @@ public class PostController {
     @DeleteMapping("/deletePostByTime")
     public void deletePostByTime() {
         service.deletePostByTime();
+    }
+
+
+
+    @PostMapping("/addRaitingPost/{postId}/{nbStart}")
+    public RaitingPost addRaitingPost(@PathVariable("postId") long postId,@PathVariable("nbStart") long nbStart) {
+        return service.addRaitingPost(postId, nbStart);
+    }
+
+    @GetMapping("/hasUserRatedPost/{postId}")
+    public boolean hasUserRatedPost(@PathVariable("postId") long postId) {
+        return service.hasUserRatedPost(postId);
+    }
+
+    @GetMapping("/getNBuserRaited/{postId}")
+    public int getNBuserRaited(@PathVariable("postId") Long postId) {
+        return service.getNBuserRaited(postId);
+    }
+
+    @GetMapping("/AvrageRaitePost/{postId}")
+    public double AvrageRaitePost(@PathVariable("postId") Long postId) {
+        return service.AvrageRaitePost(postId);
+    }
+
+   @PutMapping("/updatePostRate/{postId}")
+    public void updatePostRate(@PathVariable("postId")Long postId) {
+        service.updatePostRate(postId);
+    }
+
+
+    @PutMapping("/updateReact/{idPost}")
+    public void updateReact(@PathVariable("idPost")  Long idPost, @RequestBody ReactPost r) {
+        service.updateReact(idPost, r);
     }
 }

@@ -3,6 +3,7 @@ package tn.esprit.backendpi.Service.Interfaces;
 import tn.esprit.backendpi.Entities.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IPost {
 
@@ -39,6 +40,7 @@ public interface IPost {
     ReactPost retrieveReactPost(long idReactPost);
 
     void removeReactPost(long idReactPost);
+    ReactPost checkExistingReaction(Long postId, TypeReactPost reactionType);
 
 
     /******* AVANCEE ******/
@@ -47,7 +49,7 @@ public interface IPost {
     CommentPost addCommenttoPost(CommentPost comment,Long IdPost);
     List<CommentPost> getReplies(Long commentId);
     CommentPost addCommentToComment(CommentPost comment, Long idComm);
-    void updatePostRating(Long postId, int nb_etoil);
+
     ReactPost addReacttoPost(ReactPost react , Long IdPost);
     List<ReactPost> getReactsForPost(Long postId);
     ReactPost addTypeReacttoPost(TypeReactPost typereact , Long IdPost);
@@ -55,16 +57,35 @@ public interface IPost {
     ReactPost addReactToComment(TypeReactPost typereact ,Long idcomment ) ;
     public Post MeilleurPost() ;
     String AddWithoutBadWord(Post post);
-        //apres authentification
+    //apres authentification
 
     String UserAddPost(Post post, Long idUser) ;
     CommentPost UseraddComment(CommentPost comment ,Long IdPost, Long idUser) ;
     CommentPost UseraddCommentToComment(CommentPost comment, Long idComm, Long idUser);
-     ReactPost UseraddReacttoPost(ReactPost react , Long IdPost, Long idUser);
-     ReactPost UseraddReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
+    ReactPost UseraddReacttoPost(ReactPost react , Long IdPost, Long idUser);
+    ReactPost UseraddReactToComment(ReactPost react ,Long idcomment , Long idUser) ;
     void deletePostByTime();
     void reportPost(Long IdPost);
-     void UpdatereportPost(Long postId) ;
+    void UpdatereportPost(Long postId) ;
 
-        String UserAddWithoutBadWord(Post post, Long idUser);
+    String UserAddWithoutBadWord(Post post, Long idUser);
+
+    boolean countByUserReactPost(Long idPost);
+
+    Optional<String> findUserNameAndLastNameByPostId(Long postId);
+    Optional<String> findUserCommentPostByIdCommentPost(Long idCommentPost);
+
+    void updatePostRating(Long postId, int nb_etoil);
+    RaitingPost addRaitingPost(long postId, long nbStart);
+    boolean hasUserRatedPost(long postId) ;
+
+    int getNBuserRaited (Long postId);
+
+    double AvrageRaitePost(Long postId);
+
+    void updatePostRate(Long postId);
+
+    void updateReact(Long idPost,ReactPost r);
+
+
     }

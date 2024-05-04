@@ -1,4 +1,4 @@
-package tn.esprit.backendpi.Config;
+package tn.esprit.backendpi.Configuration;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
