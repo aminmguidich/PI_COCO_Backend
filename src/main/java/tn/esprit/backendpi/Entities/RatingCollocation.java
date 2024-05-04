@@ -16,11 +16,17 @@ import java.util.List;
 public class RatingCollocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idCarpoolingRating;
+    Long idCollocationRating;
     Long nbrStars;
-
+    String comment;
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToMany(mappedBy = "ratingCollocationsAnnCollocation")
-    List<AnnouncementCollocation>announcementCollocationsRating;
+    List<AnnouncementCollocation>announcementCollocationsRating=new ArrayList<>();
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     User userRatingCollocation;
+
+
 }

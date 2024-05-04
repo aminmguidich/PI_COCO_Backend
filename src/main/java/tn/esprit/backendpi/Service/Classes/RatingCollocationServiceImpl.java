@@ -8,6 +8,7 @@ import tn.esprit.backendpi.Repository.RatingCollocationRepository;
 import tn.esprit.backendpi.Service.Interfaces.IRatingCollocationService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +28,7 @@ public class RatingCollocationServiceImpl implements IRatingCollocationService {
 
 
         existingRating.setNbrStars(newRating.getNbrStars());
+        existingRating.setComment(newRating.getComment());
 
 
         // Save the modifications in the database and return the updated rating
@@ -50,4 +52,8 @@ public class RatingCollocationServiceImpl implements IRatingCollocationService {
     public void deleteRating(Long id) {
         ratingCollocationRepository.deleteById(id);
     }
+
+
+
+
 }

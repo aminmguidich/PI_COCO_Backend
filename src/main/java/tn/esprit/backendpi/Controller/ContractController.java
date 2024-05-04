@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/Contract")
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials="true")
 public class ContractController {
     private final IContractService contractService;
 
@@ -42,7 +42,6 @@ public class ContractController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public void deleteContract(@PathVariable Long id) {
         contractService.deleteContract(id);
     }

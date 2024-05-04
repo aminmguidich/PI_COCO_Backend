@@ -20,4 +20,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<String> findImageUrlByUsername(String username);
 
 
+    User getUserById(Long userId);
 }

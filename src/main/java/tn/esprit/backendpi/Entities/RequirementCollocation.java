@@ -22,14 +22,20 @@ public class RequirementCollocation {
     LocalDate dateCarpoolingCollocation;
     Float budgetPart;
     LocalDate universityYear;
+    LocalDate startDate;
     Boolean status;
-
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToMany(mappedBy = "requirementCollocationsUser")
-    List<User>usersRequirementCollocations;
+    List<User>usersRequirementCollocations=new ArrayList<>();
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     AnnouncementCollocation announcementCollocationReq;
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToMany
-    List<Contract>contractsReqColl;
+    List<Contract>contractsReqColl=new ArrayList<>();
 
 
 }

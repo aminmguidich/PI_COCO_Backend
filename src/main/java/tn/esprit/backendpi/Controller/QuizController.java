@@ -9,7 +9,7 @@ import tn.esprit.backendpi.Service.Classes.EmailService;
 
 import java.io.IOException;
 import java.util.List;
-
+@RequestMapping("api/Quiz/")
     @RestController
     @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
     public class QuizController {
@@ -18,11 +18,15 @@ import java.util.List;
         private EmailService emailService;
 
 
-        @PostMapping("/api/sendQuizByEmail")
-        @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
-        public ResponseEntity<String> sendQuizByEmail(@RequestBody String recipientEmail) {
-            String quizFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSc-9bgjfxmU18PWXvEtjH_DyY51roGYTv_yJ7iSIMcv1HnM-Q/viewform?usp=sf_link"; // Lien vers votre formulaire Google
 
+
+        @GetMapping("sendQuizByEmail/{id}/{recipientEmail}")
+        @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+        public ResponseEntity<String> sendQuizByEmail(@PathVariable Long id, @PathVariable String recipientEmail){
+            System.out.println(recipientEmail+"  "+id);
+            //String quizFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSc-9bgjfxmU18PWXvEtjH_DyY51roGYTv_yJ7iSIMcv1HnM-Q/viewform?usp=sf_link"; // Lien vers votre formulaire Google
+            String quizFormLink ="http://localhost:4200/quiz/"+id;
+            System.out.println(quizFormLink);
             // Construire le contenu de l'e-mail
             String emailContent = "Bonjour,\n\nVeuillez remplir ce quiz : " + quizFormLink;
 

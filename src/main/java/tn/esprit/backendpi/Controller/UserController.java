@@ -2,6 +2,7 @@ package tn.esprit.backendpi.Controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +20,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.webjars.NotFoundException;
+import tn.esprit.backendpi.Entities.House;
+import tn.esprit.backendpi.Entities.User;
+import tn.esprit.backendpi.Repository.UserRepository;
+import tn.esprit.backendpi.Service.Interfaces.IUserService;
+
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
@@ -31,6 +38,9 @@ public class UserController {
     IUserService iUserService;
     UserRepository userRepository;
     CarRepository carRepository;
+
+    @Autowired
+    UserRepository userRepo;
 
 
     @GetMapping("/retrieve")
@@ -190,4 +200,23 @@ public class UserController {
         return ResponseEntity.ok(savedUser);
     }
 
+
+    @PutMapping("/updateUserDetails/{id}")
+// Allow access for users with USER or ADMIN roles
+    public User updateByAyari(@PathVariable("id") Long id, @RequestBody User updatedUser) {
+        System.out.println(id);
+        User existingUser = userRepo.findById(id)
+                .orElseThrow(() -> new NotFoundException("User not found with ID : " + id));
+
+        existingUser.setScore(updatedUser.getScore());
+        // Update other fields if necessary
+
+        return userRepo.save(existingUser);
+
+    }
+
+    @GetMapping("/all")
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
+    }
 }

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
-import tn.esprit.backendpi.Entities.Adress;
 import tn.esprit.backendpi.Entities.AnnouncementCollocation;
 import tn.esprit.backendpi.Entities.House;
 import tn.esprit.backendpi.Entities.User;
@@ -26,13 +25,13 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
     private AnnCollocationRepository annCollocationRepository;
     private final UserRepository userRepository;
 
-
     @Override
     public AnnouncementCollocation addAnnouncementCollocation(AnnouncementCollocation announcement) {
-        User loggedInUser=userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
-        announcement.setUserAnnCollocation(loggedInUser);
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        announcement.setUserAnnCollocation(loggedInUser); // Assuming this method sets the user for the announcement collocation
         return annCollocationRepository.save(announcement);
     }
+
 
     @Override
     public AnnouncementCollocation updateAnnouncementCollocation(Long id, AnnouncementCollocation newAnnouncement) {
@@ -44,6 +43,10 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
         oldAnnouncement.setDescription(newAnnouncement.getDescription());
         oldAnnouncement.setBudgetPart(newAnnouncement.getBudgetPart());
         oldAnnouncement.setScore(newAnnouncement.getScore());
+        oldAnnouncement.setLikes(newAnnouncement.getLikes());
+        oldAnnouncement.setDislikes(newAnnouncement.getDislikes());
+        oldAnnouncement.setNb_etoil(newAnnouncement.getNb_etoil());
+
 
         // Save the changes to the database and return the updated announcement
         return annCollocationRepository.save(oldAnnouncement);
@@ -84,7 +87,14 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
     }
 
     @Override
-    public List<AnnouncementCollocation> filterAnnouncements(String description, Integer score, Float budgetPart) {
+    public List<AnnouncementCollocation> filterAnnouncements(String description, int score, Float budgetPart) {
+        return null;
+    }
+
+
+    /*
+    @Override
+    public List<AnnouncementCollocation> filterAnnouncements(String description, int score, Float budgetPart) {
         List<AnnouncementCollocation> allAnnouncements = annCollocationRepository.findAll();
 
         // Liste pour stocker les annonces filtrées
@@ -112,6 +122,13 @@ public class AnnCollocationServiceImpl implements IAnnCollocationService {
         }
 
         return filteredAnnouncements;
+    }
+*/
+    @Override
+    public void updateAnnoucementColRating(Long idCollocationAnnouncement, int nb_etoil) {
+        AnnouncementCollocation announcementCollocation =annCollocationRepository.findById(idCollocationAnnouncement).get();
+        announcementCollocation.setNb_etoil(nb_etoil);
+        annCollocationRepository.save(announcementCollocation);
     }
 
 
