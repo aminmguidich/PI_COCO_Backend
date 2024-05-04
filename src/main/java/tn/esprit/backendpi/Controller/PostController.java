@@ -230,4 +230,10 @@ public class PostController {
     public void updatePostRate(@PathVariable("postId")Long postId) {
         service.updatePostRate(postId);
     }
+
+
+    @PutMapping("/updateReact/{idPost}")
+    public void updateReact(@PathVariable("idPost")  Long idPost, @RequestBody ReactPost r) {
+        service.updateReact(idPost, r);
+    }
 }

@@ -87,13 +87,7 @@ public class PostService implements IPost {
         }
     }
 
-    @Override
-    public ReactPost checkExistingReaction(Long postId, TypeReactPost reactionType) {
 
-        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
-        Post post = postRepository.findById(postId).orElse(null);
-        return reactPostRepository.findByPostAndUserReactPostAndTypeReact(post, loggedInUser, reactionType);
-    }
 
 
 
@@ -189,6 +183,27 @@ public class PostService implements IPost {
         double moy= AvrageRaitePost(postId);
         post.setNb_etoil(moy);
         postRepository.save(post);
+    }
+
+    @Override
+    public ReactPost checkExistingReaction(Long postId, TypeReactPost reactionType) {
+
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        Post post = postRepository.findById(postId).orElse(null);
+        return reactPostRepository.findByPostAndUserReactPostAndTypeReact(post, loggedInUser, reactionType);
+    }
+    @Override
+    public void updateReact(Long idPost, ReactPost r) {
+        User loggedInUser = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).orElse(null);
+        ReactPost existingReact = reactPostRepository.findByPostIdAndUserReactPostId(idPost,loggedInUser.getId());
+        if (existingReact != null) {
+            // Mettre à jour la réaction existante
+            existingReact.setTypeReact(r.getTypeReact());
+            reactPostRepository.save(existingReact);
+        }
+        else{
+            System.out.println("user n'a pas des react ");
+        }
     }
 
 

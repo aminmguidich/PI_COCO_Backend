@@ -85,6 +85,7 @@ public interface IPost {
 
     void updatePostRate(Long postId);
 
+    void updateReact(Long idPost,ReactPost r);
 
 
     }
