@@ -219,4 +219,17 @@ public class UserController {
     public List<User> getAllUsers() {
         return userRepo.findAll();
     }
+
+    @GetMapping("/retrieve/{idUser}")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
+    public ResponseEntity<User> retrieveUser(@PathVariable("idUser") long idUser) {
+        User user = iUserService.retrieveUser(idUser);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }

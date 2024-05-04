@@ -7,5 +7,6 @@ import java.util.List;
 public interface IUserService { ;
     List<User> retrieveAllUsers();
     User update(User user);
+    public User retrieveUser(long idUser);
 
 }
