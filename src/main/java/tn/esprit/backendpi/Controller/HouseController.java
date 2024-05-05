@@ -153,7 +153,7 @@ public class HouseController {
         House house = new ObjectMapper().readValue(houseD, House.class);
 
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        String uploadDir = "C:/Users/hama/Desktop/xamm/htdocs/imagesProjectSpringBootAngular"; // Specify your upload directory here
+        String uploadDir = "/Applications/XAMPP/xamppfiles/htdocs/images"; // Specify your upload directory here
         Path uploadPath = Paths.get(uploadDir);
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
@@ -161,7 +161,7 @@ public class HouseController {
         try (InputStream inputStream = file.getInputStream()) {
             Path filePath = uploadPath.resolve(fileName);
             Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-            String imageUrl = "http://localhost/imagesProjectSpringBootAngular/" + fileName;
+            String imageUrl = "http://localhost/images/" + fileName;
             house.setImageUrl(imageUrl);
             System.out.println(imageUrl);
         } catch (IOException ex) {
