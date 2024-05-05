@@ -27,7 +27,7 @@ public class EmailServiceImpl implements IEmailService {
         emailSender.send(mimeMessage);
     }
 
-    public static String htmlTemplate (String productName,String receiverName,String senderName){
+    public static String htmlTemplate (String productName,String receiverName,String senderName,String Description){
         return ("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
                 "<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                 "  <head>\n" +
@@ -489,7 +489,7 @@ public class EmailServiceImpl implements IEmailService {
                 "                    <td class=\"content-cell\">\n" +
                 "                      <div class=\"f-fallback\">\n" +
                 "                        <h1>Hi, "+receiverName+"!</h1>\n" +
-                "                        <p>"+senderName+" would like to ride with you //TODO:change this message. Use the button below to accept:</p>\n" +
+                "                        <p>"+senderName+" would like to ride with you<br/> Message: "+ Description +"<br/>Use the button below to accept:</p>\n" +
                 "                        <!-- Action -->\n" +
                 "                        <table class=\"body-action\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\">\n" +
                 "                          <tr>\n" +
