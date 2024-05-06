@@ -20,31 +20,31 @@ public class CategorieController {
     CategorieServiceImpl categorieService;
 
         @PostMapping("/add")
-        @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
+       // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
         public Categorie addCategorie(@RequestBody Categorie categorie) {
             return categorieService.addCategorie(categorie);
         }
 
         @PutMapping("/update")
-        @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
+       // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
         public Categorie updateCategorie(@RequestBody Categorie categorie) {
             return categorieService.updateCategorie(categorie);
         }
 
         @DeleteMapping("/remove/{id}")
-        @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
+      //  @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
         public void removeCategorie(@PathVariable long id) {
             categorieService.removeCategorie(id);
         }
 
         @GetMapping("/retrieveAll")
-        @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
+       // @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
         public List<Categorie> retrieveAllCtegorie() {
             return categorieService.retrieveCtegorie();
         }
 
         @GetMapping("/retrieve/{id}")
-        @PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
+        //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')") // Allow access for users with USER or ADMIN roles
         public Categorie retrieveCategorie(@PathVariable long id) {
             return categorieService.retrieveCategorie(id);
         }

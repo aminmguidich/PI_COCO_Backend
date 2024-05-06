@@ -17,10 +17,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import tn.esprit.backendpi.Security.Jwt.AuthEntryPointJwt;
 import tn.esprit.backendpi.Security.Jwt.AuthTokenFilter;
 import tn.esprit.backendpi.Security.Services.UserDetailsServiceImpl;
 
+import java.util.Collections;
 
 
 @Configuration
@@ -118,7 +122,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
                                 .requestMatchers("/api/CommandItem/**").permitAll()
                                 .requestMatchers("/api/Delivery/**").permitAll()
                                 .requestMatchers("/api/ws").permitAll() // Allow access to WebSocket endpoint
-                                .requestMatchers("/api/api/**").permitAll()
+                                .requestMatchers("/api/market/**").permitAll()
                                 .requestMatchers("api/Quiz/**").permitAll()
                                 .requestMatchers("/api/React/**").permitAll()
                                 .requestMatchers("/api/CommentColl/**").permitAll()
@@ -141,7 +145,20 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }
+    }/*
+    @Bean
+    CorsConfigurationSource corsConfigurationSource(){
+        CorsConfiguration corsConfiguration=new CorsConfiguration();
+
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.setAllowCredentials(false);
+        // corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.setAllowedOrigins(Collections.singletonList("*"));
+        UrlBasedCorsConfigurationSource corsConfigurationSource=new UrlBasedCorsConfigurationSource();
+        corsConfigurationSource.registerCorsConfiguration("/**",corsConfiguration);
+        return corsConfigurationSource;
+    }*/
 
 
 

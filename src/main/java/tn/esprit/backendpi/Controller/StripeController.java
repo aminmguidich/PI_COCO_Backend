@@ -3,6 +3,7 @@ package tn.esprit.backendpi.Controller;
 import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.stripe.Stripe;
@@ -10,15 +11,19 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 import tn.esprit.backendpi.Entities.CheckoutPayment;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/api")
+@RequestMapping("/api/market")
+
+//@CrossOrigin(origins = "*")
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true", allowedHeaders = {"Authorization", "Content-Type"})
+
 public class
 StripeController {
 
@@ -26,11 +31,12 @@ StripeController {
     private final String stripePublicKey = "your_stripe_public_key";
 
     @PostMapping("/payment")
+
     public ResponseEntity<?> createCheckoutSession(@RequestBody Map<String, Object> requestBody) {
-        try {
+       try {
             Stripe.apiKey = stripeSecretKey;
 
-            Map<String, Object> params = new HashMap<>();
+           Map<String, Object> params = new HashMap<>();
             params.put("payment_method_types", List.of("card"));
             params.put("line_items", requestBody.get("items"));
             params.put("mode", "payment");

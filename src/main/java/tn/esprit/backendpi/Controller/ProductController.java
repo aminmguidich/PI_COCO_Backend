@@ -3,6 +3,7 @@ package tn.esprit.backendpi.Controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tn.esprit.backendpi.Entities.Email;
@@ -30,7 +31,7 @@ public class ProductController {
     IProductService productService;
     @Autowired
     CategorieServiceImpl categorieService;
-    public static String UPLOAD_DIRECTORY = "C:\\Users\\Lenovo\\Desktop\\pi_spring2\\Frentendv2\\COCO-ESPRIT\\COCO-ESPRIT\\src\\assets\\documents\\";
+    public static String UPLOAD_DIRECTORY = "C://Users//Lenovo//Desktop//piv5//frentendv5 3//frentendv5 2//COCO-ESPRIT//COCO-ESPRIT//src//assets//documents//";
 
     @Autowired
     private EmailService emailService;
@@ -47,6 +48,7 @@ public class ProductController {
     }
 
     @PostMapping("/add")
+    //@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public Product addProduct2(@RequestParam("img") MultipartFile img, @RequestParam("description") String description, @RequestParam("price") float price, @RequestParam("title") String title, @RequestParam("status") String status, @RequestParam("categorie") Long idCategorie) throws IOException {
         Product pr = new Product();
         pr.setDescription(description);

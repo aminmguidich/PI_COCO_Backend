@@ -5,7 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.backendpi.Dto.OrderDto;
 import tn.esprit.backendpi.Entities.Command;
+import tn.esprit.backendpi.Entities.Product;
 import tn.esprit.backendpi.Entities.User;
 import tn.esprit.backendpi.Repository.UserRepository;
 import tn.esprit.backendpi.Service.Interfaces.ICommandService;
@@ -109,6 +111,20 @@ System.err.println(cm);
     @GetMapping("/retrieveCommand/{idCommand}")
     public Command retrieveCommand(@PathVariable("idCommand") long idCommand) {
         return commandService.retrieveCommand(idCommand);
+    }
+    @PostMapping("/addpanier/{u}/{q}/{t}")
+    public Command ajouterPanier(@RequestBody List<Product> products,@PathVariable("u") String user,@PathVariable("q") String adress, @PathVariable("t") Long tel){
+       return   commandService.ajouterPanier(products,user,adress,tel);
+    }
+    @PutMapping("/mise/{id}")
+    public  void  miseajourstatus( @PathVariable Long id){
+
+
+        commandService.payerCommande(id);
+    }
+    @GetMapping("/allorder")
+    public List<OrderDto> getaLLoRDER(){
+        return  commandService.getaLLoRDER();
     }
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@Builder
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Command {
@@ -18,8 +19,11 @@ public class Command {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idCommand;
     String description;
+    String title;
     Float price;
     LocalDate dateCommand;
+    private String status;
+    private String deliverv;
 
     @ManyToOne
 

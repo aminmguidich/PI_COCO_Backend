@@ -33,6 +33,7 @@ public class Product implements Serializable {
     Command commandProduct;
 
     @OneToMany(mappedBy = "product")
+            @JsonIgnore
     List<CommandItem> commandItems=new ArrayList<>();
 
     @ManyToMany
@@ -40,5 +41,6 @@ public class Product implements Serializable {
     List<User>usersProducts=new ArrayList<>();
     @ToString.Exclude
     @ManyToOne
+    @JsonIgnore
     private Categorie categorie;
 }

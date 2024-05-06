@@ -23,8 +23,11 @@ public class CommandItem implements Serializable {
     @ToString.Exclude
     @ManyToOne
     private Product product;
+    private Long idprod;
     @ToString.Exclude
     @ManyToOne
     private Command command;
+    private String adress;
+    private Long tel;
 
 }
