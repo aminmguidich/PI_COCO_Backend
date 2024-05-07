@@ -38,7 +38,7 @@ public class ReqCarpoolingServiceImpl implements IReqCarpoolingService {
 
         try {
             assert loggedInUser != null;
-            emailService.sendSimpleMessage(requiredUser.getEmail(),"Requirement", htmlTemplate("Coco",requiredUser.getFullname(),loggedInUser.getFullname()));
+            emailService.sendSimpleMessage(requiredUser.getEmail(),"Requirement", htmlTemplate("Coco",requiredUser.getFullname(),loggedInUser.getFullname(),requirementCarpooling.getDescription()));
         } catch (MessagingException e) {
             e.printStackTrace();
         }
